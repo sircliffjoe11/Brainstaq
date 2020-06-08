@@ -1,0 +1,44 @@
+<main style="padding-top: 100px;  background-color: #fff;">
+   <div class="container col-lg-9">
+  <!--  <div class="card no-border" style="border: none;">
+      <div class="card-horizontal">
+        <div class="card-img-body">
+          <%= image_tag(@idea.image_url, width: '100%') if @idea.image.present? %>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title"><%= @idea.title %></h3>
+            <p class="card-text"><%= truncate @idea.description, length: 200 %></p>
+            <%= link_to 'Follow', "", class: "btn btn1 rounded-pill text-white" %>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="card mb-3" style="max-width: 1000px; border: none;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <%= image_tag(@idea.image_url, width: '100%') if @idea.image.present? %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h3 class="card-title"><%= @idea.title %></h3>
+            <p class="card-text"><%= truncate @idea.description, length: 200 %></p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="delete mt-3 mb-5">
+      <% if current_user %>
+      <%= link_to 'Delete', idea_path(@idea), class: "btn btn1 rounded-pill text-white", method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Edit', edit_idea_path(@idea), class: "btn btn1 rounded-pill text-white" %>
+      <% end %>
+      <%= link_to 'Back', ideas_path, class: "btn btn1 rounded-pill text-white" %>
+    </div>
+    
+    <h3>Comments (<%= @idea.comments.size %>)</h3>
+    <%= render partial: 'ideas/comment', collection: @idea.comments.reverse %>
+    <%= render partial: 'comments/form', locals: { comment: @comment } %>
+
+  </div>
+</main>

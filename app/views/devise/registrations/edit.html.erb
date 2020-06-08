@@ -1,0 +1,340 @@
+<section class="profile-account-setting" style= "padding-top: 80px;">
+  <div class="container">
+    <div class="account-tabs-setting">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="acc-leftbar">
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" href="#nav-acc" role="tab" aria-controls="nav-acc" aria-selected="true">
+                    <i class="fa fa-cogs mr-3"></i>
+                        Account Setting
+                </a>
+                <a class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false">
+                    <i class="fas fa-tachometer-alt  mr-3" aria-hidden="true"></i>
+                        Profile Status
+                </a>
+                <a class="nav-item nav-link" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false">
+                    <i class="fa fa-lock  mr-3"></i>
+                        Change Password
+                </a>
+                <a class="nav-item nav-link" id="nav-notification-tab" data-toggle="tab" href="#nav-notification" role="tab" aria-controls="nav-notification" aria-selected="false">
+                    <i class="fa fa-user mr-3"></i>
+                        Update Account
+                </a>
+                <!-- <a class="nav-item nav-link" id="nav-requests-tab" data-toggle="tab" href="#nav-requests" role="tab" aria-controls="nav-requests" aria-selected="false">
+                    <i class="fa fa-group"></i>
+                        Requests
+                    </a> -->
+                <!-- <a class="nav-item nav-link" id="security-login" data-toggle="tab" href="#security-login" role="tab" aria-controls="security-login" aria-selected="false">
+                    <i class="fa fa-user-secret"></i>
+                        Security and Login
+                    </a>
+                <a class="nav-item nav-link" id="privacy" data-toggle="tab" href="#privacy" role="tab" aria-controls="privacy" aria-selected="false">
+                <i class="fa fa-paw"></i>
+                    Privacy
+                </a>
+                <a class="nav-item nav-link" id="blockking" data-toggle="tab" href="#blockking" role="tab" aria-controls="blockking" aria-selected="false">
+                    <i class="fa fa-cc-diners-club"></i>
+                        Blocking
+                    </a> -->
+                <a class="nav-item nav-link" id="nav-deactivate-tab" data-toggle="tab" href="#nav-deactivate" role="tab" aria-controls="nav-deactivate" aria-selected="false">
+                    <i class="fa fa-random mr-3"></i>
+                        Delete Account
+                    </a>
+              </div>
+          </div>
+          <!--acc-leftbar end-->
+        </div>
+        
+        
+       
+        <div class="col-lg-9">
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-acc" role="tabpanel" aria-labelledby="nav-acc-tab">
+              <div class="acc-setting">
+                <h3>Account Setting</h3>
+                  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                  <div class="notbar mb-3">
+                    <h4>Instant Notification</h4>
+                    <p class="mb-3">Turn on instant notification so you don't miss any important updates</p>
+                    <div class="toggle-switch">
+                      <label class="switch">
+                        <input type="checkbox" checked>
+                          <span class="slider block"></span>
+                        </label>
+                    </div>
+                  </div><!--notbar end-->
+                  <div class="notbar mb-3">
+                    <h4>Email Notification</h4>
+                    <p class="mb-3">If this is turned on, you would receive an email whenever an activity goes on within the community.</p>
+                    <div class="toggle-switch">
+                      <label class="switch">
+                        <input type="checkbox" checked>
+                          <span class="slider block"></span>
+                      </label>
+                    </div>
+                  </div><!--notbar end-->
+                  <div class="notbar mt-2">
+                    <h4>Enable Live Chat</h4>
+                    <p class="mb-3">Turn this on if you want to enable live chat with your followers</p>
+                    <div class="toggle-switch">
+                      <label class="switch">
+                        <input type="checkbox" checked>
+                          <span class="slider block"></span>
+                      </label>
+                    </div>
+                  </div><!--notbar end-->
+                  <div class="save-stngs">
+                    <ul>
+                      <li><%= f.submit "Save Settings", class: "btn btn1 rounded-pill text-white" %></li>
+                      <li><%= link_to "Cancel", :back, class: "btn btn1 rounded-pill text-white" %></li>
+                    </ul>
+                  </div><!--save-stngs end-->
+              
+              </div><!--acc-setting end-->
+            </div>
+              <div class="tab-pane fade" id="nav-status" role="tabpanel" aria-labelledby="nav-status-tab">
+                <div class="acc-setting">
+                  <h3>Profile Status</h3>
+                  <div class="profile-bx-details">
+                    <div class="row">
+                      <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="profile-bx-info">
+                          <div class="pro-bx">
+                            <div class="bx-info">
+                              <h3>5</h3>
+                              <h5>Ideas Created</h5>
+                            </div><!--bx-info end-->
+                          </div><!--pro-bx end-->
+                        </div><!--profile-bx-info end-->
+                      </div>
+                      <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="profile-bx-info">
+                          <div class="pro-bx">
+                            <div class="bx-info">
+                              <h3>4</h3>
+                              <h5>Projects Created</h5>
+                            </div><!--bx-info end-->
+                          </div><!--pro-bx end-->
+                        </div><!--profile-bx-info end-->
+                      </div>
+                      <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="profile-bx-info">
+                          <div class="pro-bx">
+                            <div class="bx-info">
+                              <h3>1</h3>
+                              <h5>Campaign Created</h5>
+                            </div><!--bx-info end-->
+                          </div><!--pro-bx end-->
+                        </div><!--profile-bx-info end-->
+                      </div>
+                      <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="profile-bx-info">
+                          <div class="pro-bx">
+                            <div class="bx-info">
+                              <h3>N130,000</h3>
+                              <h5>Amount Raised</h5>
+                            </div><!--bx-info end-->
+                          </div><!--pro-bx end-->
+                        </div><!--profile-bx-info end-->
+                      </div>
+                    </div>
+                  </div><!--profile-bx-details end-->
+                  <div class="pro-work-status">
+                    <!-- <h4>Work Status  -  Last Months Working Status</h4> -->
+                  </div><!--pro-work-status end-->
+                </div><!--acc-setting end-->
+              </div>
+              <div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">
+                <div class="acc-setting">
+                <h3>Change Password</h3>
+                <form>
+                  <div class="cp-field">
+                    <h5>Old Password</h5>
+                    <div class="cpp-fiel">
+                      <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "Enter your current password to confirm your changes" %>
+                    </div>
+                  </div>
+                  <div class="cp-field">
+                    <h5 class="mt-3">New Password</h5>
+                    <div class="cpp-fiel">
+                      <%= f.password_field :password, autocomplete: "new-password", placeholder: "Enter New Password" %>
+                      <% if @minimum_password_length %>
+                        <br />
+                        <small class="float-right"><%= @minimum_password_length %> characters minimum</small>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="cp-field">
+                    <h5>Confirm Password</h5>
+                    <div class="cpp-fiel">
+                      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Repeat Password" %>
+                    </div>
+                  </div>
+                  <div class="save-stngs">
+                    <ul>
+                      <li><%= f.submit "Save Settings", class: "btn btn1 rounded-pill text-white" %></li>
+                      <li><%= link_to "Cancel", :back, class: "btn btn1 rounded-pill text-white" %></li>
+                    </ul>
+                  </div><!--save-stngs end-->
+                </form>
+              </div><!--acc-setting end-->
+              </div>
+              <div class="tab-pane fade" id="nav-notification" role="tabpanel" aria-labelledby="nav-notification-tab">
+                <div class="acc-setting">
+                  <h3>Update Account</h3>
+                  <form>
+                  <div class="cp-field">
+                    <h5>Last Name</h5>
+                    <div class="cpp-fiel">
+                      <%= f.text_field :last_name %>
+                    </div>
+                  </div>
+                  <div class="cp-field">
+                    <h5 class="mt-3">First Name</h5>
+                    <div class="cpp-fiel">
+                      <%= f.text_field :first_name %>
+                    </div>
+                  </div>
+                  <div class="cp-field">
+                    <h5 class="mt-3">Bio</h5>
+                    <div class="cpp-fiel">
+                      <%= f.text_area :bio %>
+                    </div>
+                  </div>
+                  <div class="save-stngs">
+                    <ul>
+                      <li><%= f.submit "Save Settings", class: "btn btn1 rounded-pill text-white" %></li>
+                      <li><%= link_to "Cancel", :back, class: "btn btn1 rounded-pill text-white" %></li>
+                    </ul>
+                  </div><!--save-stngs end-->
+                </form>
+                </div><!--acc-setting end-->
+              </div>
+              <div class="tab-pane fade" id="nav-requests" role="tabpanel" aria-labelledby="nav-requests-tab">
+                <div class="acc-setting">
+                  <h3>Requests</h3>
+                  <div class="requests-list">
+                    <!-- <div class="request-details">
+                      <div class="noty-user-img">
+                        <img src="images/resources/r-img1.png" alt="">
+                      </div>
+                      <div class="request-info">
+                        <h3>Jessica William</h3>
+                        <span>Kenya</span>
+                      </div>
+                      <div class="accept-feat">
+                        <ul>
+                          <li><button type="submit" class="accept-req">Accept</button></li>
+                          <li><button type="submit" class="close-req"><i class="la la-close"></i></button></li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                    <div class="request-details">
+                      <div class="noty-user-img">
+                        <img src="images/resources/r-img1.png" alt="">
+                      </div>
+                      <div class="request-info">
+                        <h3>John Doe</h3>
+                        <span>Gabon</span>
+                      </div>
+                      <div class="accept-feat">
+                        <ul>
+                          <li><button type="submit" class="accept-req">Accept</button></li>
+                          <li><button type="submit" class="close-req"><i class="la la-close"></i></button></li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                    <div class="request-details">
+                      <div class="noty-user-img">
+                        <img src="images/resources/r-img1.png" alt="">
+                      </div>
+                      <div class="request-info">
+                        <h3>Poonam</h3>
+                        <span>Mali</span>
+                      </div>
+                      <div class="accept-feat">
+                        <ul>
+                          <li><button type="submit" class="accept-req">Accept</button></li>
+                          <li><button type="submit" class="close-req"><i class="la la-close"></i></button></li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="request-details">
+                      <div class="noty-user-img">
+                        <img src="images/resources/r-img1.png" alt="">
+                      </div>
+                      <div class="request-info">
+                        <h3>Bill Gates</h3>
+                        <span>Cape Verde</span>
+                      </div>
+                      <div class="accept-feat">
+                        <ul>
+                          <li><button type="submit" class="accept-req">Accept</button></li>
+                          <li><button type="submit" class="close-req"><i class="la la-close"></i></button></li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="request-details">
+                      <div class="noty-user-img">
+                        <img src="images/resources/r-img1.png" alt="">
+                      </div>
+                      <div class="request-info">
+                        <h3>Jessica William</h3>
+                        <span>Nigeria</span>
+                      </div>
+                      <div class="accept-feat">
+                        <ul>
+                          <li><button type="submit" class="accept-req">Accept</button></li>
+                          <li><button type="submit" class="close-req"><i class="la la-close"></i></button></li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="request-details">
+                      <div class="noty-user-img">
+                        <img src="images/resources/r-img1.png" alt="">
+                      </div>
+                      <div class="request-info">
+                        <h3>John Doe</h3>
+                        <span>Burundi</span>
+                      </div>
+                      <div class="accept-feat">
+                        <ul>
+                          <li><button type="submit" class="accept-req">Accept</button></li>
+                          <li><button type="submit" class="close-req"><i class="la la-close"></i></button></li>
+                        </ul>
+                      </div>
+                    </div> -->
+
+                  </div><!--requests-list end-->
+                </div><!--acc-setting end-->
+              </div>
+              <div class="tab-pane fade" id="nav-deactivate" role="tabpanel" aria-labelledby="nav-deactivate-tab">
+                <div class="acc-setting">
+                  <h3>Delete Account</h3>
+                    <form>
+                      <p class="ml-4">We are not happy to see you go. <br>Deleting your account 
+                        would delete all of your conversations and also remove you of Brainstaq's mailing list 
+                        and every other correspondences. <br> This action cannot be reversed.</p>
+                  
+                  <div class="save-stngs">
+                    <ul>
+                      <li><%= button_to "Delete account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn1 rounded-pill text-white" %></li>
+                      <li><%= link_to "Cancel", :back, class: "btn btn1 rounded-pill text-white" %></li>
+                    </ul>
+                  </div><!--save-stngs end-->
+                </form>
+              </div><!--acc-setting end-->
+              </div>
+          </div>
+        </div>
+        <% end %>       
+      </div>
+    </div><!--account-tabs-setting end-->
+  </div>
+</section>

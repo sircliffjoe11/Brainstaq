@@ -1,0 +1,190 @@
+<main style="padding-top: 50px; background-color: #f2f2f2;">
+<div class="wrapper">
+  <section class="cover-sec">
+    <%= image_tag 'cover-img' %>
+    <a href="#" title=""><i class="fa fa-camera"></i> Change Image</a>
+  </section>
+
+  <main>
+    <div class="main-section">
+      <div class="container">
+        <div class="main-section-data">
+          <div class="row">
+            <div class="col-lg-3 pd-right-none no-pd">
+              
+              <div class="main-left-sidebar">
+                <div class="user_profile">
+                  <div class="user-pro-img">
+                    <%= image_tag 'user-pic', style: "width: 160px" %>
+                    <a href="#" title=""><i class="fa fa-camera"></i></a>
+                  </div><!--user-pro-img end-->
+                  <div class="user_pro_status">
+                    <ul class="flw-status">
+                      <li>
+                        <span>Following</span>
+                        <b>34</b>
+                      </li>
+                      <li>
+                        <span>Followers</span>
+                        <b>155</b>
+                      </li>
+                    </ul>
+                  </div><!--user_pro_status end-->
+                </div><!--user_profile end-->
+
+                <%= render partial: 'layouts/follow' %>
+              </div><!--main-left-sidebar end-->
+            </div>
+            
+            <div class="col-lg-6 col-md-8 no-pd">
+              <div class="main-ws-sec">
+                <div class="user-tab-sec">
+                  <h3 style="font-size: 30px;"><%= current_user.full_name %></h3>
+                  <div class="star-descp">
+                    <span class="mb-3" style="font-size: 16px;"><%= current_user.bio %></span>
+                    <div class="progress mt-0" style="height: 10px; width: 100%;">
+                      <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="25" 
+                        aria-valuemin="0" aria-valuemax="100"><small>75%</small>
+                      </div>
+                    </div>
+                    <div>
+                      <p style="font-size: 12px; font-weight: bold;">User Rating</p>
+                    </div>
+                  </div><!--star-descp end-->
+                  
+                  <div class="tab-feed st2" style="text-align: center; margin-bottom: -10px; margin-top: -20px;">
+                    <ul>
+                      <li data-tab="feed-dd" class="active">
+                        <a href="#" title="">
+                          <span>My Ideas</span>
+                        </a>
+                        <span style="font-style: italic;">12</span>
+                      </li>
+                      
+                      <!-- <li data-tab="info-dd">
+                        <a href="#" title="">
+                          <img src="img/ic2.png" alt="">
+                          <span>Teams</span>
+                        </a>
+                        <span style="font-style: italic;">2</span>
+                      </li>
+                      <li data-tab="saved-jobs">
+                        <a href="#" title="">
+                          <img src="img/ic4.png" alt="">
+                          <span>Projects</span>
+                        </a>
+                        <span style="font-style: italic;">5</span>
+                      </li> -->
+
+                      <li data-tab="my-bidss">
+                        <a href="#" title="">
+                          <span>My Campaigns</span>
+                        </a>
+                        <span style="font-style: italic;">1</span>
+                      </li>
+                      <hr>
+                    </ul>
+                  </div><!-- tab-feed end-->
+                </div><!--user-tab-sec end-->
+
+          <div class="product-feed-tab current" id="feed-dd">
+          <% @ideas.each do |idea| %>
+            <div class="posts-section">
+              <div class="post-bar">
+                <div class="post_topbar">
+                  <div class="usy-dt">
+                    <%= image_tag 'user-pic.jpg', style: "width: 40px;", class: "rounded-circle ml-1" %>
+                    <div class="usy-name">
+                      <h3><%= current_user.full_name %></h3>
+                      <span class="ml-1"><i class="fas fa-clock mr-1"></i>Posted <%= time_ago_in_words(idea.created_at) %> ago</span>
+                    </div>
+                  </div>
+                  <div class="dropdown ml-1 float-right" style="font-size: 20px;">
+                    <a class="dropdown-toggle fas fa-ellipsis-v" href="#" role="button" id="dropdownMenuLink" 
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="font-size: 12px;">
+                      <%= link_to "Edit Idea", edit_idea_path(idea), class: "dropdown-item" %>
+                      <%= link_to "Share", "#", class: "dropdown-item" %>
+                      <%= link_to "Delete", idea, :method => 'delete', data: { confirm: 'Are you sure?' }, class: "dropdown-item" %>
+                    </div>
+                  </div>
+                
+                  </div>
+                  <div class="epi-sec">
+                    <ul class="descp" style="font-size: 12px;">
+                      <li><i class="fas fa-map-marker-alt"></i>  Nigeria</li>
+                      <li><i class="fas fa-list-alt"></i>  Technology</li>
+                    </ul>
+                  </div>
+                  <div class="job_descp">
+                    <h3><%= link_to idea.title, idea %></h3>
+                    <%= image_tag idea.image_url, style: "height: 150px; object-fit: cover;", class: "card-img-top" %>
+                    <p class="mt-3 mb-0"><%= truncate idea.description, length: 100 %></p>
+                  </div>
+            
+                  <div class="job-status-bar" style="margin-bottom: -15px;">
+                     <ul class="like-com">
+                      <li><a href="#"><i class="fa fa-thumbs-up"></i>  25</a></li> 
+                      <li><a href="#"><i class="fa fa-thumbs-down"></i>  11</a></li>
+                      <li><a href="#"><i class="fa fa-comments"></i>  <%= idea.comments.size %></a></li> 
+                      <li><a href="#"><i class="fas fa-share"></i>  3</a></li>
+                    </ul>
+                    <a><i class="fa fa-filter"></i> Relevance: <strong>50%</strong></a>
+                  </div>
+                  </div><!--post-bar end-->
+              </div><!--posts-section end-->
+            <% end %>
+                </div><!--product-feed-tab end-->
+                
+                <div class="product-feed-tab" id="info-dd">
+                  <div><!-- 
+                    <h3><a href="#" title="" class="overview-open">Team Matrix</a> <a href="#" title="" class="overview-open"> -->
+                    <!-- <ol>
+                        <li>
+                            <h6 style="font-size: 14px;">Ettah Clifford Joe</h6>
+                            <p class="text-muted">Leader</p>
+                        </li>
+                        <li>
+                            <h6 style="font-size: 14px;">Annabel Tochukwu</h6>
+                            <p class="text-muted">Member</p>
+                        </li>
+                        <li>
+                            <h6 style="font-size: 14px;">Philip Morgan</h6>
+                            <p class="text-muted">Member</p>
+                        </li>
+                    </ol> -->
+                  </div><!--user-profile-ov end-->
+
+                </div><!--projects-feed-tab end-->
+                
+              </div><!--main-ws-sec end-->
+            </div>
+            
+            <div class="col-lg-3 pd-right-none no-pd">
+              <div class="right-sidebar">
+                <div class="post-st mb-0" style="margin-top: 150px; margin-right: -25px">
+                  <ul>
+                    <%= link_to 'New Idea', new_idea_path, class: "btn btn1 rounded-pill text-white" %>
+                  </ul><br>
+                </div>
+                  <!--post-st end-->
+
+                  <%= render partial: "layouts/trending", locals: { ideas: @ideas} %>
+                </div><!--widget-jobs end-->
+
+                
+              </div><!--right-sidebar end-->
+            </div>
+          </div>
+        </div><!-- main-section-data end-->
+      </div> 
+    </div>
+  </main>
+
+  
+
+</div>
+
+
+</main>

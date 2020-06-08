@@ -1,0 +1,132 @@
+<%= form_with(model: idea, local: true) do |form| %>
+  <% if idea.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
+
+      <ul>
+        <% idea.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+
+    </div>
+  <% end %>
+
+  <div class="container col-sm-6">
+    <div class="row m-3">
+      <div class="col-sm-12 form-group">
+        <%= form.text_field :title, maxlength: "28", class: "form-control", placeholder: "Title"  %>
+      </div>
+      <div class="col-lg-12 form-group">
+        <select class="form-control col-sm-12">
+          <option value="" disabled selected>Select category</option>
+          <option value="1">Agriculture</option>
+          <option value="2">Arts & Culture</option>
+          <option value="3">Beauty & Fashion</option>
+          <option value="4">Business</option>
+          <option value="5">Community</option>
+          <option value="6">Design</option>
+          <option value="7">Education</option>
+          <option value="8">Entertainment</option>
+          <option value="9">Food</option>
+          <option value="10">Gadgets</option>
+          <option value="11">Internet</option>
+          <option value="12">IT & Telecoms</option>
+          <option value="13">Kids</option>
+          <option value="14">Media & Publishing</option>
+          <option value="15">Recipes</option>
+          <option value="16">Renewable Energy</option>
+          <option value="17">Science & Technology</option>
+          <option value="18">Social Networks</option>
+          <option value="19">Social & Organization</option>
+          <option value="20">Sports & Hobbies</option>
+          <option value="21">Startups</option>
+          <option value="22">Sustainability</option>
+          <option value="23">Tourism & Travel</option>
+          <option value="24">Transportation</option>
+          <option value="25">Web & Applications</option>
+          <option value="26">Writings</option>
+          <option value="27">Other</option>
+        </select>
+      </div>
+    
+      <div class="col-lg-12 form-group">
+        <select class="form-control col-sm-12">
+          <option value="" disabled selected>Choose your country</option>
+          <option value="1">Algeria</option>
+          <option value="2">Angola</option>
+          <option value="3">Benin</option>
+          <option value="4">Botswana</option>
+          <option value="5">Burkina Faso</option>
+          <option value="6">Burundi</option>
+          <option value="7">Cape Verde</option>
+          <option value="8">Cameroon</option>
+          <option value="9">Central African Republic (CAR)</option>
+          <option value="10">Chad</option>
+          <option value="11">Comoros</option>
+          <option value="12">Republic of the Congo</option>
+          <option value="13">Democratic Republic of Congo</option>
+          <option value="14">Cote d'Ivoire</option>
+          <option value="15">Djibouti</option>
+          <option value="16">Egypt</option>
+          <option value="17">Equatorial Guinea</option>
+          <option value="18">Eritrea</option>
+          <option value="19">Eswatini (formerly Swaziland)</option>
+          <option value="20">Ethiopia</option>
+          <option value="21">Gabon</option>
+          <option value="22">Gambia</option>
+          <option value="23">Ghana</option>
+          <option value="24">Guinea</option>
+          <option value="25">Guinea-Bissau</option>
+          <option value="26">Kenya</option>
+          <option value="27">Lesotho</option>
+          <option value="28">Liberia</option>
+          <option value="29">Libya</option>
+          <option value="30">Madagascar</option>
+          <option value="31">Malawi</option>
+          <option value="32">Mali</option>
+          <option value="33">Mauritania</option>
+          <option value="34">Mauritius</option>
+          <option value="35">Morocco</option>
+          <option value="36">Mozambique</option>
+          <option value="37">Namibia</option>
+          <option value="38">Niger</option>
+          <option value="39">Nigeria</option>
+          <option value="40">Rwanda</option>
+          <option value="41">Sao Tome and Principe</option>
+          <option value="42">Senegal</option>
+          <option value="43">Seychelles</option>
+          <option value="44">Sierra Leone</option>
+          <option value="45">Somalia</option>
+          <option value="46">South Africa</option>
+          <option value="47">South Sudan</option>
+          <option value="48">Sudan</option>
+          <option value="49">Tanzania</option>
+          <option value="50">Togo</option>
+          <option value="51">Tunisia</option>
+          <option value="52">Uganda</option>
+          <option value="53">Zambia</option>
+          <option value="54">Zimbabwe</option>
+        </select>
+      </div>
+      <div class="form-group col-sm-12">
+        <%= form.text_area :description, class: "form-control", placeholder: "Enter a brief description of your idea"%>
+      </div>
+
+      <div class="field">
+        <%= form.text_field :user_id, value: current_user.id, class: 'd-none' %>
+      </div>
+    
+      <div class="col-sm-12">
+        <%= form.file_field :image %>
+      </div>
+                
+    </div>
+    <div class="form-group col-sm-12 m-0" style="padding-left: 30px; padding-right: 30px; padding-bottom: 130px;">
+      <%= form.submit class: "actions btn btn1 text-white float-right" %>
+      <%= link_to 'Back', ideas_path, class: "btn btn1 text-white"  %>
+    </div>
+  </div>
+
+
+<% end %>

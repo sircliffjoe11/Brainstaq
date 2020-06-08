@@ -1,0 +1,23 @@
+<article class="card-body mx-auto" style="max-width: 400px; padding-top: 150px;">
+  <header class="section-header mb-5">
+    <h3>Forgot your <span class="text-primary"> Password?</span></h3>
+  </header>
+  
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+ <%= render "devise/shared/error_messages", resource: resource %>
+<br>
+<div class="form-group input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+  </div>
+  <%= f.email_field :email, autofocus: false, autocomplete: "email", class: "form-control", placeholder: "Enter email address" %>
+  </div>
+  
+  <div class="form-group actions">
+    <%= f.submit "RESET PASSWORD", class: "btn btn1 btn-block text-white" %>
+  </div>
+  <p class="text-center btn btn1"><%= link_to "Back", :back %></p>                                                            
+<% end %>
+</article>
+
+

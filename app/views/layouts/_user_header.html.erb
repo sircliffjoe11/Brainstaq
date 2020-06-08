@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
+    <div class="navbar-brand py-0 mx-5" style="width: 225px;">
+      <%= link_to (image_tag 'logo.png', style:"width:150px; height: 50px;"), root_path %>
+    </div>
+  
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+      <div class="collapse navbar-collapse" id="navbarCollapse" >
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <%= link_to 'Dashboard', users_path, :method => 'show', class: 'nav-link para-font' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Notifications', '#', class: 'text-white nav-link para-font' %>
+          </li>
+        </ul>
+
+        <%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
+          <%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-2 rounded-pill', placeholder: 'Search' %>
+        <% end %>
+      
+        <div class="navbar-text float-right">
+          <div class="dropdown ml-1">
+            <%= link_to (image_tag 'user-pic', class: 'rounded-circle mt-1', style:"width:28px; height: 28px; margin-right: 0px;") %>
+            <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" 
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+              style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #F7F9F9  !important;">
+              <%= current_user.full_name %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <%= link_to "Profile", profile_path(current_user.full_name) , class: "dropdown-item" %>
+              <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Log Out", destroy_user_session_url, :method => 'delete', class: "dropdown-item" %>
+            </div>
+          </div>
+        </div>
+    </div>
+  </nav>
