@@ -1,0 +1,41 @@
+<header class="section-header mb-5" style="padding-top: 150px;">
+  <h3>Search <span class="text-primary">Results</span></h3>
+</header>
+
+
+<section class="container" style="margin-bottom: 20px;">
+  <div class="row">
+    <div class="col">
+      <div class="col-md-10" style=" margin-bottom: 1rem;">
+        <table class="table table-hover table-responsive", 
+        style="border-bottom: 1px solid #f2f2f2;">
+          <tbody>
+            <% c = 0 %>
+            <% @ideas.each do |idea| %>
+            <tr>
+              <td>
+                <% if idea.image.present? %>
+                <%= image_tag idea.image_url(:thumb), style: "width: 150px;" %>
+              <% else %>
+              No image
+              <% end %>
+              </td>
+              <td>
+                <%= idea.title %>
+              </td>
+              <td>
+                <%= truncate idea.description, length: 100 %>
+              </td>
+              <td>
+                <%= link_to 'LEARN MORE', idea %>
+              </td>
+            </tr>
+            <% c = c + 1 %>
+            <% end %>
+            <h6 class="text-primary">There are <%= c %> ideas containing your search!</h6>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
