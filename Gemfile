@@ -35,6 +35,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'friendly_id', '~> 5.3'
+gem 'local_time', '~> 2.1'
 
 #gem 'kaminari'
 

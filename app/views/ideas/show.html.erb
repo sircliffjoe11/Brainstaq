@@ -21,6 +21,7 @@
         <div class="col-md-8">
           <div class="card-body">
             <h3 class="card-title"><%= @idea.title %></h3>
+            <h6>Created by <%= @idea.user.username %></h6>
             <p class="card-text"><%= truncate @idea.description, length: 200 %></p>
             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
           </div>
@@ -28,17 +29,64 @@
       </div>
     </div>
 
-    <div class="delete mt-3 mb-5">
-      <% if current_user %>
-      <%= link_to 'Delete', idea_path(@idea), class: "btn btn1 rounded-pill text-white", method: :delete, data: { confirm: 'Are you sure?' } %>
-      <%= link_to 'Edit', edit_idea_path(@idea), class: "btn btn1 rounded-pill text-white" %>
+    <div class="delete mt-3 mb-3">
+      <% if user_signed_in? && current_user.id == @idea.user_id %>
+      <%= link_to 'Delete', idea_path(@idea), class: "btn btn1 rounded-pill text-white mr-1", method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Edit', edit_idea_path(@idea), class: "btn btn1 rounded-pill text-white ml-1" %>
       <% end %>
-      <%= link_to 'Back', ideas_path, class: "btn btn1 rounded-pill text-white" %>
+    </div>
+
+    <hr class="w-100 mt-0">
+    
+    <p>
+      <a class="btn mr-1" data-toggle="collapse" href="#collapseDetails" role="button" aria-expanded="false" aria-controls="collapseDetails" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
+        Details
+      </a>
+      <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseUpdates" role="button" aria-expanded="false" aria-controls="collapseUpdates" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
+        Updates
+      </a>
+      <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseTeam" role="button" aria-expanded="false" aria-controls="collapseTeam" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
+        Team
+      </a>
+      <% if user_signed_in? %>
+      <a class="btn ml-1" data-toggle="collapse" href="#collapseComments" role="button" aria-expanded="false" aria-controls="collapseComments" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;" >
+        Comments
+      </a>
+    <% end %>
+      <a class="btn btn1 float-right text-white ml-1">
+        Support this Project
+      </a>
+      <a class="btn btn1 float-right text-white mr-1">
+        Follow
+      </a>
+    </p>
+    <div class="collapse mb-3" id="collapseDetails">
+      <div class="card card-body">
+        Idea details goes here
+      </div>
+    </div>
+
+    <div class="collapse mb-3" id="collapseUpdates">
+      <div class="card card-body">
+        Idea updates goes here
+      </div>
+    </div>
+
+    <div class="collapse mb-3" id="collapseTeam">
+      <div class="card card-body">
+        Project team goes here
+      </div>
+    </div>
+
+    <div class="collapse mb-3" id="collapseComments">
+      <div class="card card-body">
+        <h4>Comments (<%= @idea.comments.size %>)</h4>
+          <%= render partial: 'ideas/comment', collection: @idea.comments.reverse %>
+          <%= render partial: 'comments/form', locals: { comment: @comment } %>
+      </div>
     </div>
     
-    <h3>Comments (<%= @idea.comments.size %>)</h3>
-    <%= render partial: 'ideas/comment', collection: @idea.comments.reverse %>
-    <%= render partial: 'comments/form', locals: { comment: @comment } %>
+    
 
   </div>
 </main>

@@ -28,6 +28,9 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.idea_id = params[:idea_id]
 
+    # comment = idea.comments.create(comment_params.merge(user_id: current_user.id))
+    # respond_with idea, comment
+
     respond_to do |format|
       if @comment.save
         format.html { redirect_to idea_path(@comment.idea) }

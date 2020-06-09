@@ -13,6 +13,8 @@ require("channels")
 require("jquery-ui")
 require("bootstrap")
 
+//= require local-time
+
 import "@fortawesome/fontawesome-free/js/all";
 
 // Back to top button

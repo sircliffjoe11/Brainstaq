@@ -36,6 +36,8 @@ class IdeasController < ApplicationController
     @idea = Idea.new(idea_params)
     @idea.save
 
+    # respond_with Idea.create(idea_params.merge(user_id: current_user.id))
+    
     respond_to do |format|
       if @idea.save
         format.html { redirect_to @idea }

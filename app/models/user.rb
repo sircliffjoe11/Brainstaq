@@ -18,5 +18,5 @@ class User < ApplicationRecord
 
   # def show
   #   @user = User.friendly.find(params[:id])
-  # end
+  # end 
 end
