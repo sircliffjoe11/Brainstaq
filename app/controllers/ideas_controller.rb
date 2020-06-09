@@ -2,12 +2,14 @@ class IdeasController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show]
   before_action :set_idea, only: [:show, :edit, :destroy, :update ]
 
-  IDEAS_PER_PAGE = 9
+  IDEAS_PER_PAGE = 6
   # GET /ideas
   # GET /ideas.json
   def index
     #@ideas = Idea.order(created_at: :desc).page(params[:page]).per(9)
     @page = params.fetch(:page, 0).to_i 
+    @next_page = @page + 1 if Idea.count > 6
+    @prev_page = @page - 1 if @page < 0
     @ideas = Idea.offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).order(created_at: :desc)
   end
 
