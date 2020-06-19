@@ -3,14 +3,15 @@ class IdeasController < ApplicationController
   before_action :set_idea, only: [:show, :edit, :destroy, :update ]
 
   IDEAS_PER_PAGE = 6
+
+   
   # GET /ideas
   # GET /ideas.json
   def index
-    #@ideas = Idea.order(created_at: :desc).page(params[:page]).per(9)
     @page = params.fetch(:page, 0).to_i 
     @next_page = @page + 1 if Idea.count > 6
     @prev_page = @page - 1 if @page < 0
-    @ideas = Idea.offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).order(created_at: :desc)
+    @ideas = Idea.offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).order(created_at: :desc)  
   end
 
   # GET /ideas/1
@@ -18,33 +19,37 @@ class IdeasController < ApplicationController
   def show
     @idea = Idea.find(params[:id]) 
     @comment = Comment.new
+    @comments = @idea.comments
     @comment.idea_id = @idea.id
   end
 
   # GET /ideas/new
   def new
-    @idea = Idea.new  
+    @idea = current_user.ideas.build
+    @idea = Idea.new
   end
 
   # GET /ideas/1/edit
   def edit
+    @idea = Idea.find(params[:id])
   end
 
   # POST /ideas
   # POST /ideas.json
   def create
-    @idea = Idea.new(idea_params)
-    @idea.save
-
-    # respond_with Idea.create(idea_params.merge(user_id: current_user.id))
+    @idea = current_user.ideas.build(idea_params)
+    @idea.user_id = current_user.id if user_signed_in?
     
-    respond_to do |format|
+    @idea = Idea.new(idea_params)
+
+    
+     respond_to do |format|
       if @idea.save
-        format.html { redirect_to @idea }
-        format.json { render :show, status: :created, location: @idea }
-      else
-        format.html { render :new }
-      end
+        #  render :edit, flash: {success: "Idea created! Add more details"}
+         format.html { redirect_to :dashboard }
+       else
+         format.html { render :new }
+       end
     end
   end
 
@@ -68,8 +73,24 @@ class IdeasController < ApplicationController
     @idea = current_user.ideas.find(params[:id])
     @idea.destroy
 
-    redirect_to user_path(current_user)
+    redirect_to :dashboard
   end
+
+  # def like
+  #   @idea.liked_by current_user
+  #   respond_to do |format|
+  #     format.html { redirect_back fallback_location: root_path }
+  #     format.json { render layout:false }
+  #   end
+  # end
+
+  # def unlike
+  #   @idea.unliked_by current_user
+  #   respond_to do |format|
+  #     format.html { redirect_back fallback_location: root_path }
+  #     format.json { render layout:false }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -79,6 +100,6 @@ class IdeasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def idea_params
-      params.require(:idea).permit(:title, :description, :image, :user_id)
+      params.require(:idea).permit(:title, :description, :image, :image_cache, :user_id)
     end
 end

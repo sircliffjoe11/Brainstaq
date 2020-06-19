@@ -1,5 +1,5 @@
 <div class="form-group col-sm-12">
-  <h4>Post a Comment</h4>
+  <h6 style="font-weight: bold;">Your Comment</h6>
 
 <%= form_for [@idea, @comment] do |form| %>
   <% if comment.errors.any? %>
@@ -10,19 +10,14 @@
         <% comment.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
-      </ul>
+      </ul> 
     </div>
   <% end %>
-    <p>
-      <%= form.text_field :username, class: "form-control", placeholder: "Enter your Name" %>  
-    </p>
   
-    <%= form.text_area :body, id: :comment_body, class: "form-control", placeholder: "Enter Comment" %>
-    <%= form.hidden_field :idea_id %>
-
-    <div>
-      <%= form.submit class: "actions btn btn1 text-white mt-3" %>
-    </div>
-    
+  <%= form.text_area :body, id: :comment_body, class: "form-control", placeholder: "Enter Comment" %>
+  <%= form.hidden_field :idea_id %>
+  <div>
+    <%= form.submit 'Leave a reply', class: "actions btn btn1 text-white mt-3" %>
   </div>
+</div>
 <% end %>

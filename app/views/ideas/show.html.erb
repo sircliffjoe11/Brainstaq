@@ -1,45 +1,41 @@
-<main style="padding-top: 100px;  background-color: #fff;">
+<main style="padding-top: 120px;  background-color: #fff;">
    <div class="container col-lg-9">
-  <!--  <div class="card no-border" style="border: none;">
-      <div class="card-horizontal">
-        <div class="card-img-body">
-          <%= image_tag(@idea.image_url, width: '100%') if @idea.image.present? %>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title"><%= @idea.title %></h3>
-            <p class="card-text"><%= truncate @idea.description, length: 200 %></p>
-            <%= link_to 'Follow', "", class: "btn btn1 rounded-pill text-white" %>
-        </div>
-      </div>
-    </div> -->
 
     <div class="card mb-3" style="max-width: 1000px; border: none;">
       <div class="row no-gutters">
         <div class="col-md-4">
-          <%= image_tag(@idea.image_url, width: '100%') if @idea.image.present? %>
+          <%= image_tag @idea.image_url, width:'100%' if @idea.image.present? %>
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h3 class="card-title"><%= @idea.title %></h3>
-            <h6>Created by <%= @idea.user.username %></h6>
-            <p class="card-text"><%= truncate @idea.description, length: 200 %></p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <h3 class="card-title" style="margin-bottom: -3px;"><%= @idea.title %></h3>
+            <small>Created by <%= link_to (@idea.user.full_name), profile_path(@idea.user.username, @user) %> on <%= local_time(@idea.created_at) %></small>
+            <p class="card-text mt-3 mb-3"><%= truncate @idea.description, length: 200 %></p>
+            
+            <% if user_signed_in? && current_user.id == @idea.user_id %>
+              <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mr-2"), idea_path(@idea), method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to fa_icon("edit", title: "Edit", class: "text-primary mr-2"), edit_idea_path(@idea) %>
+              <%= link_to fa_icon("share", title: "Share", class: "text-primary mr-2")%>
+              <%= link_to fa_icon("donate", title: "Support this Project", class: "text-primary mr-2") %>
+
+          <% else %>
+          <%= link_to fa_icon("share", title: "Share", class: "text-primary mr-2")%>
+          <%= link_to fa_icon("donate", title: "Support this Project", class: "text-primary mr-2") %>
+      <% end %>
+ 
           </div>
         </div>
       </div>
     </div>
 
-    <div class="delete mt-3 mb-3">
-      <% if user_signed_in? && current_user.id == @idea.user_id %>
-      <%= link_to 'Delete', idea_path(@idea), class: "btn btn1 rounded-pill text-white mr-1", method: :delete, data: { confirm: 'Are you sure?' } %>
-      <%= link_to 'Edit', edit_idea_path(@idea), class: "btn btn1 rounded-pill text-white ml-1" %>
-      <% end %>
-    </div>
+    <div class="delete">
+      
+      </div>
 
-    <hr class="w-100 mt-0">
+    <hr class="w-100">
     
     <p>
-      <a class="btn mr-1" data-toggle="collapse" href="#collapseDetails" role="button" aria-expanded="false" aria-controls="collapseDetails" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
+      <a class="btn mt-0 mr-1" data-toggle="collapse" href="#collapseDetails" role="button" aria-expanded="false" aria-controls="collapseDetails" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
         Details
       </a>
       <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseUpdates" role="button" aria-expanded="false" aria-controls="collapseUpdates" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
@@ -48,17 +44,11 @@
       <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseTeam" role="button" aria-expanded="false" aria-controls="collapseTeam" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
         Team
       </a>
-      <% if user_signed_in? %>
+
       <a class="btn ml-1" data-toggle="collapse" href="#collapseComments" role="button" aria-expanded="false" aria-controls="collapseComments" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;" >
         Comments
       </a>
-    <% end %>
-      <a class="btn btn1 float-right text-white ml-1">
-        Support this Project
-      </a>
-      <a class="btn btn1 float-right text-white mr-1">
-        Follow
-      </a>
+
     </p>
     <div class="collapse mb-3" id="collapseDetails">
       <div class="card card-body">
@@ -80,9 +70,9 @@
 
     <div class="collapse mb-3" id="collapseComments">
       <div class="card card-body">
-        <h4>Comments (<%= @idea.comments.size %>)</h4>
-          <%= render partial: 'ideas/comment', collection: @idea.comments.reverse %>
-          <%= render partial: 'comments/form', locals: { comment: @comment } %>
+        <h5 style="font-weight: bold;">RECENT COMMENTS<span class="label label-info"> (<%= @idea.comments.size %>)</span></h5>  
+        <%= render partial: 'ideas/comment', collection: @idea.comments.reverse %>
+        <%= render partial: 'comments/form', :locals => { :comment => @comment } %>
       </div>
     </div>
     

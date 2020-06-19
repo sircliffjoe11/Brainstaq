@@ -1,74 +1,31 @@
 <div class="main-left-sidebar no-margin"  style="width: 280px;">			
   <div class="suggestions full-width">
+    
     <div class="sd-title">
       <h6 style="font-weight: bold; text-align: center;">Follow creative minds</h6>
     </div><!--sd-title end-->
-              
-    <div class="suggestions-list">
-      <div class="suggestion-usd">
-        <%= image_tag 's1.png', style: "width: 35px; height: 35px;" %>
-        <div class="sgt-text">
-          <h4>Jessica William</h4>
-          <span>Gabon</span>
-        </div>
-        <span>
-          <%= link_to 'follow', '#', class: "btn-sm text-white" %>
-        </span>
-      </div>
-      <div class="suggestion-usd">
-        <%= image_tag 's2.png', style: "width: 35px; height: 35px;" %>
-        <div class="sgt-text">
-          <h4>John Doe</h4>
-          <span>Kenya</span>
-        </div>
-        <span>
-          <%= link_to 'follow', '#', class: "btn-sm text-white" %>
-        </span>
-      </div>
-      <div class="suggestion-usd">
-        <%= image_tag 's3.png', style: "width: 35px; height: 35px;" %>
-        <div class="sgt-text">
-          <h4>Poonam</h4>
-            <span>Egypt</span>
-        </div>
-        <span>
-          <%= link_to 'follow', '#', class: "btn-sm text-white" %>
-        </span>
-      </div>
-      <div class="suggestion-usd">
-        <%= image_tag 's4.png', style: "width: 35px; height: 35px;" %>
-        <div class="sgt-text">
-          <h4>Bill Gates</h4>
-            <span>South Africa</span>
-        </div>
-        <span>
-          <%= link_to 'follow', '#', class: "btn-sm text-white" %>
-        </span>
-      </div>
-      <div class="suggestion-usd">
-        <%= image_tag 's5.png', style: "width: 35px; height: 35px;" %>
-        <div class="sgt-text">
-          <h4>Jessica William</h4>
-            <span>Nigeria</span>
-        </div>
-        <span>
-          <%= link_to 'follow', '#', class: "btn-sm text-white" %>
-        </span>
-      </div>
-      <div class="suggestion-usd">
-        <%= image_tag 's6.png', style: "width: 35px; height: 35px;" %>
-        <div class="sgt-text">
-          <h4>John Doe</h4>
-            <span>Tanzania</span>
-        </div>
-        <span>
-          <%= link_to 'follow', '#', class: "btn-sm text-white" %>
-        </span>
-      </div>
+    
+    <!-- @users.where.not(id: current_user.id).limit(10).each do |user| -->
+    <% User.all.limit(10).each do |user|%>
+    <div class="suggestions-list mb-2">
+      <div class="suggestion-usd" style="margin-bottom: -40px;">
 
-      <div class="view-more mb-0">
-        <a href="#" title="">View More</a>
+         <!-- image_tag (user.image_url), style: "width: 35px; height: 35px;" -->
+
+        <div class="sgt-text">
+          <h4><%= link_to user.full_name, profile_path(user.username), class: 'text-dark' %></h4>
+          <span><%= user.country %></span>
+        </div>
+        <span>
+          <%= link_to 'follow', '#', class: "btn-sm text-white" %>
+        </span>
       </div>
+    </div>
+    <% end %>
+<!--     
+      <div class="view-more mb-4 mt-3">
+        <a href="#" title="">View More</a>
+      </div> -->
     </div><!--suggestions-list end-->
   </div><!--suggestions end-->						  
 </div><!--main-left-sidebar end-->

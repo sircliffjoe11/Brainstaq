@@ -10,7 +10,7 @@
       <div class="collapse navbar-collapse" id="navbarCollapse" >
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <%= link_to 'Dashboard', users_path, :method => 'show', class: 'nav-link para-font' %>
+            <%= link_to 'Dashboard', dashboard_path(current_user.full_name), class: 'nav-link para-font' %>
           </li>
           <li class="nav-item">
             <%= link_to 'Notifications', '#', class: 'text-white nav-link para-font' %>
@@ -23,14 +23,18 @@
       
         <div class="navbar-text float-right">
           <div class="dropdown ml-1">
-            <%= link_to (image_tag 'user-pic', class: 'rounded-circle mt-1', style:"width:28px; height: 28px; margin-right: 0px;") %>
+            <% if current_user.image_url %>
+              <%= image_tag current_user.image_url, class: 'rounded-circle mt-1', style:"width:28px; height: 28px; margin-right: 0px;" %>
+            <% else %>
+              <%= image_tag 'brand', class: 'rounded-circle mt-1', style:"width:28px; height: 28px; margin-right: 0px;" %>
+            <% end %>
             <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" 
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
               style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #F7F9F9  !important;">
               <%= current_user.full_name %>
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <%= link_to "Profile", profile_path(current_user.full_name) , class: "dropdown-item" %>
+              <%= link_to "Profile", profile_path(current_user.username) , class: "dropdown-item" %>
               <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Log Out", destroy_user_session_url, :method => 'delete', class: "dropdown-item" %>
             </div>

@@ -8,15 +8,8 @@ class HomeController < ApplicationController
     @next_page = @page + 1 unless Idea.count < 9
     @prev_page = @page - 1 unless @page == 0
     @ideas = Idea.offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).order(created_at: :desc)
+    @users = User.all
   end
 
-  def profile
-    @profile = User.find_by_username params[:username]
-    @ideas = Idea.all.order(created_at: :desc)
-  end
-
-  def show
-    @ideas = current_user.ideas.order(created_at: :desc)
-  end
 
 end

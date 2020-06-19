@@ -37,6 +37,13 @@ gem 'mini_magick'
 gem 'friendly_id', '~> 5.3'
 gem 'local_time', '~> 2.1'
 
+gem 'tel_to_helper'
+
+gem 'faker'
+
+# local ENV var
+gem "figaro"
+
 #gem 'kaminari'
 
 

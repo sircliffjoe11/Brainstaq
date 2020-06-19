@@ -563,12 +563,7 @@ main {
 	border-bottom: 1px solid #e5e5e5;
 	position: relative;
 }
-.sd-title h3 {
-	color: #000000;
-	font-size: 18px;
-	font-weight: 600;
-	float: left;
-}
+
 .sd-title i {
 	float: right;
 	color: #b7b7b7;
@@ -2287,7 +2282,7 @@ footer {
 	-moz-border-radius: 100px;
 	-ms-border-radius: 100px;
 	-o-border-radius: 100px;
-	border-radius: 100px;
+	border-radius: 160px;
 	float: none;
 	border: 5px solid #fff;
 }
@@ -2477,6 +2472,12 @@ footer {
 }
 .tab-feed ul li.active span {
 	color: #007bff;
+}
+
+.tab-feed span {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
 }
 .tab-feed ul li img {
 	float: none;
