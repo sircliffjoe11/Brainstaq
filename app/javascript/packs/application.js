@@ -13,6 +13,8 @@ require("channels")
 require("jquery-ui")
 require("bootstrap")
 
+// require("../includes/vote.js")
+
 //= require local-time
 
 import "@fortawesome/fontawesome-free/js/all";

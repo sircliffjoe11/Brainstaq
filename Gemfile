@@ -41,6 +41,10 @@ gem 'tel_to_helper'
 
 gem 'faker'
 
+gem 'impressionist'
+
+gem 'acts_as_votable'
+
 # local ENV var
 gem "figaro"
 

@@ -1,11 +1,19 @@
 class Idea < ApplicationRecord
-    validates :title, :description, :image, presence: true
+    validates :title, :description, :category, :image, presence: true
     
     mount_uploader :image, ImageUploader
     
     belongs_to :user
     has_many :comments
 
-    extend FriendlyId
-    friendly_id :user_id, use: :slugged
+    acts_as_votable
+
+    is_impressionable
+
+    def impressionist_count
+      impressions.size
+    end
+
+    # extend FriendlyId
+    # friendly_id :user_id, use: :slugged
 end

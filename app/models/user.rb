@@ -8,6 +8,8 @@ class User < ApplicationRecord
         
   has_many :ideas, dependent: :destroy
   has_many :comments, dependent: :destroy
+
+  acts_as_voter
   
   has_one_attached :image
 
@@ -15,7 +17,7 @@ class User < ApplicationRecord
   def send_admin_mail
     UserMailer.send_welcome_email(self).deliver_later
   end
-
+  
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -25,11 +27,11 @@ class User < ApplicationRecord
   end 
 
   def total_following
-    0
+    Follower.where(following_id: self.id).count
   end
 
   def total_followers
-    0
+    Follower.where(follower_id: self.id).count
   end
 
   # def image_url

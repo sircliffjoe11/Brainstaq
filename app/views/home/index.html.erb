@@ -30,7 +30,62 @@
               </div>
 
               <div class="form-group">
-                <%= f.text_field :country, class: "form-control", placeholder: "Select Country" %>
+                <%= f.select :country, options_for_select([
+          ['Algeria'],
+          ['Angola'],
+          ['Benin'],
+          ['Botswana'],
+          ['Burkina Faso'],
+          ['Burundi'],
+          ['Cape Verde'],
+          ['Cameroon'],
+          ['Central African Republic (CAR)'],
+          ['Chad'],
+          ['Comoros'],
+          ['Republic of the Congo'],
+          ['Democratic Republic of Congo'],
+          ["Cote d'Ivoire"],
+          ['Djibouti'],
+          ['Egypt'],
+          ['Equatorial Guinea'],
+          ['Eritrea'],
+          ['Eswatini (formerly Swaziland)'],
+          ['Ethiopia'],
+          ['Gabon'],
+          ['Gambia'],
+          ['Ghana'],
+          ['Guinea'],
+          ['Guinea-Bissau'],
+          ['Kenya'],
+          ['Lesotho'],
+          ['Liberia'],
+          ['Libya'],
+          ['Madagascar'],
+          ['Malawi'],
+          ['Mali'],
+          ['Mauritania'],
+          ['Mauritius'],
+          ['Morocco'],
+          ['Mozambique'],
+          ['Namibia'],
+          ['Niger'],
+          ['Nigeria'],
+          ['Rwanda'],
+          ['Sao Tome and Principe'],
+          ['Senegal'],
+          ['Seychelles'],
+          ['Sierra Leone'],
+          ['Somalia'],
+          ['South Africa'],
+          ['South Sudan'],
+          ['Sudan'],
+          ['Tanzania'],
+          ['Togo'],
+          ['Tunisia'],
+          ['Uganda'],
+          ['Zambia'],
+          ['Zimbabwe']
+          ]), {}, :class => 'form-control', :prompt => 'Select Country' %>
               </div>
 
               <div class="form-group">
@@ -115,12 +170,12 @@
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">64</span>
+            <span data-toggle="counter-up">0</span>
             <p>Campaigns</p>
           </div>
-
+  
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">50</span>
+            <span data-toggle="counter-up">0</span>
             <p>Projects Funded</p>
           </div>
         </div>

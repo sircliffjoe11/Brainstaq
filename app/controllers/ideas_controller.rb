@@ -1,6 +1,7 @@
 class IdeasController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show]
-  before_action :set_idea, only: [:show, :edit, :destroy, :update ]
+  before_action :set_idea, only: [:show, :edit, :destroy, :update, :like, :unlike]
+  impressionist actions: [:show], unique: [:impressionable_type, :impressionable_id, :session_hash]
 
   IDEAS_PER_PAGE = 6
 
@@ -12,6 +13,7 @@ class IdeasController < ApplicationController
     @next_page = @page + 1 if Idea.count > 6
     @prev_page = @page - 1 if @page < 0
     @ideas = Idea.offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).order(created_at: :desc)  
+    @idea = Idea.all
   end
 
   # GET /ideas/1
@@ -76,21 +78,21 @@ class IdeasController < ApplicationController
     redirect_to :dashboard
   end
 
-  # def like
-  #   @idea.liked_by current_user
-  #   respond_to do |format|
-  #     format.html { redirect_back fallback_location: root_path }
-  #     format.json { render layout:false }
-  #   end
-  # end
+  def like
+    @idea.liked_by current_user
+    respond_to do |format|
+      format.html { redirect_back fallback_location: root_path }
+      format.json { render layout:false }
+    end
+  end
 
-  # def unlike
-  #   @idea.unliked_by current_user
-  #   respond_to do |format|
-  #     format.html { redirect_back fallback_location: root_path }
-  #     format.json { render layout:false }
-  #   end
-  # end
+  def unlike
+    @idea.unliked_by current_user
+    respond_to do |format|
+      format.html { redirect_back fallback_location: root_path }
+      format.json { render layout:false }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -100,6 +102,6 @@ class IdeasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def idea_params
-      params.require(:idea).permit(:title, :description, :image, :image_cache, :user_id)
+      params.require(:idea).permit(:title, :description, :category, :image, :image_cache, :user_id)
     end
 end

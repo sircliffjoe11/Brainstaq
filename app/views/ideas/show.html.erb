@@ -1,6 +1,5 @@
 <main style="padding-top: 120px;  background-color: #fff;">
-   <div class="container col-lg-9">
-
+  <div class="container col-lg-9">
     <div class="card mb-3" style="max-width: 1000px; border: none;">
       <div class="row no-gutters">
         <div class="col-md-4">
@@ -10,27 +9,26 @@
           <div class="card-body">
             <h3 class="card-title" style="margin-bottom: -3px;"><%= @idea.title %></h3>
             <small>Created by <%= link_to (@idea.user.full_name), profile_path(@idea.user.username, @user) %> on <%= local_time(@idea.created_at) %></small>
-            <p class="card-text mt-3 mb-3"><%= truncate @idea.description, length: 200 %></p>
-            
+            <p class="card-text mt-3 mb-3"><%= truncate @idea.description, length: 200 %></p> 
             <% if user_signed_in? && current_user.id == @idea.user_id %>
               <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mr-2"), idea_path(@idea), method: :delete, data: { confirm: 'Are you sure?' } %>
               <%= link_to fa_icon("edit", title: "Edit", class: "text-primary mr-2"), edit_idea_path(@idea) %>
               <%= link_to fa_icon("share", title: "Share", class: "text-primary mr-2")%>
               <%= link_to fa_icon("donate", title: "Support this Project", class: "text-primary mr-2") %>
-
-          <% else %>
-          <%= link_to fa_icon("share", title: "Share", class: "text-primary mr-2")%>
-          <%= link_to fa_icon("donate", title: "Support this Project", class: "text-primary mr-2") %>
-      <% end %>
- 
+            <% else %>
+              <%= link_to fa_icon("share", title: "Share", class: "text-primary mr-2")%>
+              <%= link_to fa_icon("donate", title: "Support this Project", class: "text-primary mr-2") %>
+            <% end %>
           </div>
+          <ul class="list-group list-group-horizontal-sm float-right" style="font-size: 12px;">
+            <li class="list-group-item"><span class="fa fa-comments"></span> <%= @idea.comments.size %> comments</li>
+            <li class="list-group-item"><span class="fa fa-eye"></span> <%= pluralize(@idea.impressionist_count, 'View') %></li>
+            <li class="list-group-item"><span class="fa fa-heart"></span> <%= pluralize(@idea.get_likes.size, 'Likes') %></li>
+            <li class="list-group-item"><span class="fa fa-filter"></span> <%= "50%" %> Relevance</li>
+          </ul>
         </div>
       </div>
     </div>
-
-    <div class="delete">
-      
-      </div>
 
     <hr class="w-100">
     

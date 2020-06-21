@@ -75,16 +75,32 @@
                        <%= image_tag idea.image_url, style: "height: 150px; object-fit: cover;", class: "card-img-top" %> 
                       <p class="mt-3 mb-0" style="font-size: 14px;"><%= truncate idea.description, length: 200 %></p>
                   </div>
-            
-                  <div class="job-status-bar" style="margin-bottom: -15px;">
-                    <ul class="like-com">
-                      <li><a href="#"><i class="fa fa-thumbs-up"></i>  25</a></li> 
-                      <li><a href="#"><i class="fa fa-thumbs-down"></i>  11</a></li>
-                      <li><a href="#"><i class="fa fa-comments"></i><%= idea.comments.size %></a></li> 
-                      <li><a href="#"><i class="fas fa-share"></i>  3</a></li>
-                    </ul>
-                    <a><i class="fa fa-filter"></i> Relevance: <strong>50%</strong></a>
-                  </div>
+                  
+                    <div class="job-status-bar mt-1" style="margin-bottom: -15px;">
+                       <ul class="like-com">
+                        <li style="font-size: 12px;" href="#"><i class="fa fa-eye"></i> <%= pluralize(idea.impressionist_count, 'View') %></li> 
+                        
+                        <% if user_signed_in? %>
+                        <% if current_user.liked? idea %>
+                        <%= link_to unlike_idea_path(idea), method: :put, class: "unlike_idea" do %>
+                          <li><i class="fa fa-heart text-primary vote_count"></i> <%= idea.get_likes.size %></li>
+                        <% end %>
+                        <% else %>
+                        <%= link_to like_idea_path(idea), method: :put, class: "like_idea" do %>
+                          <li class="mb-1" style="font-size: 12px;"><i class="fa fa-heart vote_count"></i> <%= idea.get_likes.size %></li>
+                        <% end %>
+                        <% end %>
+                        <% else %>
+                        <%= link_to like_idea_path(idea), method: :put, class: "like_idea" do %>
+                          <li class="mb-1" style="font-size: 12px;"><i class="fa fa-heart vote_count"></i> <%= idea.get_likes.size %></li>
+                        <% end %>
+                        <% end %>
+
+                        <li style="font-size: 12px;"><i class="fa fa-comments"></i>  <%= pluralize(idea.comments.size, 'Comment') %></li> 
+                        <li style="font-size: 12px;" href="#"><i class="fas fa-share"></i>  0</li>
+                      </ul>
+                      <a style="font-size: 12px;"><i class="fa fa-filter"></i> Relevance: <strong>50%</strong></a>
+                    </div>
                 </div><!--post-bar end-->
               </div><!--posts-section end-->
             <% end %>

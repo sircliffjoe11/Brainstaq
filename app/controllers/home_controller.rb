@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  impressionist actions: [:show], unique: [:impressionable_type, :impressionable_id, :session_hash]
 
   IDEAS_PER_PAGE = 3
 

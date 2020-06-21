@@ -17,37 +17,36 @@
       <div class="col-sm-12 form-group">
         <%= form.text_field :title, maxlength: "23", class: "form-control", placeholder: "Title"  %>
       </div>
-      <div class="col-lg-12 form-group">
-        <select class="form-control">
-          <option disabled selected>Sort By Categories</option>
-          <option value="1">Agriculture</option>
-          <option value="2">Arts & Culture</option>
-          <option value="3">Beauty & Fashion</option>
-          <option value="4">Business</option>
-          <option value="5">Community</option>
-          <option value="6">Design</option>
-          <option value="7">Education</option>
-          <option value="8">Entertainment</option>
-          <option value="9">Food</option>
-          <option value="10">Gadgets</option>
-          <option value="11">Internet</option>
-          <option value="12">IT & Telecoms</option>
-          <option value="13">Kids</option>
-          <option value="14">Media & Publishing</option>
-          <option value="15">Recipes</option>
-          <option value="16">Renewable Energy</option>
-          <option value="17">Science & Technology</option>
-          <option value="18">Social Networks</option>
-          <option value="19">Social & Organization</option>
-          <option value="20">Sports & Hobbies</option>
-          <option value="21">Startups</option>
-          <option value="22">Sustainability</option>
-          <option value="23">Tourism & Travel</option>
-          <option value="24">Transportation</option>
-          <option value="25">Web & Applications</option>
-          <option value="26">Writings</option>
-          <option value="27">Other</option>
-        </select>
+      <div class="col-sm-12 form-group">
+        <%= form.select :category, options_for_select([
+          ['Agriculture'], 
+          ['Arts & Culture'], 
+          ['Beauty & Fashion'], 
+          ['Business'],
+          ['Community'],
+          ['Design'],
+          ['Education'],
+          ['Entertainment'],
+          ['Food'],
+          ['Gadgets'],
+          ['Internet'],
+          ['IT & Telecoms'],
+          ['Kids'],
+          ['Media & Publishing'],
+          ['Recipes'],
+          ['Renewable Energy'],
+          ['Science & Technology'],
+          ['Social Networks'],
+          ['Social & Organization'],
+          ['Sports & Hobbies'],
+          ['Startups'],
+          ['Sustainability'],
+          ['Tourism & Travel'],
+          ['Transportation'],
+          ['Web & Applications'],
+          ['Writings'],
+          ['Other']
+          ]), {}, :class => 'form-control', :prompt => 'Select Category' %>
       </div>
       <!-- <div class="col-lg-12 form-group">
         <select class="form-control col-sm-12">

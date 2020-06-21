@@ -5,19 +5,22 @@
       <h6 style="font-weight: bold; text-align: center;">Follow creative minds</h6>
     </div><!--sd-title end-->
     
-    <!-- @users.where.not(id: current_user.id).limit(10).each do |user| -->
-    <% User.all.limit(10).each do |user|%>
-    <div class="suggestions-list mb-2">
-      <div class="suggestion-usd" style="margin-bottom: -40px;">
+    <% @follower_suggestions.each do |user| %>
+    <div class="suggestions-list">
+      <div class="suggestion-usd" style="margin-bottom: -55px;">
 
-         <!-- image_tag (user.image_url), style: "width: 35px; height: 35px;" -->
+         <%=image_tag (user.image_url), style: "width: 35px; height: 35px;", class: " rounded-circle" %>
 
         <div class="sgt-text">
           <h4><%= link_to user.full_name, profile_path(user.username), class: 'text-dark' %></h4>
-          <span><%= user.country %></span>
+          <span style="font-size: 10px;" class= "text-dark"><%= user.country %></span>
+          <p style="font-size: 10px;"><%= user.created_at > 2.days.ago ? "New to Brainstaq" : "Followed by X Users" %></p>
         </div>
         <span>
-          <%= link_to 'follow', '#', class: "btn-sm text-white" %>
+          <%= form_tag follow_user_path, method: :post, class: "float-right" do %>
+            <%= hidden_field_tag :follow_id, user.id %>
+            <%= submit_tag "Follow", class: "btn btn-sm text-white" %>
+        <% end %>
         </span>
       </div>
     </div>

@@ -1,14 +1,31 @@
 class UsersController < ApplicationController
     before_action :authenticate_user!
     before_action :set_user, only: [:profile, :index]
+    impressionist actions: [:show], unique: [:impressionable_type, :impressionable_id, :session_hash]
 
 
     def index
       @ideas = Idea.all.order(created_at: :desc)
       @users = User.find_by_username params[:username]
       @user = User.all
+
+      following_ids = Follower.where(follower_id: current_user.id).map(&:following_id)
+      following_ids << current_user.id
+
+      @follower_suggestions = User.where.not(id: following_ids)
     end
     
+
+    def follow_user
+      follower_id = params[:follow_id]
+      if Follower.create!(follower_id: current_user.id, following_id: follower_id)
+        flash[:success] = "Now following user"
+      else
+        flash[:danger] = "Unable to add follower"
+      end
+
+      redirect_to dashboard_path
+    end
 
     def create
       @users = User.create(params.require(:user))
