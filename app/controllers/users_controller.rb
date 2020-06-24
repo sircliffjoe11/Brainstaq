@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
       redirect_to :dashboard
     end
-
+    
     def new
       @user = User.new
     end

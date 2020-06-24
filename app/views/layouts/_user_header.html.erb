@@ -20,13 +20,18 @@
         <%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
           <%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-2 rounded-pill', placeholder: 'Search' %>
         <% end %>
+
+        
+        <%= link_to 'New Idea', new_idea_path, class: "btn btn1 rounded-pill text-white float-right", style: "margin-right: 6px; font-size: 10px;" %>
+          
+        
       
         <div class="navbar-text float-right">
           <div class="dropdown ml-1">
             <% if current_user.image_url %>
               <%= image_tag current_user.image_url, class: 'rounded-circle mt-1', style:"width:28px; height: 28px; margin-right: 0px;" %>
             <% else %>
-              <%= image_tag 'brand', class: 'rounded-circle mt-1', style:"width:28px; height: 28px; margin-right: 0px;" %>
+              <%= image_tag 'avatar', class: 'rounded-circle mt-1', style:"width:28px; height: 28px; margin-right: 0px;" %>
             <% end %>
             <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" 
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 

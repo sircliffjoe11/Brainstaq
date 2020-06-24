@@ -11,11 +11,15 @@
                   </div>
 
                   <div class="footer-newsletter">
-                    <h4>Subscribe</h4>
-                    <p>Subscribe to be kept in the loop of amazing offers from Brainstaq. We will not share your email with the public without your consent.</p>
-                    <form action="" method="post">
-                      <input type="email" name="email"><input type="submit"  value="Subscribe">
-                    </form>
+                    <% if cookies[:saved_subscriber] %>
+                      Thanks for signing up!
+                    <% else %>
+                      <h4>Subscribe</h4>
+                        <p>Subscribe to be kept in the loop of amazing offers from Brainstaq. We will not share your email with the public without your consent.</p>
+                        <%= form_for Subscriber.new do |f| %>
+                          <%= f.email_field :email, placeholder: "Enter your email" %><%= f.submit "Subscribe" %>
+                        <% end %>
+                    <% end %>
                   </div>
 
                 </div>

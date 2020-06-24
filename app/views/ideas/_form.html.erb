@@ -1,4 +1,4 @@
-<%= form_with(model: idea, local: true) do |form| %>
+<%= form_with(model: idea, local: true, multipart: true) do |form| %>
   <% if idea.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
@@ -48,67 +48,10 @@
           ['Other']
           ]), {}, :class => 'form-control', :prompt => 'Select Category' %>
       </div>
-      <!-- <div class="col-lg-12 form-group">
-        <select class="form-control col-sm-12">
-          <option value="" disabled selected>Choose your country</option>
-          <option value="1">Algeria</option>
-          <option value="2">Angola</option>
-          <option value="3">Benin</option>
-          <option value="4">Botswana</option>
-          <option value="5">Burkina Faso</option>
-          <option value="6">Burundi</option>
-          <option value="7">Cape Verde</option>
-          <option value="8">Cameroon</option>
-          <option value="9">Central African Republic (CAR)</option>
-          <option value="10">Chad</option>
-          <option value="11">Comoros</option>
-          <option value="12">Republic of the Congo</option>
-          <option value="13">Democratic Republic of Congo</option>
-          <option value="14">Cote d'Ivoire</option>
-          <option value="15">Djibouti</option>
-          <option value="16">Egypt</option>
-          <option value="17">Equatorial Guinea</option>
-          <option value="18">Eritrea</option>
-          <option value="19">Eswatini (formerly Swaziland)</option>
-          <option value="20">Ethiopia</option>
-          <option value="21">Gabon</option>
-          <option value="22">Gambia</option>
-          <option value="23">Ghana</option>
-          <option value="24">Guinea</option>
-          <option value="25">Guinea-Bissau</option>
-          <option value="26">Kenya</option>
-          <option value="27">Lesotho</option>
-          <option value="28">Liberia</option>
-          <option value="29">Libya</option>
-          <option value="30">Madagascar</option>
-          <option value="31">Malawi</option>
-          <option value="32">Mali</option>
-          <option value="33">Mauritania</option>
-          <option value="34">Mauritius</option>
-          <option value="35">Morocco</option>
-          <option value="36">Mozambique</option>
-          <option value="37">Namibia</option>
-          <option value="38">Niger</option>
-          <option value="39">Nigeria</option>
-          <option value="40">Rwanda</option>
-          <option value="41">Sao Tome and Principe</option>
-          <option value="42">Senegal</option>
-          <option value="43">Seychelles</option>
-          <option value="44">Sierra Leone</option>
-          <option value="45">Somalia</option>
-          <option value="46">South Africa</option>
-          <option value="47">South Sudan</option>
-          <option value="48">Sudan</option>
-          <option value="49">Tanzania</option>
-          <option value="50">Togo</option>
-          <option value="51">Tunisia</option>
-          <option value="52">Uganda</option>
-          <option value="53">Zambia</option>
-          <option value="54">Zimbabwe</option>
-        </select>
-      </div> -->
+
       <div class="form-group col-sm-12">
-        <%= form.text_area :description, class: "form-control", style: "height: 100px;", placeholder: "Enter a brief description of your idea"%>
+        <%= form.text_area :description, class: "form-control tinymce", placeholder: "Enter a brief description of your idea"%>
+        <%= tinymce %>
       </div>
 
       <div class="field">
@@ -130,6 +73,4 @@
       <%= link_to 'Back', :back, class: "btn btn1 text-white"  %>
     </div>
   </div>
-
-
 <% end %>

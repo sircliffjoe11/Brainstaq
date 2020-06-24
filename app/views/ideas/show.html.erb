@@ -1,56 +1,75 @@
-<main style="padding-top: 120px;  background-color: #fff;">
-  <div class="container col-lg-9">
-    <div class="card mb-3" style="max-width: 1000px; border: none;">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <%= image_tag @idea.image_url, width:'100%' if @idea.image.present? %>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h3 class="card-title" style="margin-bottom: -3px;"><%= @idea.title %></h3>
-            <small>Created by <%= link_to (@idea.user.full_name), profile_path(@idea.user.username, @user) %> on <%= local_time(@idea.created_at) %></small>
-            <p class="card-text mt-3 mb-3"><%= truncate @idea.description, length: 200 %></p> 
-            <% if user_signed_in? && current_user.id == @idea.user_id %>
-              <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mr-2"), idea_path(@idea), method: :delete, data: { confirm: 'Are you sure?' } %>
-              <%= link_to fa_icon("edit", title: "Edit", class: "text-primary mr-2"), edit_idea_path(@idea) %>
-              <%= link_to fa_icon("share", title: "Share", class: "text-primary mr-2")%>
-              <%= link_to fa_icon("donate", title: "Support this Project", class: "text-primary mr-2") %>
-            <% else %>
-              <%= link_to fa_icon("share", title: "Share", class: "text-primary mr-2")%>
-              <%= link_to fa_icon("donate", title: "Support this Project", class: "text-primary mr-2") %>
-            <% end %>
-          </div>
-          <ul class="list-group list-group-horizontal-sm float-right" style="font-size: 12px;">
-            <li class="list-group-item"><span class="fa fa-comments"></span> <%= @idea.comments.size %> comments</li>
-            <li class="list-group-item"><span class="fa fa-eye"></span> <%= pluralize(@idea.impressionist_count, 'View') %></li>
-            <li class="list-group-item"><span class="fa fa-heart"></span> <%= pluralize(@idea.get_likes.size, 'Likes') %></li>
-            <li class="list-group-item"><span class="fa fa-filter"></span> <%= "50%" %> Relevance</li>
-          </ul>
-        </div>
-      </div>
+<main style="padding-top: 150px;  background-color: #fff;">
+<div class="container col-lg-9">
+  <div class="row">
+    <div class="col-md-7">
+      <%= image_tag @idea.image_url, class: "img-fluid rounded mb-3 mb-md-0", style: "width:600px; height: 400px;" if @idea.image.present? %>
     </div>
-
-    <hr class="w-100">
-    
+    <div class="col-md-5">
+      <button type="button" class="btn btn-primary btn-sm my-3 float-right rounded-pill" disabled><%= @idea.category %></button>
+      <h3 class="card-title" style="margin-bottom: -3px; font-size: 32px; font-weight: bold;"><%= @idea.title %></h3>
+      
+  
+      <small>Created by <%= link_to (@idea.user.full_name), profile_path(@idea.user.username, @user) %> on <%= local_time(@idea.created_at) %></small>
+      <p class="card-text mt-3 fr-view mb-3" style="font-size: 14px;"><%= truncate(sanitize(@idea.description, tags: []), length: 200) %></p>
+      <% if user_signed_in? && current_user.id == @idea.user_id %>
+        <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2", style: "font-size: 28px;"), idea_path(@idea), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to fa_icon("edit", title: "Edit", class: "text-primary mr-2", style: "font-size: 28px;"), edit_idea_path(@idea) %>
+        <%= link_to fa_icon("share-alt", title: "Share", class: "text-primary mr-2", style: "font-size: 28px;")%>
+        
+        <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 75 %>
+          <%= link_to fas_icon("donate", title: "Support this Project", class: "text-primary mr-2", style: "font-size: 28px;") %>
+        <% end %>
+      <% else %>
+        <%= link_to fa_icon("share-alt", title: "Share", class: "text-primary mt-4 mr-2", style: "font-size: 28px;")%>
+      <% end %>
+      
+      <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 75 %>
+      <%= link_to fas_icon("donate", title: "Support this Project", class: "text-primary mr-2", style: "font-size: 28px;") %>
+    <% end %>
+      <ul class="list-group list-group-horizontal-sm mt-4" style="font-size: 12px;">
+        <li class="list-group-item"><span class="fa fa-comments"></span> <%= @idea.comments.size %> comments</li>
+        <li class="list-group-item"><span class="fa fa-eye"></span> <%= pluralize(@idea.impressionist_count, 'View') %></li>
+        <li class="list-group-item"><span class="fa fa-heart"></span> <%= pluralize(@idea.get_likes.size, 'Likes') %></li>
+        <li class="list-group-item"><span class="fa fa-filter"></span> <%= "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}%" %> Relevance</li>
+      </ul>
+    </div>
+  </div>
+  <div>
+  <!-- /.row -->
+  <hr class="w-100 mt-5">
     <p>
       <a class="btn mt-0 mr-1" data-toggle="collapse" href="#collapseDetails" role="button" aria-expanded="false" aria-controls="collapseDetails" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
         Details
       </a>
-      <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseUpdates" role="button" aria-expanded="false" aria-controls="collapseUpdates" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
+      <!-- <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseUpdates" role="button" aria-expanded="false" aria-controls="collapseUpdates" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
         Updates
-      </a>
-      <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseTeam" role="button" aria-expanded="false" aria-controls="collapseTeam" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
+      </a> -->
+      <!-- <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseTeam" role="button" aria-expanded="false" aria-controls="collapseTeam" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
         Team
-      </a>
+      </a> -->
 
       <a class="btn ml-1" data-toggle="collapse" href="#collapseComments" role="button" aria-expanded="false" aria-controls="collapseComments" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;" >
         Comments
       </a>
-
     </p>
+    
     <div class="collapse mb-3" id="collapseDetails">
       <div class="card card-body">
-        Idea details goes here
+        <h1 class="mt-4"><%= @idea.title %></h1>
+          <p class="lead">
+            Created by <%= link_to (@idea.user.full_name), profile_path(@idea.user.username, @user) %>
+          </p>
+          <hr>
+    
+          <p>Posted on <%= local_time(@idea.created_at) %></p>
+          <hr>
+    
+          <%= image_tag @idea.image_url, class: "img-fluid rounded mb-3 mb-md-0", width:'100%' if @idea.image.present? %>
+    
+          <hr>
+    
+          <p class="lead"><%= sanitize @idea.description %></p>
+    
       </div>
     </div>
 
@@ -73,8 +92,5 @@
         <%= render partial: 'comments/form', :locals => { :comment => @comment } %>
       </div>
     </div>
-    
-    
-
   </div>
 </main>

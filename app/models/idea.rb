@@ -1,19 +1,32 @@
-class Idea < ApplicationRecord
-    validates :title, :description, :category, :image, presence: true
+class Idea < ApplicationRecord 
+  validates :title, :description, :category, :image, presence: true
     
-    mount_uploader :image, ImageUploader
+  mount_uploader :image, ImageUploader
     
-    belongs_to :user
-    has_many :comments
+  belongs_to :user
+  has_many :comments
+  has_one :campaign
 
-    acts_as_votable
+  # has_rich_text :description
 
-    is_impressionable
+  # has_one_attached :image
+  # has_many_attached :images
 
-    def impressionist_count
-      impressions.size
-    end
+  # def attach_other_images(signed_blob_id)
+  #   blob = ActiveStorage::Blob.find_signed(signed_blob_id)
+  #   return other_images.attach(signed_blob_id) unless blob.present?
 
-    # extend FriendlyId
-    # friendly_id :user_id, use: :slugged
+  #   other_images.attach(blob.signed_id) unless other_images.attachments.map(&:blob_id).include?(blob.id)
+  # end
+
+  acts_as_votable
+
+  is_impressionable
+
+  def impressionist_count
+    impressions.size
+  end
+
+  # extend FriendlyId
+  # friendly_id :user_id, use: :slugged
 end

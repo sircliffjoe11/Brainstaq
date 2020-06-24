@@ -3,7 +3,7 @@
     <h6 style="font-weight: bold; text-align: center;">Trending Ideas</h6>
   </div>
 
-<% @ideas.each do |idea|  %>
+<% @ideas.each do |idea| %>
   
 <div class="suggestions-list" style="padding-bottom: 50px;">
       <div class="suggestion-usd" style="margin-bottom: -60px;">
@@ -17,7 +17,7 @@
               <%= 'General' %>
               <% end %>
             </span><br>
-            <span style="color: #47add5;">Relevance 77%</span>
+            <span style="color: #47add5;">Relevance <%= "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}%" %></span>
         </div>
       </div> 
   </div>

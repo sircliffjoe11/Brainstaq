@@ -17,9 +17,9 @@
               <td>
                 <% if idea.image.present? %>
                 <%= image_tag idea.image_url(:thumb), style: "width: 150px;" %>
-              <% else %>
-              No image
-              <% end %>
+                <% else %>
+                  No image
+                <% end %>
               </td> 
               <td>
                 <%= idea.title %>
@@ -28,7 +28,7 @@
                 <%= truncate idea.description, length: 100 %>
               </td>
               <td>
-                <%= link_to 'LEARN MORE', idea %>
+                <%= link_to 'View More', idea %>
               </td>
             </tr>
             <% c = c + 1 %>

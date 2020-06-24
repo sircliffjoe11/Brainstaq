@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :campaigns
+  resources :subscribers, only: [:create, :new, :index]
   root to: "home#index"
   
   devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}, :controllers => {
@@ -17,6 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
+  # post '/tinymce_assets' => 'tinymce_assets#create'
   post "follow/user" => "users#follow_user", as: :follow_user
   
   get 'pages/about'

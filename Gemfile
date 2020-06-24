@@ -24,6 +24,9 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'devise'
 
+gem 'wysiwyg-rails', '~> 3.1'
+
+
 gem 'jquery-rails'
 
 gem 'jquery-ui-rails'
@@ -39,7 +42,12 @@ gem 'local_time', '~> 2.1'
 
 gem 'tel_to_helper'
 
+gem 'tinymce-rails'
+
 gem 'faker'
+gem 'social-share-button'
+gem 'shareable', '~> 1.1', '>= 1.1.4'
+
 
 gem 'impressionist'
 

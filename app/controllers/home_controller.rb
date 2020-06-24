@@ -8,8 +8,12 @@ class HomeController < ApplicationController
     @page = params.fetch(:page, 0).to_i 
     @next_page = @page + 1 unless Idea.count < 9
     @prev_page = @page - 1 unless @page == 0
-    @ideas = Idea.offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).order(created_at: :desc)
+    @ideas = Idea.offset(@page*IDEAS_PER_PAGE).order(impressions_count: :desc).limit(IDEAS_PER_PAGE)
     @users = User.all
+  end
+
+  def impressionist_count
+    impressions.size
   end
 
 

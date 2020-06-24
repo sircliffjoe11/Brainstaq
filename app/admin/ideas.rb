@@ -1,5 +1,5 @@
 ActiveAdmin.register Idea do
-  permit_params :title, :description, :picture
+  permit_params :title, :description, :image
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

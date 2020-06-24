@@ -17,18 +17,18 @@
                       <% if @user.image.url %>
                       <%=image_tag @user.image.url, style: "width: 160px; height: 156px;", class: "rounded-circle" %>
                     <% else %>
-                      <%= image_tag 'brand', style: "width: 160px; height: 156px;", class: "rounded-circle" %>
+                      <%= image_tag 'avatar', style: "width: 160px; height: 156px;", class: "rounded-circle" %>
                     <% end %>
                       <!-- <a href="#" title=""><i class="fa fa-camera"></i></a> -->
                     </div><!--user-pro-img end-->
                     <div class="user_pro_status">
                       <ul class="flw-status">
                         <li>
-                          <span style="font-size: 14px;">following</span>
+                          <span style="font-size: 14px;">followers</span>
                           <%= @user.total_following %>
                         </li>
                         <li>
-                          <span style="font-size: 14px;">followers</span>
+                          <span style="font-size: 14px;">following</span>
                           <%= @user.total_followers %>
                         </li>
                       </ul>
@@ -60,11 +60,14 @@
                     <div class="star-descp">
                       <h5 style="font-weight: bold; margin-bottom: 3px;">About</h5>
                       <span class="mb-3" style="font-size: 14px;"><%= @user.bio %></span>
+                      
                       <div class="progress mt-0" style="height: 10px; width: 100%;">
-                        <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="25" 
-                          aria-valuemin="0" aria-valuemax="100"><small>75%</small>
+                        <div class="progress-bar" role="progressbar" style="width: <%= "#{@user.ideas.count + @user.comments.size}%" %>" aria-valuenow="<%= @user.ideas.count %>" 
+                          aria-valuemin="0" aria-valuemax="100">
+                          <small><%= "#{@user.ideas.size + @user.comments.size}%" %></small>      
                         </div>
                       </div>
+                      
                       <div>
                         <p style="font-size: 12px; font-weight: bold;">User Rating</p>
                       </div>
@@ -119,7 +122,7 @@
                       <% if @user.image_url %>
                       <%= image_tag @user.image_url, style: "width: 40px;", class: "rounded-circle ml-1" %>
                       <% else %>
-                      <%= image_tag 'brand', style: "width: 40px;", class: "rounded-circle ml-1" %>
+                      <%= image_tag 'avatar', style: "width: 40px;", class: "rounded-circle ml-1" %>
                       <% end %>
                       <div class="usy-name">
                         
@@ -136,6 +139,10 @@
                         <% if user_signed_in? && current_user.id == idea.user_id %>
                         <%= link_to "Edit Idea", edit_idea_path(idea), class: "dropdown-item" %>
                         <%= link_to "Delete", idea, :method => 'delete', data: { confirm: 'Are you sure?' }, class: "dropdown-item" %>
+                        <% end %>
+                      
+                        <% if "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i > 75 %>
+                        <%= link_to "Support this Project", "#", class: "dropdown-item" %>
                         <% end %>
                         <%= link_to "Share", "#", class: "dropdown-item" %>
                       </div>
@@ -156,7 +163,7 @@
                     <div class="job_descp">
                       <h3><%= link_to idea.title, idea, class: 'text-dark' %></h3>
                       <%= image_tag idea.image_url, style: "height: 150px; object-fit: cover;", class: "card-img-top" %>
-                      <p class="mt-3 mb-0" style="font-size: 14px;"><%= truncate idea.description, length: 200 %></p>
+                      <p class="mt-3 mb-0" style="font-size: 14px;"><%= truncate(sanitize(idea.description, tags: []), length: 200) %></p>
                     </div>
               
                     <div class="job-status-bar mt-1" style="margin-bottom: -15px;">
@@ -182,7 +189,10 @@
                         <li style="font-size: 12px;"><i class="fa fa-comments"></i>  <%= pluralize(idea.comments.size, 'Comment') %></li> 
                         <li style="font-size: 12px;" href="#"><i class="fas fa-share"></i>  0</li>
                       </ul>
-                      <a style="font-size: 12px;"><i class="fa fa-filter"></i> Relevance: <strong>50%</strong></a>
+                      <a style="font-size: 12px;"><i class="fa fa-filter"></i> 
+                        Relevance: <strong>
+                          <%= "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}%" %>
+                        </strong></a>
                     </div>
                     </div><!--post-bar end-->
                 </div><!--posts-section end-->
@@ -215,11 +225,7 @@
               
               <div class="col-lg-3 pd-right-none no-pd">
                 <div class="right-sidebar">
-                  <div class="post-st" style="margin-top: 150px; margin-bottom: 140px; margin-right: -25px">
-                    <ul>
-                      <%= link_to 'New Idea', new_idea_path, class: "btn btn1 rounded-pill text-white" %>
-                    </ul><br>
-                  </div>
+                 
                     <!--post-st end-->
   
                   
