@@ -28,6 +28,7 @@ class IdeasController < ApplicationController
   # GET /ideas/new
   def new
     @idea = current_user.ideas.build
+    @user = current_user
     @idea = Idea.new
   end
 

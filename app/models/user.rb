@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable 
 
   mount_uploader :image, ImageUploader
         
@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   acts_as_voter
   
-  has_one_attached :image
+  has_one_attached :image, dependent: :destroy
 
   after_create :send_admin_mail
   def send_admin_mail
@@ -24,15 +24,19 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  # def relevance_bar
+  #   "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size - 5}".to_i
+  # end
+
   def show
     @user = User.find(params[:id])
   end 
 
-  def user_rating
-    @total_likes = @user.get_likes.count
-    @total_comments = @user.comments.size
-    @total_views = @user.impressions.size
-  end
+  # def user_rating
+  #   @total_likes = @user.get_likes.count
+  #   @total_comments = @user.comments.size
+  #   @total_views = @user.impressions.size
+  # end
   
   def total_following
     Follower.where(following_id: self.id).count

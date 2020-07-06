@@ -15,7 +15,7 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
+	margin: 0; 
 	padding: 0;
 	border: 0;
 	font-size: 100%;
@@ -5331,7 +5331,35 @@ input:checked + .slider:before{
 	.conversation-box {width: 100%;right: 0;}
 	.user-account-settingss {right: auto;left: 0;}
 	.login-resources {text-align: left;}
-	.forum-bar ul li:last-child {margin-bottom: 0;}
+  .forum-bar ul li:last-child {margin-bottom: 0;}
+  .main-left-sidebar {
+    float: left;
+    width: 100%;
+  }
+
+  .right-sidebar {
+    padding-left: 25px !important;
+  }
+
+  .sd-title {
+    text-align: center !important;
+  }
+  .full-width {
+    float: left;
+    width: 470px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .widget,
+  
+  .user-data {
+    float: right;
+    width: 450px !important;
+    padding-left: 20px !important;
+  }
 }
 
 @media (max-width: 410px) {

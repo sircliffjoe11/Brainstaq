@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :campaigns
   resources :subscribers, only: [:create, :new, :index]
   root to: "home#index"
   
@@ -13,13 +12,14 @@ Rails.application.routes.draw do
 
   resources :ideas, only: [:show, :index, :new, :create, :edit, :update, :destroy] do
     resources :comments
+    
     member do
       put 'like', to: "ideas#like"
       put 'unlike', to: "ideas#unlike"
     end
   end
 
-  # post '/tinymce_assets' => 'tinymce_assets#create'
+  post '/tinymce_assets' => 'tinymce_assets#create'
   post "follow/user" => "users#follow_user", as: :follow_user
   
   get 'pages/about'
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
   get '/dashboard' => 'users#index'
 
-  # get 'users/:id/ideas' => 'users#ideas', :as => :user_ideas
+  # get 'ideas/:id/campaigns' => 'ideas#campaigns', :as => :idea_campaigns
   
 
 

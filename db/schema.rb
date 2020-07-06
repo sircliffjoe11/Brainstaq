@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_24_211020) do
+ActiveRecord::Schema.define(version: 2020_06_26_213255) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -72,12 +72,11 @@ ActiveRecord::Schema.define(version: 2020_06_24_211020) do
   create_table "campaigns", force: :cascade do |t|
     t.string "title"
     t.decimal "donation_goal", default: "0.0"
-    t.integer "user_id", null: false
     t.integer "idea_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
     t.index ["idea_id"], name: "index_campaigns_on_idea_id"
-    t.index ["user_id"], name: "index_campaigns_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -181,6 +180,10 @@ ActiveRecord::Schema.define(version: 2020_06_24_211020) do
     t.string "gender"
     t.string "slug"
     t.string "image"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
@@ -204,5 +207,4 @@ ActiveRecord::Schema.define(version: 2020_06_24_211020) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "campaigns", "ideas"
-  add_foreign_key "campaigns", "users"
 end

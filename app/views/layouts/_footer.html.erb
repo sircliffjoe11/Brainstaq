@@ -7,7 +7,7 @@
                 <div class="col-sm-6">
                   <div class="footer-info">
                     <h3>About <br><span class="text-primary">Brainstaq</span></h3>
-                    <p>Brainstaq empowers innovative African ideas and encourage development. Share, validate, and market your ideas, projects, insights and inspiration and attract cofounders and investors by engaging the power of the crowd.</p>
+                    <p style="font-size: 14px;">Brainstaq empowers innovative African ideas and encourage development. Share, validate, and market your ideas, projects, insights and inspiration and attract cofounders and investors by engaging the power of the crowd.</p>
                   </div>
 
                   <div class="footer-newsletter">
@@ -42,8 +42,8 @@
                     <p>
                       86, Airport Road, Effurun,<br>
                       Delta State. Nigeria<br> 
-                      <strong>Phone:</strong><%= tel_to '+234 806 836 3644' %><br>
-                      <strong>Email:</strong> info@brainstaq.com<br>
+                      <strong>Phone:</strong> <%= tel_to '+234 806 836 3644' %><br>
+                      <strong>Email:</strong> <%= mail_to 'info@brainstaq.com' %><br>
                     </p>
                   </div>
 
@@ -53,11 +53,8 @@
                     <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="linkedin"><i class="fab fa-linkedin"></i></a>
                   </div>
-
                 </div>
-
             </div>
-
           </div>
 
           <div class="col-lg-6">
@@ -65,7 +62,8 @@
             <div class="form">
               
               <h4>Leave a Message</h4>
-              <p>Eos ipsa est voluptates. Nostrum nam libero ipsa vero. Debitis quasi sit eaque numquam similique commodi harum aut temporibus.</p>
+              <p>If you've got any question, complain or you want to suggest a feature that 
+                you would like to be implemented, drop us a message using the form below.</p>
               <form action="" method="post" role="form" class="contactForm">
                 <div class="form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />

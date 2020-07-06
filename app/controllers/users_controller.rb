@@ -5,14 +5,14 @@ class UsersController < ApplicationController
 
 
     def index
-      @ideas = Idea.all.order(created_at: :desc)
+      @ideas = Idea.all.order(created_at: :desc).take(15)
       @users = User.find_by_username params[:username]
       @user = User.all
 
       following_ids = Follower.where(follower_id: current_user.id).map(&:following_id)
       following_ids << current_user.id
 
-      @follower_suggestions = User.where.not(id: following_ids)
+      @follower_suggestions = User.where.not(id: following_ids).take(10)
     end
     
 
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       @users = User.create(params.require(:user))
       session[:user_id] = @user.id
 
-      redirect_to :dashboard
+      redirect_to dashboard_path(current_user.full_name)
     end
     
     def new
@@ -73,7 +73,7 @@ class UsersController < ApplicationController
 
     def update
       current_user.update(params[:user])
-      redirect_to dashboard_path(current_user)
+      redirect_to profile_path(user.username)
     end
 
     private

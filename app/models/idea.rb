@@ -5,19 +5,13 @@ class Idea < ApplicationRecord
     
   belongs_to :user
   has_many :comments
-  has_one :campaign
+  has_one :campaign, inverse_of: :idea, dependent: :destroy
+
+  accepts_nested_attributes_for :campaign, reject_if: :all_blank, allow_destroy: true 
+
+  has_many_attached :images, dependent: :destroy
 
   # has_rich_text :description
-
-  # has_one_attached :image
-  # has_many_attached :images
-
-  # def attach_other_images(signed_blob_id)
-  #   blob = ActiveStorage::Blob.find_signed(signed_blob_id)
-  #   return other_images.attach(signed_blob_id) unless blob.present?
-
-  #   other_images.attach(blob.signed_id) unless other_images.attachments.map(&:blob_id).include?(blob.id)
-  # end
 
   acts_as_votable
 
@@ -26,6 +20,10 @@ class Idea < ApplicationRecord
   def impressionist_count
     impressions.size
   end
+
+  # def relevance_bar
+  #   "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}"
+  # end
 
   # extend FriendlyId
   # friendly_id :user_id, use: :slugged

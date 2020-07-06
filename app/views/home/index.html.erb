@@ -1,3 +1,4 @@
+
 <!--==========================
     Intro Section
   ============================-->
@@ -10,20 +11,18 @@
       			<%= link_to 'Explore Brainstaq', ideas_path, class: "btn-get-started scrollto" %>
           </div>
         </div>
-        
-      
         <div class="col-lg-4 ml-auto form-box" data-aos="fade-up" data-aos-delay="500" style="margin-top: 120px; margin-bottom: 50px;">
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <small><%= render "devise/shared/error_messages", resource: resource %></small>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <small><%= render "devise/shared/error_messages", resource: resource %></small>
           
-        <h5 class="text-center" style="font-size: 16px;">Discover Disruptive Ideas<br><span class="text-black" style="font-weight: bold; font-size: 22px;" > Join Now!</span></h5>
-        <div class="form-group">
-          <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
-        </div>
+          <h5 class="text-center" style="font-size: 16px;">Discover Disruptive Ideas<br><span class="text-black" style="font-weight: bold; font-size: 22px;" > Join Now!</span></h5>
+          <div class="form-group">
+            <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+          </div>
 
-        <div class="form-group">
-          <%= f.text_field :first_name, class: "form-control", placeholder: "First Name" %>
-        </div>
+          <div class="form-group">
+            <%= f.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+          </div>
 
         <div class="form-group">
           <%= f.text_field :username, class: "form-control", placeholder: "Username" %>
@@ -143,15 +142,15 @@
           </div>
         </div>
       </div>
+    <!-- </div>
     </div>
-    </div>
-    </div>
+    </div> -->
   </section>
 
    <!--==========================
     Popular Campaigns Section
   ============================-->
-  <main id="main">
+  
     <section id="why-us" class="mb-0">
       <div class="container-fluid">  
         <header class="section-header mt-5">
@@ -168,19 +167,19 @@
           <div class="row justify-content-center mt-5">
             <div class="col-7 text-center"> 
               <% if @page > 0 %>
-              <%= link_to 'Prev', root_path(page: @page - 1), class: "btn btn1 rounded-pill text-white mr-1" %>
+                <%= link_to 'Prev', root_path(page: @page - 1), class: "btn btn1 rounded-pill text-white mr-1" %>
               <% end %>
               <% if @ideas.count >= 3 %>
-              <%= link_to 'Next', root_path(page: @page + 1), class: "btn btn1 rounded-pill text-white ml-1" %>
+                <%= link_to 'Next', root_path(page: @page + 1), class: "btn btn1 rounded-pill text-white ml-1" %>
               <% end %>
             </div>
           </div>
         </div>
       </div>
+    <!-- </div>
     </div>
-    </div>
-    </div>
-  </section>
+    </div> -->
+    </section>
 
     <!--=========================
          Counter Section
@@ -236,7 +235,6 @@
             <%= link_to 'Discover Innovative Ideas', ideas_path, class: 'btn rounded-pill', style: "color: #000; background-color: #fff !important;" %>
           </div>
         </div>
-
       </div>
     </section><!-- #call-to-action -->
 
@@ -245,7 +243,6 @@
     ============================-->
     <section id="features">
       <div class="container">
-
         <div class="row feature-item">
           <div class="col-lg-6 wow fadeInUp">
             <%= image_tag 'features-1.svg', class: "img-fluid" %>
@@ -253,13 +250,19 @@
           <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
             <h4>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h4>
             <p>
-              Users can create an account as Brainers, and can share ideas, create teams, projects and crowdfunding campaigns. Investors could be Brainers whose primary objective is supporting innovative ideas and projects financially.
+              Users can create an account as Brainers, and can share ideas, create teams, 
+              projects and crowdfunding campaigns. Investors could be Brainers whose primary 
+              objective is supporting innovative ideas and projects financially.
             </p>
             <p>
-              Users can post ideas, creations or insights in text, image or video formats, and can even add a location to their posts. These ideas are validated by the community either by voting up/down, liking, adding comments or sharing with others.
+              Users can post ideas, creations or insights in text, image or video formats, 
+              and can even add a location to their posts. These ideas are validated by the 
+              community either by voting up/down, liking, adding comments or sharing with others.
             </p>
             <p>
-              Positive validations increases an idea’s ‘Relevance Bar’. Ideas with more than 75% relevance will be featured as ‘Trending Ideas’. Those with less than 10% relevance for 4 consecutive weeks will be deleted from our database.
+              Positive validations increases an idea’s ‘Relevance Bar’. 
+              Ideas with more than 75% relevance will be featured as ‘Trending Ideas’ and be open for funding. 
+              Those with less than 10% relevance for 4 consecutive weeks will be deleted from our database.
             </p>
           </div>
         </div>
@@ -272,18 +275,22 @@
           <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
             <h4>Neque saepe temporibus repellat ea ipsum et. Id vel et quia tempora facere reprehenderit.</h4>
             <p>
-              The User can build a team around an idea by inviting others to join in enhancing the idea, allowing for team work and collaboration. An idea automatically becomes a project when it has a team working on it.
+              The User can build a team around an idea by inviting others to join in enhancing the idea, 
+              allowing for team work and collaboration. An idea automatically becomes a project when it 
+              has a team working on it.
             </p>
             <p>
-              When the relevance bar of an idea-turned-project gets to 100%, there is an option for the Brainer (and his team) to create a crowdfunding campaign for the project, where the Brainer and his team can ask for, and receive donations from the crowd in a 30-day period.
+              When the relevance bar of an idea-turned-project gets to 100%, 
+              there is an option for the Brainer (and his team) to create a crowdfunding campaign 
+              for the project, where the Brainer and his team can ask for, and receive donations 
+              from the crowd in a 30-day period.
             </p>
             <p>
-              Terms and conditions apply – Brainstaq collects a fee of 10% of the total donation received by a project. The crowd here refers to the general public, family members, friends, and those within the Brainer’s circle of influence.
+              Terms and conditions apply – Brainstaq collects a small percentage of the total donation received by a project. The crowd here refers to the general public, family members, friends, and those within the Brainer’s circle of influence.
             </p>
           </div>
           
         </div>
-
       </div>
     </section><!-- #about -->
 
@@ -305,15 +312,6 @@
         <br>
 
         <ul id="faq-list" class="wow fadeInUp">
-          <!-- <li>
-            <a data-toggle="collapse" class="collapsed" href="#faq1"> <i class="ion-android-remove"></i></a>
-            <div id="faq1" class="collapse" data-parent="#faq-list">
-              <p>
-                 
-              </p>
-            </div>
-          </li> -->
-
           <li>
             <a data-toggle="collapse" href="#faq2" class="collapsed">What is Brainstaq? <i class="ion-android-remove"></i></a>
             <div id="faq2" class="collapse" data-parent="#faq-list">
@@ -373,11 +371,7 @@
               </p>
             </div>
           </li>
-
         </ul>
-
       </div>
     </section><!-- #faq -->
-
   </main>
-

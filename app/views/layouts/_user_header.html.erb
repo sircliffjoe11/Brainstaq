@@ -22,8 +22,7 @@
         <% end %>
 
         
-        <%= link_to 'New Idea', new_idea_path, class: "btn btn1 rounded-pill text-white float-right", style: "margin-right: 6px; font-size: 10px;" %>
-          
+        <%= link_to fa_icon("edit", title: "New Idea", class: "text-primary mr-2 ml-2", style: "font-size: 24px;"), new_idea_path %> 
         
       
         <div class="navbar-text float-right">
@@ -38,7 +37,7 @@
               style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #F7F9F9  !important;">
               <%= current_user.full_name %>
             </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="font-size: 12px;">
               <%= link_to "Profile", profile_path(current_user.username) , class: "dropdown-item" %>
               <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Log Out", destroy_user_session_url, :method => 'delete', class: "dropdown-item" %>
