@@ -13,8 +13,9 @@ require("channels")
 require("jquery-ui")
 require("bootstrap")
 
-// require("trix")
-// require("@rails/actiontext")
+require("trix")
+require("@rails/actiontext")
+import "controllers"
 
 
 // require("../includes/vote.js")
@@ -109,5 +110,4 @@ $(function(){
 
 
 
-require("trix")
-require("@rails/actiontext")
+

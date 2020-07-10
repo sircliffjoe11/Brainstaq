@@ -2,9 +2,9 @@
 <div class="container col-lg-9">
   <div class="row">
     <div class="col-md-7">
-      <%= image_tag @idea.image_url, class: "img-fluid rounded mb-3 mb-md-0", style: "width:600px; height: 400px;" if @idea.image.present? %>
+      <%= image_tag @idea.image_url, class: "img-fluid rounded mb-3 mb-md-0", style: "width:550px; height: 400px;" if @idea.image.present? %>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-5 pl-0">
       <button type="button" class="btn btn-primary btn-sm my-3 float-right rounded-pill" disabled><%= @idea.category %></button>
       <h3 class="card-title" style="margin-bottom: -3px; font-size: 32px; font-weight: bold;"><%= @idea.title %></h3>
       
@@ -17,28 +17,48 @@
         <%= link_to fa_icon("edit", title: "Edit Idea", class: "text-primary mr-2", style: "font-size: 28px;"), edit_idea_path(@idea) %>
         <%= link_to fa_icon("share-alt", title: "Share", class: "text-primary mr-2", style: "font-size: 28px;")%>
         
-        <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 75 %>
+        <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 75 && @idea.active? %>
           <div class="mt-3" style="margin-bottom: -30px;">
-            <p class="text-primary mb-5" style="font-weight: bold;">Active Campaign <br>
-              <small>N235,000 raised</small>
+            <p class="text-success mb-5" style="font-weight: bold;">Active Campaign <br>
+              <small>N<%= @idea.donated_amount %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "N") %></small>
+              | <small><%#= idea.donors_count %> 200 donors</small>
+              | <small><%= distance_of_time_in_words_to_now(@idea.expires_at) %> to go</small>
             </p>
           </div>
+
+        <% else %>
+        <div class="mt-3" style="margin-bottom: -30px;">
+          <p class="text-danger mb-5" style="font-weight: bold;">Inactive Campaign <br>
+            <small>N<%= @idea.donated_amount %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "N") %></small>
+            | <small><%#= idea.donors_count %> 200 donors</small>
+            | <small>Campaign Expired!</small>
+          </p>
+        </div>  
         <% end %>
       <% else %>
         <%= link_to fa_icon("share-alt", title: "Share", class: "text-primary mt-4 mr-2", style: "font-size: 28px;")%>
       <% end %>
       
       <% if user_signed_in? && current_user.id != @idea.user_id %>
-        <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 75 %>
-          <%= link_to fa_icon("donate", title: "Support this Idea", class: "text-primary mr-2", style: "font-size: 28px;") %>
-          
+        <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 75 && @idea.active? %>
+          <%#= link_to fa_icon("donate", title: "Support this Idea", class: "text-primary mr-2", style: "font-size: 28px;") %>
           <div class="mt-3" style="margin-bottom: -30px;">
-            <p class="text-primary mb-5" style="font-weight: bold;">Active Campaign <br>
-              <small>N235,000 raised</small>
+            <p class="text-success mb-5" style="font-weight: bold;">Active Campaign <br>
+              <small>N<%= @idea.donated_amount %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "N") %></small>
+              | <small><%#= idea.donors_count %> 200 donors</small>
+              | <small><%= distance_of_time_in_words_to_now(@idea.expires_at) %> to go</small>
             </p>
           </div>
-
+        <% else %>
+        <div class="mt-3" style="margin-bottom: -30px;">
+          <p class="text-danger mb-5" style="font-weight: bold;">Inactive Campaign <br>
+            <small>N<%= @idea.donated_amount %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "N") %></small>
+            | <small><%#= idea.donors_count %> 200 donors</small>
+            | <small>Campaign Expired!</small>
+          </p>
+        </div>  
         <% end %>
+
       <% end %>
       <ul class="list-group list-group-horizontal-sm mt-4" style="font-size: 12px;">
         <li class="list-group-item"><span class="fa fa-comments"></span> <%= pluralize(@idea.comments.size, 'Comment') %></li>
@@ -48,16 +68,15 @@
       </ul>
     </div>
   </div>
-  <div>
+  
+  <div class="col-lg-8">
   <!-- /.row -->
   <hr class="w-100 mt-5">
     <p>
       <a class="btn mt-0 mr-1" data-toggle="collapse" href="#collapseDetails" role="button" aria-expanded="false" aria-controls="collapseDetails" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
         Details
       </a>
-      <!-- <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseUpdates" role="button" aria-expanded="false" aria-controls="collapseUpdates" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
-        Updates
-      </a> -->
+      
       <!-- <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseTeam" role="button" aria-expanded="false" aria-controls="collapseTeam" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
         Team
       </a> -->
@@ -65,6 +84,14 @@
       <a class="btn ml-1" data-toggle="collapse" href="#collapseComments" role="button" aria-expanded="false" aria-controls="collapseComments" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;" >
         Comments
       </a>
+
+      <% if user_signed_in? %>
+        <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 75 && @idea.active? %>
+          <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseUpdates" role="button" aria-expanded="false" aria-controls="collapseUpdates" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
+            Support this Idea
+          </a>
+        <% end %>
+      <% end %>
     </p>
     
     <div class="collapse mb-3" id="collapseDetails">
@@ -81,15 +108,51 @@
           <%= image_tag @idea.image_url, class: "img-fluid rounded mb-3 mb-md-0", width:'100%' if @idea.image.present? %>
     
           <hr>
-    
-          <p class="lead"><%= sanitize @idea.description %></p>
+          <h4 class="mb-0">DESCRIPTION</h4>
+          <p class="mt-0"><%= sanitize @idea.description %></p>
+          
+          <h4 class="mb-0">OVERVIEW</h4>
+          <p class="mt-0"><%= sanitize @idea.overview %></p>
+
+          <h4 class="mb-0">CHALLENGES</h4>
+          <p class="mt-0"><%= sanitize @idea.challenges %></p>
+
+          <h4 class="mb-0">IMPACT</h4>
+          <p class="mt-0"><%= sanitize @idea.impact %></p>
+
+          <h4 class="mb-0">DONATION AMOUNT</h4>
+          <p class="mt-0">N <%= @idea.donation_goal %></p>
     
       </div>
     </div>
 
     <div class="collapse mb-3" id="collapseUpdates">
       <div class="card card-body">
-        Idea updates goes here
+        
+        <h5 class="p-0" style="font-weight: bold;"> SELECT A PERK</h5>
+        <hr>
+          <% @idea.perks.each do |perk| %>
+            <div class="p-0 mb-0">
+              <h6 style="font-weight: bold;"><%= perk.title %></h6>
+              <p class="pb-0 mb-0 text-sm text-danger italic border-b" style="font-weight: bold;">Only <%= perk.quantity %> left</p>
+              <div class="py-2 text-gray-700" style="font-size: 14px;">
+                <%= perk.description %>
+              </div>
+
+              <% if user_signed_in? && perk.idea.user_id == current_user.id %>
+                <em class="block text-sm text-center" style="font-style: italic; font-weight: bold;" >Sorry, You can't support your own idea</em>
+              <%# else %>
+                <%# if purchased_perk(perk) %>
+                  <!-- <p class="text-sm">You're already subscribed to this perk. <%= link_to "Manage your subscriptions in your account settings", edit_user_registration_path, class: "text-blue-500 underline" %>.</p> -->
+                <% else %>
+                  <%= link_to "Support this idea for #{number_to_currency(perk.amount, :unit => "N")}",  new_subscription_path(amount: perk.amount, idea: @idea, 
+                      plan: "#{perk.title.parameterize}-perk_#{perk.id}"), class: "btn btn1 btn-block text-white" %>
+                <%# end %>
+              <% end %>
+            </div>
+            <hr>
+          <% end %>
+      
       </div>
     </div>
 

@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Brainstaq
   class Application < Rails::Application
+    config.active_job.queue_adapter = :sidekiq
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 

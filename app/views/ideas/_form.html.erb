@@ -54,6 +54,26 @@
         <%= tinymce %>
       </div>
 
+      <div class="form-group col-sm-12">
+        <%= form.text_area :overview, class: "form-control tinymce", placeholder: "Enter an overview of your idea"%>
+        <%= tinymce %>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <%= form.text_area :challenges, class: "form-control tinymce", placeholder: "Enter the challenges faced by your idea"%>
+        <%= tinymce %>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <%= form.text_area :impact, class: "form-control tinymce", placeholder: "How would your idea impact the world?"%>
+        <%= tinymce %>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <%= form.text_field :donation_goal, class: "form-control tinymce", placeholder: "Enter your donation goal"%>
+        <%= tinymce %>
+      </div>
+
       <div class="field">
         <%= form.text_field :user_id, value: current_user.id, class: 'd-none' %>
       </div>
@@ -65,8 +85,29 @@
       <div class="col-sm-12">
         <%= form.hidden_field :image_cache %>
       </div>
-      
 
+      <br>
+      <hr/>
+      <div class="col-sm-12 form-group">
+        <h3>Perks</h3>
+    
+        <div data-controller="nested-form">
+          <template data-target='nested-form.template'>
+            <%= form.fields_for :perks, Perk.new, child_index: 'TEMPLATE_RECORD' do |perk| %>
+              <%= render 'perk_fields', form: perk %>
+            <% end %>
+          </template>
+    
+          <%= form.fields_for :perks do |perk| %>
+            <%= render 'perk_fields', form: perk %>
+          <% end %>
+    
+          <div data-target="nested-form.add_perk">
+            <%= link_to "Add Perk", "#", data: { action: "nested-form#add_association" }, class: "btn btn1 text-white" %>
+          </div>
+        </div>
+      </div>
+    
     </div>
     <div class="form-group col-sm-12 m-0" style="padding-left: 30px; padding-right: 30px; padding-bottom: 130px;">
       <%= form.submit class: "actions btn btn1 text-white float-right" %>

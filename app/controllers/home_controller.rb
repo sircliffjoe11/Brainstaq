@@ -4,11 +4,20 @@ class HomeController < ApplicationController
 
   IDEAS_PER_PAGE = 3
 
+  def active?
+    status == "active"
+  end
+
+  def inactive
+    status == "inactive"
+  end
+  
+  
   def index
     @page = params.fetch(:page, 0).to_i 
     @next_page = @page + 1 unless Idea.count < 9
     @prev_page = @page - 1 unless @page == 0
-    @ideas = Idea.offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).sort_by { |idea| idea.impressions.size.to_i}.reverse
+    @ideas = Idea.all.offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).sort_by { |idea| idea.impressions.size.to_i}.reverse
     
     @users = User.all
   end

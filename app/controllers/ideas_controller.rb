@@ -13,7 +13,6 @@ class IdeasController < ApplicationController
     @next_page = @page + 1 if Idea.count > 6
     @prev_page = @page - 1 if @page < 0
     @ideas = Idea.offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).order(created_at: :desc)  
-    @idea = Idea.all
   end
 
   # GET /ideas/1
@@ -46,13 +45,13 @@ class IdeasController < ApplicationController
     @idea = Idea.new(idea_params)
 
     
-     respond_to do |format|
+    respond_to do |format|
       if @idea.save
-        #  render :edit, flash: {success: "Idea created! Add more details"}
-         format.html { redirect_to :dashboard }
-       else
-         format.html { render :new }
-       end
+        ExpireIdeaJob.set(wait_until: @idea.expires_at).perform_later(@idea)
+        format.html { redirect_to :dashboard }
+      else
+        format.html { render :new }
+      end
     end
   end
 
@@ -103,6 +102,7 @@ class IdeasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def idea_params
-      params.require(:idea).permit(:title, :description, :category, :image, :image_cache, :user_id)
+      params.require(:idea).permit(:title, :description, :overview, :impact, :donation_goal, :challenges, :category, :image, :image_cache, :user_id, 
+      perks_attributes: [:id, :_destroy, :title, :description, :amount, :quantity])
     end
 end

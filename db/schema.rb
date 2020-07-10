@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_26_213255) do
+ActiveRecord::Schema.define(version: 2020_07_09_162319) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -122,6 +122,13 @@ ActiveRecord::Schema.define(version: 2020_06_26_213255) do
     t.string "category"
     t.integer "relevance_bar", default: 0
     t.string "slug"
+    t.string "overview"
+    t.string "challenges"
+    t.string "impact"
+    t.decimal "donation_goal", default: "0.0"
+    t.integer "donated_amount", default: 0
+    t.datetime "expires_at", default: "2020-08-13 22:34:26"
+    t.string "status", default: "active"
     t.index ["slug"], name: "index_ideas_on_slug", unique: true
   end
 
@@ -149,6 +156,17 @@ ActiveRecord::Schema.define(version: 2020_06_26_213255) do
     t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
     t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
     t.index ["user_id"], name: "index_impressions_on_user_id"
+  end
+
+  create_table "perks", force: :cascade do |t|
+    t.string "title"
+    t.decimal "amount", precision: 8, scale: 2, default: "0.0"
+    t.text "description"
+    t.integer "quantity"
+    t.integer "idea_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["idea_id"], name: "index_perks_on_idea_id"
   end
 
   create_table "subscribers", force: :cascade do |t|
@@ -183,6 +201,7 @@ ActiveRecord::Schema.define(version: 2020_06_26_213255) do
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.boolean "admin", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -207,4 +226,5 @@ ActiveRecord::Schema.define(version: 2020_06_26_213255) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "campaigns", "ideas"
+  add_foreign_key "perks", "ideas"
 end

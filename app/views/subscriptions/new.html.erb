@@ -1,0 +1,16 @@
+<article class="card-body mx-auto" style="max-width: 400px; padding-top: 150px;">
+  <header class="section-header mb-5">
+    <h3 class="mb-2 text-center">You're about to support <span class="text-primary"><%= @idea.title %> </span> Campaign 🎉</h3>
+  </header>
+  
+
+  <% if user_signed_in? %>
+    <div>
+      <%= render "form", idea: @idea %>
+    </div>
+  <% else %>
+    <div class="p-6 text-center bg-white border rounded">
+      <%= link_to "Sign in to support this idea", new_user_session_path, class: "btn btn1 text-white" %>
+    </div>
+  <% end %>
+</article>

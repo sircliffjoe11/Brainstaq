@@ -1,7 +1,11 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   resources :subscribers, only: [:create, :new, :index]
   root to: "home#index"
   
+  resource :subscription
+
   devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}, :controllers => {
     registrations: 'registrations'
   }
@@ -9,6 +13,10 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   resources :ideas, only: [:show, :index, :new, :create, :edit, :update, :destroy] do
     resources :comments
