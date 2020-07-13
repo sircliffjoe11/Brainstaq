@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_09_162319) do
+ActiveRecord::Schema.define(version: 2020_07_11_185036) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -127,7 +127,7 @@ ActiveRecord::Schema.define(version: 2020_07_09_162319) do
     t.string "impact"
     t.decimal "donation_goal", default: "0.0"
     t.integer "donated_amount", default: 0
-    t.datetime "expires_at", default: "2020-08-13 22:34:26"
+    t.datetime "expires_at", default: "2020-08-20 19:00:16"
     t.string "status", default: "active"
     t.index ["slug"], name: "index_ideas_on_slug", unique: true
   end

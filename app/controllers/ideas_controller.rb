@@ -40,15 +40,13 @@ class IdeasController < ApplicationController
   # POST /ideas.json
   def create
     @idea = current_user.ideas.build(idea_params)
-    @idea.user_id = current_user.id if user_signed_in?
-    
-    @idea = Idea.new(idea_params)
-
-    
+    @idea.user_id = current_user.id if user_signed_in?    
+    # @idea = Idea.new(idea_params)
     respond_to do |format|
       if @idea.save
         ExpireIdeaJob.set(wait_until: @idea.expires_at).perform_later(@idea)
-        format.html { redirect_to :dashboard }
+        format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
+        format.json { render :show, status: :created, location: @idea }
       else
         format.html { render :new }
       end

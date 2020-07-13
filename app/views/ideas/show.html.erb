@@ -12,12 +12,15 @@
       <small>Created by <%= link_to (@idea.user.full_name), profile_path(@idea.user.username, @user) %> on <%= local_time(@idea.created_at) %></small>
       <p class="card-text mt-3 fr-view mb-3" style="font-size: 14px;"><%= truncate(sanitize(@idea.description, tags: []), length: 200) %></p>
       
-      <% if user_signed_in? && current_user.id == @idea.user_id %>
-        <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2", style: "font-size: 28px;"), idea_path(@idea), method: :delete, data: { confirm: 'Are you sure?' } %>
-        <%= link_to fa_icon("edit", title: "Edit Idea", class: "text-primary mr-2", style: "font-size: 28px;"), edit_idea_path(@idea) %>
-        <%= link_to fa_icon("share-alt", title: "Share", class: "text-primary mr-2", style: "font-size: 28px;")%>
-        
-        <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 75 && @idea.active? %>
+      <% if user_signed_in? %>
+        <% if current_user.id == @idea.user_id %>
+          <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2", style: "font-size: 28px;"), idea_path(@idea), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to fa_icon("edit", title: "Edit Idea", class: "text-primary mr-2", style: "font-size: 28px;"), edit_idea_path(@idea) %>
+          <%= link_to fa_icon("share-alt", title: "Share", class: "text-primary mr-2", style: "font-size: 28px;")%>
+        <% else %>
+          <%= link_to fa_icon("share-alt", title: "Share", class: "text-primary mr-2", style: "font-size: 28px;")%>  
+        <% end %>    
+        <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 75 %>
           <div class="mt-3" style="margin-bottom: -30px;">
             <p class="text-success mb-5" style="font-weight: bold;">Active Campaign <br>
               <small>N<%= @idea.donated_amount %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "N") %></small>
@@ -25,23 +28,18 @@
               | <small><%= distance_of_time_in_words_to_now(@idea.expires_at) %> to go</small>
             </p>
           </div>
-
         <% else %>
         <div class="mt-3" style="margin-bottom: -30px;">
           <p class="text-danger mb-5" style="font-weight: bold;">Inactive Campaign <br>
             <small>N<%= @idea.donated_amount %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "N") %></small>
-            | <small><%#= idea.donors_count %> 200 donors</small>
-            | <small>Campaign Expired!</small>
+            | <small><%#= idea.donors_count %> 0 donors</small>
+            <!-- | <small>Campaign Expired!</small> -->
           </p>
         </div>  
         <% end %>
       <% else %>
-        <%= link_to fa_icon("share-alt", title: "Share", class: "text-primary mt-4 mr-2", style: "font-size: 28px;")%>
-      <% end %>
-      
-      <% if user_signed_in? && current_user.id != @idea.user_id %>
-        <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 75 && @idea.active? %>
-          <%#= link_to fa_icon("donate", title: "Support this Idea", class: "text-primary mr-2", style: "font-size: 28px;") %>
+        <%= link_to fa_icon("share-alt", title: "Share", class: "text-primary mr-2", style: "font-size: 28px;")%>
+        <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 75 %>
           <div class="mt-3" style="margin-bottom: -30px;">
             <p class="text-success mb-5" style="font-weight: bold;">Active Campaign <br>
               <small>N<%= @idea.donated_amount %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "N") %></small>
@@ -53,13 +51,13 @@
         <div class="mt-3" style="margin-bottom: -30px;">
           <p class="text-danger mb-5" style="font-weight: bold;">Inactive Campaign <br>
             <small>N<%= @idea.donated_amount %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "N") %></small>
-            | <small><%#= idea.donors_count %> 200 donors</small>
-            | <small>Campaign Expired!</small>
+            | <small><%#= idea.donors_count %> 0 donors</small>
+            <!-- | <small>Campaign Expired!</small> -->
           </p>
         </div>  
-        <% end %>
-
+        <% end %>   
       <% end %>
+      
       <ul class="list-group list-group-horizontal-sm mt-4" style="font-size: 12px;">
         <li class="list-group-item"><span class="fa fa-comments"></span> <%= pluralize(@idea.comments.size, 'Comment') %></li>
         <li class="list-group-item"><span class="fa fa-eye"></span> <%= pluralize(@idea.impressionist_count, 'View') %></li>
@@ -69,7 +67,7 @@
     </div>
   </div>
   
-  <div class="col-lg-8">
+  <div class="col-lg-9">
   <!-- /.row -->
   <hr class="w-100 mt-5">
     <p>
@@ -86,7 +84,7 @@
       </a>
 
       <% if user_signed_in? %>
-        <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 75 && @idea.active? %>
+        <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 75 %>
           <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseUpdates" role="button" aria-expanded="false" aria-controls="collapseUpdates" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
             Support this Idea
           </a>
@@ -108,20 +106,20 @@
           <%= image_tag @idea.image_url, class: "img-fluid rounded mb-3 mb-md-0", width:'100%' if @idea.image.present? %>
     
           <hr>
-          <h4 class="mb-0">DESCRIPTION</h4>
-          <p class="mt-0"><%= sanitize @idea.description %></p>
+          <h4 class="mb-0" style="font-weight: bold;">DESCRIPTION</h4>
+          <p class="mt-0 mb-0"><%= sanitize @idea.description %></p>
           
-          <h4 class="mb-0">OVERVIEW</h4>
-          <p class="mt-0"><%= sanitize @idea.overview %></p>
+          <h4 class="mb-0" style="font-weight: bold;">OVERVIEW</h4>
+          <p class="mt-0 mb-0"><%= sanitize @idea.overview %></p>
 
-          <h4 class="mb-0">CHALLENGES</h4>
-          <p class="mt-0"><%= sanitize @idea.challenges %></p>
+          <h4 class="mb-0" style="font-weight: bold;">CHALLENGES</h4>
+          <p class="mt-0 mb-0"><%= sanitize @idea.challenges %></p>
 
-          <h4 class="mb-0">IMPACT</h4>
-          <p class="mt-0"><%= sanitize @idea.impact %></p>
+          <h4 class="mb-0" style="font-weight: bold;">IMPACT</h4>
+          <p class="mt-0 mb-0"><%= sanitize @idea.impact %></p>
 
-          <h4 class="mb-0">DONATION AMOUNT</h4>
-          <p class="mt-0">N <%= @idea.donation_goal %></p>
+          <h4 class="mb-0" style="font-weight: bold;">DONATION AMOUNT</h4>
+          <p class="mt-0 mb-0"><%= number_to_currency(@idea.donation_goal, :unit => "N") %></p>
     
       </div>
     </div>

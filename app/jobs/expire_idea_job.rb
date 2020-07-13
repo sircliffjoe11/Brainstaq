@@ -12,7 +12,7 @@ class ExpireIdeaJob < ApplicationJob
     UserMailer.with(idea: @idea).idea_expired_notice.deliver_later
   end
 
-  private
+  private 
 
   def idea_already_inactive?
     @idea.status == "inactive"
