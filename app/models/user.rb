@@ -16,9 +16,9 @@ class User < ApplicationRecord
   has_one_attached :image, dependent: :destroy
 
   after_create :send_admin_mail
-  def send_admin_mail
-    UserMailer.send_welcome_email(self).deliver_later
-  end
+  # def send_admin_mail
+  #   UserMailer.send_welcome_email(self).deliver_later
+  # end
   
   def full_name
     "#{first_name} #{last_name}"
