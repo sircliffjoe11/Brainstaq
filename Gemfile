@@ -70,6 +70,7 @@ gem 'omniauth', '~> 1.9', '>= 1.9.1'
 
 gem 'rave_ruby'
 
+gem 'pg'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
