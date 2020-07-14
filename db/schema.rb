@@ -72,15 +72,7 @@ ActiveRecord::Schema.define(version: 2020_07_14_020226) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "campaigns", force: :cascade do |t|
-    t.string "title"
-    t.decimal "donation_goal", default: "0.0"
-    t.integer "idea_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.index ["idea_id"], name: "index_campaigns_on_idea_id"
-  end
+
 
   create_table "comments", force: :cascade do |t|
     t.string "username"
