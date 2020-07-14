@@ -298,7 +298,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     tel_to_helper (0.1.0)
       rails
     thor (1.0.1)
@@ -374,7 +373,6 @@ DEPENDENCIES
   social-share-button
   spring
   spring-watcher-listen (~> 2.0.0)
-  sqlite3 (~> 1.4)
   tel_to_helper
   tinymce-rails
   turbolinks (~> 5)
