@@ -1,7 +1,7 @@
 class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
   include Cloudinary::CarrierWave
 
   version :thumb do
@@ -14,15 +14,26 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [150, 50]
   end
 
+  # Cloudinary will be utilized in production (Heroku).
+  # While local psql stored is utilized in development and testing environment.
+  if Rails.env.production?
+    include Cloudinary::CarrierWave
+    CarrierWave.configure do |config|
+      config.cache_storage = :file
+    end
+  else
+    storage :file
+  end
+
   # Choose what kind of storage to use for this uploader:
   # storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-    # def store_dir
-    #   "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-    # end 
+  def store_dir
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end 
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
