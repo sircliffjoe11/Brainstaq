@@ -20,6 +20,8 @@ import "controllers"
 
 // require("../includes/vote.js")
 
+//= require activestorage
+
 //= require local-time
 
 //= require tinymce

@@ -6,7 +6,7 @@
                   <div class="col-md-4">
                     <div class="idea card">
                       <figure class="m-0 card-img-top">
-                        <%= image_tag idea.image_url, width:'100%', height:'230px' if idea.image.present?  %>
+                        <%= cl_image_tag idea.image_url, width:'100%', height:'230px' if idea.image.present?  %>
                       </figure>
                       <div class="idea-inner-text py-4 px-4">
                         <span class="idea-category" style="font-size: 12px; font-weight: bold;">
