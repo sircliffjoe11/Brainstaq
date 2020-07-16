@@ -1,34 +1,34 @@
 class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+    include CarrierWave::MiniMagick
   
-  include Cloudinary::CarrierWave
+  # include Cloudinary::CarrierWave
 
   version :thumb do
-    process :eager => true
+    # process :eager => true
     process :resize_to_fit => [50, 50]
   end
 
   version :medium do
-    process :eager => true
+    # process :eager => true
     process :resize_to_fill => [150, 50]
   end
 
   # Cloudinary will be utilized in production (Heroku).
   # While local psql stored is utilized in development and testing environment.
-  if Rails.env.production?
-    include Cloudinary::CarrierWave
-    CarrierWave.configure do |config|
-      config.cache_storage = :file
-    end
-  else
-    storage :file
-  end
+  # if Rails.env.production?
+  #   include Cloudinary::CarrierWave
+  #   CarrierWave.configure do |config|
+  #     config.cache_storage = :file
+  #   end
+  # else
+  #   storage :file
+  # end
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
-  # storage :fog
+    storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:

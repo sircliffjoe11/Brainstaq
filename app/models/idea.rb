@@ -5,7 +5,7 @@ class Idea < ApplicationRecord
     
   belongs_to :user
   has_many :comments
-  has_one :campaign, inverse_of: :idea, dependent: :destroy
+
   has_many :perks, dependent: :destroy
   accepts_nested_attributes_for :perks, allow_destroy: true, reject_if: proc { |attr| attr['title'].blank? } 
 
