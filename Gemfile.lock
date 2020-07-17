@@ -366,6 +366,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  activerecord (~> 6.0, >= 6.0.3.2)
   acts_as_votable
   bootsnap (>= 1.4.2)
   byebug
