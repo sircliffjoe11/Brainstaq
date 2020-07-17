@@ -1,3 +1,2 @@
-web: rails server
-sidekiq: sidekiq
-webpack: bin/webpack-dev-server
+web: bundle exec thin start -p $PORT
+worker: bundle exec sidekiq -c 5 -v
