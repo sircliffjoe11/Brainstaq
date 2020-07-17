@@ -1,5 +1,5 @@
 current directory: /home/sircliffjoe/projects/brainstaq/vendor/bundle/ruby/2.7.0/gems/puma-4.3.5/ext/puma_http11
-/home/sircliffjoe/.rvm/rubies/ruby-2.7.1/bin/ruby -I /home/sircliffjoe/.rvm/rubies/ruby-2.7.1/lib/ruby/site_ruby/2.7.0 -r ./siteconf20200717-23659-t6qh8t.rb extconf.rb
+/home/sircliffjoe/.rvm/rubies/ruby-2.7.1/bin/ruby -I /home/sircliffjoe/.rvm/rubies/ruby-2.7.1/lib/ruby/site_ruby/2.7.0 -r ./siteconf20200717-38279-pibhz8.rb extconf.rb
 checking for BIO_read() in -lcrypto... no
 checking for BIO_read() in -llibeay32... no
 creating Makefile
@@ -33,4 +33,4 @@ linking shared-object puma/puma_http11.so
 
 current directory: /home/sircliffjoe/projects/brainstaq/vendor/bundle/ruby/2.7.0/gems/puma-4.3.5/ext/puma_http11
 make "DESTDIR=" install
-/usr/bin/install -m 0755 puma_http11.so ./.gem.20200717-23659-j4f0p3/puma
+/usr/bin/install -m 0755 puma_http11.so ./.gem.20200717-38279-1ek1cpr/puma

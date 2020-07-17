@@ -1,5 +1,5 @@
 current directory: /home/sircliffjoe/projects/brainstaq/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.2/ext/nio4r
-/home/sircliffjoe/.rvm/rubies/ruby-2.7.1/bin/ruby -I /home/sircliffjoe/.rvm/rubies/ruby-2.7.1/lib/ruby/site_ruby/2.7.0 -r ./siteconf20200717-23659-1w2126m.rb extconf.rb
+/home/sircliffjoe/.rvm/rubies/ruby-2.7.1/bin/ruby -I /home/sircliffjoe/.rvm/rubies/ruby-2.7.1/lib/ruby/site_ruby/2.7.0 -r ./siteconf20200717-38279-vq30wv.rb extconf.rb
 checking for unistd.h... yes
 checking for linux/aio_abi.h... yes
 checking for sys/select.h... yes
@@ -98,4 +98,4 @@ linking shared-object nio4r_ext.so
 
 current directory: /home/sircliffjoe/projects/brainstaq/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.2/ext/nio4r
 make "DESTDIR=" install
-/usr/bin/install -m 0755 nio4r_ext.so ./.gem.20200717-23659-ddmi1z
+/usr/bin/install -m 0755 nio4r_ext.so ./.gem.20200717-38279-6a8jv

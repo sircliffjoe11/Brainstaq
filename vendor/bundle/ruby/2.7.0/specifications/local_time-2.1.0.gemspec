@@ -11,8 +11,8 @@ Gem::Specification.new do |s|
   s.date = "2018-09-04"
   s.email = "javan@basecamp.com".freeze
   s.licenses = ["MIT".freeze]
-  s.rubygems_version = "3.1.3".freeze
+  s.rubygems_version = "3.1.4".freeze
   s.summary = "Rails engine for cache-friendly, client-side local time".freeze
 
-  s.installed_by_version = "3.1.3" if s.respond_to? :installed_by_version
+  s.installed_by_version = "3.1.4" if s.respond_to? :installed_by_version
 end

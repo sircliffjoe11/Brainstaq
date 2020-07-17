@@ -13,10 +13,10 @@ Gem::Specification.new do |s|
   s.email = ["huacnlee@gmail.com".freeze]
   s.homepage = "http://github.com/huacnlee/social-share-button".freeze
   s.licenses = ["MIT".freeze]
-  s.rubygems_version = "3.1.3".freeze
+  s.rubygems_version = "3.1.4".freeze
   s.summary = "Helper for add social share feature in your Rails app. Twitter, Facebook, Weibo, Douban, QQ, Tumblr ...".freeze
 
-  s.installed_by_version = "3.1.3" if s.respond_to? :installed_by_version
+  s.installed_by_version = "3.1.4" if s.respond_to? :installed_by_version
 
   if s.respond_to? :specification_version then
     s.specification_version = 4

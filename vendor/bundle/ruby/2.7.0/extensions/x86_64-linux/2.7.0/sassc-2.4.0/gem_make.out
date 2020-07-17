@@ -1,5 +1,5 @@
 current directory: /home/sircliffjoe/projects/brainstaq/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
-/home/sircliffjoe/.rvm/rubies/ruby-2.7.1/bin/ruby -I /home/sircliffjoe/.rvm/rubies/ruby-2.7.1/lib/ruby/site_ruby/2.7.0 -r ./siteconf20200717-23659-13ojvlu.rb extconf.rb
+/home/sircliffjoe/.rvm/rubies/ruby-2.7.1/bin/ruby -I /home/sircliffjoe/.rvm/rubies/ruby-2.7.1/lib/ruby/site_ruby/2.7.0 -r ./siteconf20200717-38279-fn46oy.rb extconf.rb
 creating Makefile
 
 current directory: /home/sircliffjoe/projects/brainstaq/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
@@ -77,4 +77,4 @@ linking shared-object sassc/libsass.so
 
 current directory: /home/sircliffjoe/projects/brainstaq/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
 make "DESTDIR=" install
-/usr/bin/install -m 0755 libsass.so ./.gem.20200717-23659-1g60j89/sassc
+/usr/bin/install -m 0755 libsass.so ./.gem.20200717-38279-83irud/sassc

@@ -1,5 +1,5 @@
 current directory: /home/sircliffjoe/projects/brainstaq/vendor/bundle/ruby/2.7.0/gems/bcrypt-3.1.13/ext/mri
-/home/sircliffjoe/.rvm/rubies/ruby-2.7.1/bin/ruby -I /home/sircliffjoe/.rvm/rubies/ruby-2.7.1/lib/ruby/site_ruby/2.7.0 -r ./siteconf20200717-23659-8ap9y4.rb extconf.rb
+/home/sircliffjoe/.rvm/rubies/ruby-2.7.1/bin/ruby -I /home/sircliffjoe/.rvm/rubies/ruby-2.7.1/lib/ruby/site_ruby/2.7.0 -r ./siteconf20200717-38279-sj6rzc.rb extconf.rb
 creating Makefile
 
 current directory: /home/sircliffjoe/projects/brainstaq/vendor/bundle/ruby/2.7.0/gems/bcrypt-3.1.13/ext/mri
@@ -16,4 +16,4 @@ linking shared-object bcrypt_ext.so
 
 current directory: /home/sircliffjoe/projects/brainstaq/vendor/bundle/ruby/2.7.0/gems/bcrypt-3.1.13/ext/mri
 make "DESTDIR=" install
-/usr/bin/install -m 0755 bcrypt_ext.so ./.gem.20200717-23659-mf0y5d
+/usr/bin/install -m 0755 bcrypt_ext.so ./.gem.20200717-38279-1mpmy1k

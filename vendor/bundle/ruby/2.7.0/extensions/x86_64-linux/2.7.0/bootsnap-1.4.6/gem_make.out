@@ -1,5 +1,5 @@
 current directory: /home/sircliffjoe/projects/brainstaq/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.4.6/ext/bootsnap
-/home/sircliffjoe/.rvm/rubies/ruby-2.7.1/bin/ruby -I /home/sircliffjoe/.rvm/rubies/ruby-2.7.1/lib/ruby/site_ruby/2.7.0 -r ./siteconf20200717-23659-1k3xupl.rb extconf.rb
+/home/sircliffjoe/.rvm/rubies/ruby-2.7.1/bin/ruby -I /home/sircliffjoe/.rvm/rubies/ruby-2.7.1/lib/ruby/site_ruby/2.7.0 -r ./siteconf20200717-38279-9ingnb.rb extconf.rb
 creating Makefile
 
 current directory: /home/sircliffjoe/projects/brainstaq/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.4.6/ext/bootsnap
@@ -34,4 +34,4 @@ linking shared-object bootsnap/bootsnap.so
 
 current directory: /home/sircliffjoe/projects/brainstaq/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.4.6/ext/bootsnap
 make "DESTDIR=" install
-/usr/bin/install -m 0755 bootsnap.so ./.gem.20200717-23659-1e3qbur/bootsnap
+/usr/bin/install -m 0755 bootsnap.so ./.gem.20200717-38279-1o348ra/bootsnap
