@@ -19,8 +19,8 @@ var jQuery = require("jquery");
 global.$ = global.jQuery = jQuery;
 window.$ = window.jQuery = jQuery;
 
-require("trix")
-require("@rails/actiontext")
+// require("trix")
+// require("@rails/actiontext")
 import "controllers"
 
 
