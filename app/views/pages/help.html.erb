@@ -21,8 +21,8 @@
                         </p>
                     </div>
 
-                    <p>To contact support, write by email to:</p>
-                        <a href="support@brainstaq.com">support@brainstaq.com</a>
+                    To contact support, write by email to:
+                    <%= mail_to 'support@brainstaq.com' %>
                 </div>
             </div>
         </div>
@@ -34,10 +34,10 @@
     <p style="font-weight: bold;">Can I participate without registering?</p>
             <p>If you are not logged in, you can only read ideas and vote for them. 
                 To publish ideas, comments and participate in Campaigns, you need to
-                    <a href="login.html">log in.</a></p>
+                <%= link_to "Log In", new_user_session_path %></p>
 
             <p>And if you don't yet have an account, click on
-                    <a href="register.html">Register,</a> it’s simple and quick.</p>
+              <%= link_to "Register,", new_user_registration_path %> it’s simple and quick.</p>
 
             <p style="font-weight: bold;">I haven’t received the confirmation email for my new account.</p>
             <p>This can be for several reasons:</p>
@@ -46,17 +46,17 @@
             <li>The process may be slower than usual.</li>
             <li>The email has entered your junk mail box: please check your Spam folder.</li>
         </ul>
-        <p>If none of these reasons apply, contact us at <a href="support@brainstaq.com">support@brainstaq.com</a></p>
+        <p>If none of these reasons apply, contact us at <%= mail_to 'support@brainstaq.com' %></p>
 
     <p style="font-weight: bold;">Edit my user profile</p>
-    <p>Go to User > Settings in the menu bar on the top right of the screen. There you can edit your personal information.</p>
+    <p>Go to User > <%= link_to "Settings", edit_user_registration_path %> in the menu bar on the top right of the screen. There you can edit your personal information.</p>
     <p style="font-weight: bold;">My account was deleted </p>
     <p>This will only happen if the Administrator considers your profile breach the Community Rules by publishing inappropriate content. If that is the case, you will always receive an email informing you that your account will be deleted.</p>
 
     <h5 style="font-weight: bold;">2. Community users</h5>
     <hr style="length: 10%;">
     <p style="font-weight: bold;">Communicating with other users</p> 
-    <p>You can do so by leaving a comment in one of their ideas or leaving a private message on their 
+    <p>You can do so by leaving a comment in one of their ideas or leaving a private message (coming soon!) on their 
         user profile.</p> 
 
     <p style="font-weight: bold;">Following other users</p> 
@@ -64,25 +64,27 @@
         To do so, simply access the user profile you want to follow and click the Follow 
         button next to his or her name. To stop following a user, just click on the same button again.</p> 
 
-    <p>Each user’s profile shows the users that follow him or her, and who he or she follows. 
-        Everything is public. </p>
+    <!-- <p>Each user’s profile shows the users that follow him or her, and who he or she follows. 
+        Everything is public. </p> -->
 
-    <p style="font-weight: bold;">Blocking a user</p>
-    <p>You will be able to block other users to prevent them from following you or commenting on your ideas. 
+    <p style="font-weight: bold;">Blocking a user (coming soon!)</p>
+    <!-- <p>You will be able to block other users to prevent them from following you or commenting on your ideas. 
         Also, if you find a user or a specific comment to be offensive or inappropriate, you can report it 
-        and the Administration will consider eliminating such content.</p>
+        and the Administration will consider eliminating such content.</p>-->
 
-    <h5 style="font-weight: bold;">3. Languages</h5>
-    <hr style="length: 10%;"> 
+    <h5 style="font-weight: bold;">3. Languages (coming soon!)</h5>
+    <!-- <hr style="length: 10%;"> 
     <p>By default, when you visit brainstaq, all the content of the platform would appear in the 
-        default language which is English.</p>
+        default language which is English.</p>-->
 
-    <p style="font-weight: bold;">Changing the language of content</h5>
-    <p>You can also select your prefered language. To do so, go to Settings > Language and select your language.</p>  
+    <p style="font-weight: bold;">Changing the language of content (coming soon!)</h5>
+    <!--<p>You can also select your prefered language. To do so, go to Settings > Language and select your language.</p>   -->
 
     <h5 style="font-weight: bold;">4. Reporting content</h5>
     <hr style="length: 10%;"> 
-    <p>If you find there is content (ideas or comments) that does not comply with our Community Rules, you can report it. You can do that by sending an email to <a href="abuse@brainstaq.com">abuse@brainstaq.com</a>  
+    <p>If you find there is content (ideas or comments) that does not comply with our Community Rules, 
+      you can report it. You can do that by sending an email to 
+      <%= mail_to 'abuse@brainstaq.com' %>  
 
     <p>When you report content, you must specify the reasons for which you consider it inappropriate, from the following:</p>
     <ul>
@@ -111,14 +113,14 @@
     <p>This is the classification of your idea.</p>
     <p style="font-weight: bold;"> Property</p> 
     <p>Offers two options to establish the type of license you are publishing your idea under. 
-    You can read about these licenses in the <a href="terms.html">Terms & Conditions.</a></p>
+    You can read about these licenses in the <%= link_to 'Terms of Service', pages_terms_path %></li>.</p>
     <p>You can also add attached files to add value to your idea.</p> 
     <p>When your idea is complete, click on “Create idea” to publish the idea and make it visible to all other users. 
 
-    <h5 style="font-weight: bold;">6. Intellectual property rights for ideas</h5>
+    <h5 style="font-weight: bold;">6. Intellectual property rights for ideas (coming soon!)</h5>
     <hr style="length: 10%;"> 
 
-    <p>When you publish your idea or challenge, you must choose between two copyright options:</p> 
+    <!--<p>When you publish your idea or challenge, you must choose between two copyright options:</p> 
     <ul>
         <li><span style="font-weight: bold;">1. Creative Commons Attribution 2.5:</span> Under this modality, you only 
             retain authorship of your idea, but you transfer all other rights over the idea. 
@@ -131,7 +133,7 @@
             broad description of your idea, but not all the details.</li>
     </ul>
  
-    <p style="font-style: italic;">You can find more information in the <a href="terms.html">Terms & Conditions.</a>
+    <p style="font-style: italic;">You can find more information in the <a href="terms.html">Terms & Conditions.</a>-->
 
     <p style="font-weight: bold;">Why was my idea deleted?</p>
     <p>Only you can delete your ideas, but if the Administration considers that your idea does not comply with our 
@@ -141,7 +143,7 @@
 
 
     <p>If you have any other queries, please do not hesitate to contact 
-        us <a href="support@brainstaq.com">support@brainstaq.com</a></p>
+        us <%= mail_to 'support@brainstaq.com' %></p>
 
-    Thank you!
+    <strong style="font-size: 18px;">Thank you!</strong>
     </div>
