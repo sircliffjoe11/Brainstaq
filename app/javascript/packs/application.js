@@ -13,6 +13,12 @@ require("channels")
 require("jquery-ui")
 require("bootstrap")
 
+var jQuery = require("jquery");
+
+// import jQuery from "jquery";
+global.$ = global.jQuery = jQuery;
+window.$ = window.jQuery = jQuery;
+
 require("trix")
 require("@rails/actiontext")
 import "controllers"

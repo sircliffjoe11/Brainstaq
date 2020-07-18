@@ -1,3 +1,3 @@
 web: bundle exec bin/rails server -p $PORT -e $RAILS_ENV
 worker: bundle exec sidekiq -C config/sidekiq.yml
-webpack: bin/webpack-dev-server
+webpack: .bin/webpack-dev-server
