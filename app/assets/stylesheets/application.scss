@@ -19,7 +19,8 @@
  */
  //= require actiontext
 
- @import "bootstrap/scss/bootstrap";
+//  @import "bootstrap/scss/bootstrap";
+ @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
  @import "home.scss";
 
  @import "pages.scss";
