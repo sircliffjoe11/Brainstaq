@@ -4,7 +4,7 @@
 // that code so it'll be compiled.
 
 
-//= require("jquery-ui")
+//= require("jquery")
 //= require("jquery-ui")
 
 
@@ -14,7 +14,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-require("jquery-ui")
+require("jquery-ui-dist/jquery-ui")
 require("bootstrap")
 
 var jQuery = require("jquery");

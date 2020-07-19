@@ -24,12 +24,11 @@ environment.plugins.prepend('Provide', new webpack.ProvidePlugin({
 )
 
 const aliasConfig = {
-    'jquery': 'jquery/src/jquery',
+    'jquery': 'jquery-ui-dist/external/jquery/jquery.js',
     'jquery-ui': 'jquery-ui-dist/jquery-ui.js'
 
 };
 
 environment.config.set('resolve.alias', aliasConfig);
 
-//
 module.exports = environment;
