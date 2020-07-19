@@ -42,10 +42,12 @@ import "controllers"
 
 
 // jquery
-import * as $ from 'jquery';
+// import * as $ from 'jquery';
 
-global.$ = $
-global.jQuery = $
+// global.$ = $
+// global.jQuery = $
+
+global.jQuery = require('jquery');
 
 
 require('jquery-ui');
