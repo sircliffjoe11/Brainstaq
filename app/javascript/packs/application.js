@@ -4,6 +4,10 @@
 // that code so it'll be compiled.
 
 
+//= require("jquery-ui")
+//= require("jquery-ui")
+
+
 require("jquery")
 require("@rails/ujs").start()
 require("turbolinks").start()
