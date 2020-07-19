@@ -5,16 +5,16 @@
 
 
 //= require("jquery")
-//= require("jquery-ui")
+//= require("jquery-ui/core")
 
 
-require("jquery")
+// require("jquery")
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-require("jquery-ui-dist/jquery-ui")
+// require("jquery-ui-dist/jquery-ui")
 require("bootstrap")
 
 var jQuery = require("jquery");
@@ -42,15 +42,15 @@ import "controllers"
 
 
 // jquery
-// import * as $ from 'jquery';
+import * as $ from 'jquery';
 
-// global.$ = $
-// global.jQuery = $
+global.$ = $
+global.jQuery = $
 
-global.jQuery = require('jquery');
+// global.jQuery = require('jquery');
 
 
-require('jquery-ui');
+// require('jquery-ui');
 
 // jquery-ui theme
 require.context('file-loader?name=[path][name].[ext]&context=node_modules/jquery-ui-dist!jquery-ui-dist', true,    /jquery-ui\.css/ );
