@@ -42,7 +42,7 @@ import "controllers"
 
 
 // jquery
-import $ from 'jquery';
+import * as $ from 'jquery';
 
 global.$ = $
 global.jQuery = $
