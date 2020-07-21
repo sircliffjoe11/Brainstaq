@@ -52,6 +52,8 @@ gem 'impressionist'
 
 gem 'acts_as_votable'
 
+gem 'uglifier', '~> 4.2', require: 'uglifier'
+
 # local ENV var
 gem "figaro"
 
