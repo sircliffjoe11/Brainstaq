@@ -1,7 +1,7 @@
 <main style="padding-top: 50px; background-color: #f2f2f2;">
   <div class="wrapper">
     <section class="cover-sec">
-      <%= image_tag 'profile-bg2', style: "width: 100%; height: 250px;" %>
+      <%= image_tag 'profile-bg2.jpg', style: "width: 100%; height: 250px;" %>
     </section>
     <main>
       <div class="main-section">
@@ -15,7 +15,7 @@
                       <% if @user.image.url %>
                         <%=image_tag @user.image.url, style: "width: 160px; height: 156px;", class: "rounded-circle" %>
                       <% else %>
-                        <%= image_tag 'avatar', style: "width: 160px; height: 156px;", class: "rounded-circle" %>
+                        <%= image_tag 'avatar.png', style: "width: 160px; height: 156px;", class: "rounded-circle" %>
                       <% end %>
                     </div><!--user-pro-img end-->
                     <div class="user_pro_status">
@@ -116,7 +116,7 @@
                               <% if @user.image_url %>
                                 <%= image_tag @user.image_url, style: "width: 40px;", class: "rounded-circle ml-1" %>
                               <% else %>
-                                <%= image_tag 'avatar', style: "width: 40px;", class: "rounded-circle ml-1" %>
+                                <%= image_tag 'avatar.png', style: "width: 40px;", class: "rounded-circle ml-1" %>
                               <% end %>
                               <div class="usy-name">
                                 <h3><%= idea.user.full_name %></h3>
