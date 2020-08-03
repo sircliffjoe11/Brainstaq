@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable 
 
@@ -9,9 +9,16 @@ class User < ApplicationRecord
   has_many :ideas, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  has_many :campaigns, dependent: :destroy
+  has_many :conversations, foreign_key: :sender_id
+
+  # has_many :campaigns, dependent: :destroy
 
   acts_as_voter
+
+  has_many :followed_users, foreign_key: :follower_id, class_name: 'Follow'
+  has_many :followees, through: :followed_users
+  has_many :following_users, foreign_key: :followee_id, class_name: 'Follow'
+  has_many :followers, through: :following_users
   
   has_one_attached :image, dependent: :destroy
 
@@ -39,16 +46,12 @@ class User < ApplicationRecord
   # end
   
   def total_following
-    Follower.where(following_id: self.id).count
+    Follow.where(followee_id: self.id).count
   end
 
   def total_followers
-    Follower.where(follower_id: self.id).count
+    Follow.where(follower_id: self.id).count
   end
-
-  # def user_rating
-  #   
-  # end
 
 
 end

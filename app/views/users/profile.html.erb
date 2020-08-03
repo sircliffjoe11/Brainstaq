@@ -18,31 +18,57 @@
                         <%= image_tag 'avatar.png', style: "width: 160px; height: 156px;", class: "rounded-circle" %>
                       <% end %>
                     </div><!--user-pro-img end-->
+                    
+                    <section>
+                      <% if @user.id == current_user.id %>
+                        <%#= button_to "Logout", '/logout', method: :post %>
+                    <% elsif current_user.followees.include?(@user) %>
+                          <h5><%= button_to "Unfollow", unfollow_user_path, method: "POST", 
+                              class: "btn btn-sm rounded-pill text-white", style: "font-size: 12px;" %></h5>
+                      <% else %>
+                          <h5><%= button_to "Follow", follow_user_path, method: "POST", 
+                              class: "btn btn-sm rounded-pill text-white", style: "font-size: 12px;"  %></h5>
+                      <% end%>
+                  </section>
+
                     <div class="user_pro_status">
                       <ul class="flw-status">
                         <li>
-                          <span style="font-size: 14px;">followers</span>
-                          <%= @user.total_following %>
+                          <span style="font-size: 14px;">
+                            <%= link_to 'Followers', followers_user_path(@user) %>
+                          </span>
+                            <%= @user.total_following %>
                         </li>
                         <li>
-                          <span style="font-size: 14px;">following</span>
-                          <%= @user.total_followers %>
+                          <span style="font-size: 14px;">
+                            <%= link_to 'Following', followings_user_path(@user) %>
+                          </span>
+                            <%= @user.total_followers %>
                         </li>
                       </ul>
                       
-                      <div style="font-size: 12px;"><i class="fas fa-map-marker-alt"></i> <%= @user.country %></div>
+                      <div style="font-size: 12px;">
+                        <i class="fas fa-map-marker-alt"></i> 
+                          <%= @user.country %>
+                      </div>
                       
-                      <div style="font-size: 12px;"><i class="fas fa-phone"></i>  <%= tel_to @user.phone if @user.phone.present? %></div>
-                      
-                      <div style="font-size: 12px;"><i class="fas fa-globe"></i>  <%= link_to @user.website if @user.website.present? %></div>
-                        <div class="social-links mt-2">
-                          <a href="#"><i class="fab fa-twitter m-2"></i></a>
-                          <a href="#"><i class="fab fa-facebook m-2"></i></a>
-                          <a href="#"><i class="fab fa-instagram m-2"></i></a>
-                          <a href="#"><i class="fab fa-linkedin m-2"></i></a>
+                      <div style="font-size: 12px;">
+                        <i class="fas fa-phone"></i>  
+                          <%= tel_to @user.phone if @user.phone.present? %>
                         </div>
-                      </div><!--user_pro_status end-->
-                    </div><!--user_profile end-->          
+                      
+                      <div style="font-size: 12px;">
+                        <i class="fas fa-globe"></i>  
+                          <%= link_to @user.website, url_for(@user.website) if @user.website.present? %>
+                      </div>
+                      <div class="social-links mt-2">
+                        <a href="#"><i class="fab fa-twitter m-2"></i></a>
+                        <a href="#"><i class="fab fa-facebook m-2"></i></a>
+                        <a href="#"><i class="fab fa-instagram m-2"></i></a>
+                        <a href="#"><i class="fab fa-linkedin m-2"></i></a>
+                      </div>
+                    </div><!--user_pro_status end-->
+                  </div><!--user_profile end-->          
                 </div>
               </div>
               

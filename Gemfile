@@ -41,6 +41,8 @@ gem 'local_time', '~> 2.1'
 
 gem 'tel_to_helper'
 
+gem 'mail_form'
+
 gem 'tinymce-rails'
 
 gem 'faker'

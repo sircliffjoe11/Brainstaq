@@ -63,30 +63,38 @@
               
               <h4>Leave a Message</h4>
               <p>If you've got any question, complain or you want to suggest a feature that 
-                you would like to be implemented, drop us a message using the form below.</p>
-              <form action="" method="post" role="form" class="contactForm">
+                you would like to be implemented, drop us a message using the form below.
+              </p>
+              <%= form_for :contact, url: contact_index_path do |f| %>
                 <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                  <div class="validation"></div>
+                  <%= f.text_field  :name, required: true, class: "form-control", placeholder: "Your Name" %>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validation"></div>
+                  <%= f.text_field :email, required: true, class: "form-control", placeholder: "Your E-mail Address" %>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                  <div class="validation"></div>
+                  <%= f.text_field :subject, required: true, class: "form-control", placeholder: "Subject" %>
                 </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                  <div class="validation"></div>
+                <div class="form-group mb-3">
+                  <%= f.text_area :message,
+                    rows: 8,
+                    cols: 40,
+                    required: true,
+                    class: "form-control",
+                    placeholder: "Your Message"%>
+                </div>
+
+                <div>
+                  <%= f.hidden_field :nickname %>
                 </div>
 
                 <div id="sendmessage">Your message has been sent. Thank you!</div>
                 <div id="errormessage"></div>
-
-                <div class="text-center rounded-pill"><button class="rounded-pill" type="submit" title="Send Message">Send Message</button></div>
-              </form>
+                
+                <div class="text-center">
+                  <%= f.submit 'Send Message', class: 'btn btn-primary text-white rounded-pill' %>
+                </div>  
+              <% end %>
             </div>
           </div>
         </div>

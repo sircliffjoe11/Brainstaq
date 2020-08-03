@@ -3,3 +3,4 @@ class RemoveForeignKey < ActiveRecord::Migration[6.0]
     remove_foreign_key :comments, :ideas
   end
 end
+ 

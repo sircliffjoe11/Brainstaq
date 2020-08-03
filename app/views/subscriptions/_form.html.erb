@@ -1,15 +1,46 @@
 <%= form_with model: current_user, local: true, url: subscription_url, method: :post, html: { id: "payment-form", class: "stripe-form" }  do |form| %>
   <div class="col-lg-12">
-    <h4 class="text-center">Credit or Debit card</h4>
+    <h6 class="text-center">Credit or Debit card</h6>
 
     <div id="card-element">
       <!-- A Stripe Element will be inserted here. -->
+      <form>
+        <script src="https://js.paystack.co/v1/inline.js"></script>
+        <!-- <button type="button" onclick="payWithPaystack()"> Pay </button>  -->
+      </form>
     </div>
 
     <!-- Used to display Element errors. -->
     <div id="card-errors" role="alert"></div>
       <input type="hidden" name="plan" value="<%= params[:plan] %>">
       <input type="hidden" name="idea" value="<%= params[:idea] %>">
-    <button class="btn btn1 btn-block text-white">Donate <%= number_to_currency(params[:amount], :unit => "N") %> to <em><%= idea.title %> campaign</em></button>
+    <!-- <button class="btn btn1 btn-block text-white">Donate <%= number_to_currency(params[:amount], :unit => "N") %> to <em><%= idea.title %> campaign</em></button> -->
+    <button class="btn btn-primary rounded-pill text-white" type="button" onclick="payWithPaystack()"> Donate <%= number_to_currency(params[:amount], :unit => "N") %> to <em><%= idea.title %> campaign</em> </button>
   </div>
+  <script>
+    function payWithPaystack(){
+      var handler = PaystackPop.setup({
+        key: 'pk_test_dbc69abc1c9ab93762b8fa610c3628dda0231e3c',
+        email: 'brainstaq@gmail.com',
+        amount: 10000,
+        ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+        metadata: {
+           custom_fields: [
+              {
+                  display_name: "Mobile Number",
+                  variable_name: "mobile_number",
+                  value: "+2348068363644"
+              }
+           ]
+        },
+        callback: function(response){
+            alert('success. transaction ref is ' + response.reference);
+        },
+        onClose: function(){
+            alert('window closed');
+        }
+      });
+      handler.openIframe();
+    }
+  </script>
 <% end %>

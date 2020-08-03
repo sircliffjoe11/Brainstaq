@@ -2,7 +2,7 @@
   <div class="suggestions full-width">
     
     <div class="sd-title">
-      <h6 style="font-weight: bold; text-align: center;">Follow creative minds</h6>
+      <h6 style="font-weight: bold; text-align: center;">Follow Creative Minds</h6>
     </div><!--sd-title end-->
     
     <% @follower_suggestions.each do |user| %>
@@ -19,26 +19,27 @@
           <h4><%= link_to user.full_name, profile_path(user.username), class: 'text-dark' %></h4>
           <span style="font-size: 10px; font-weight: bold;" class= "text-dark"><%= user.country %></span>
           <% if user.created_at > 2.days.ago %>
-          <p style="font-size: 10px;">new to Brainstaq</p>
+            <p style="font-size: 10px;">New to Brainstaq</p>
           <% else %>
-          <p style="font-size: 10px;">followed by <%= pluralize(user.total_following, " User") %></p>
+            <p style="font-size: 10px;">Followed by <%= pluralize(user.total_following, "user") %></p>
           <% end %>
-        </div>
-        
+        </div> 
         <span>
-          <%= form_tag follow_user_path, method: :post, class: "float-right" do %>
-            <%= hidden_field_tag :follow_id, user.id %>
-            <%= submit_tag "follow", class: "btn btn-sm rounded-pill text-white", style: "font-size: 12px;" %>
-        <% end %>
+          <%#= link_to "View", profile_path(user.username), class: "btn btn-sm rounded-pill text-white", style: "font-size: 12px;" %>
         </span>
+        
       
       </div>
+      
     </div>
+    
     <% end %>
 <!--     
       <div class="view-more mb-4 mt-3">
         <a href="#" title="">View More</a>
       </div> -->
     </div><!--suggestions-list end-->
+    
+  
   </div><!--suggestions end-->						  
 </div><!--main-left-sidebar end-->

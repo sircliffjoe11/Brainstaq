@@ -13,6 +13,19 @@ class RegistrationsController < Devise::RegistrationsController
       def after_update_path_for(resource)
         profile_path(current_user.username)
       end
+
+      # def destroy
+      #   current_user.delete(params[:user])
+      #   redirect_to root_path
+      # end
+
+      # def destroy
+      #   resource.delete
+      #   Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+      #   set_flash_message :notice, :destroyed
+      #   yield resource if block_given?
+      #   respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
+      # end
   end 
 
   

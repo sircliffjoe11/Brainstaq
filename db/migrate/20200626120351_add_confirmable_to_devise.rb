@@ -18,3 +18,4 @@ class AddConfirmableToDevise < ActiveRecord::Migration[6.0]
     # remove_columns :users, :unconfirmed_email # Only if using reconfirmable
   end
 end
+

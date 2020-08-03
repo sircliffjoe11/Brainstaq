@@ -157,7 +157,7 @@
       </ul>
     </div><!--save-stngs end-->
     <% end %>
-    <div class="acc-setting">
+    <div class="acc-setting mb-5">
       <h3>Delete Account</h3>
         <p class="ml-4 mb-0">We are not happy to see you go. <br>Deleting your account 
           would delete all of your conversations and also remove you of Brainstaq's mailing list 
@@ -165,7 +165,7 @@
                   
         <div class="save-stngs">
           <ul>
-            <li><%= button_to "Delete account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn1 rounded-pill text-white" %></li>
+            <li><%= link_to "Delete account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn1 rounded-pill text-white" %></li>
           </ul>
         </div><!--save-stngs end-->
       </div><!--acc-setting end-->

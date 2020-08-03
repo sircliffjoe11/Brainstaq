@@ -8,14 +8,16 @@
         <div class="col-md-6 intro-info order-md-first order-last">
           <h2 style="margin-top: 100px;">Share, validate<br>and market your ideas with <span> Brainstaq!</span></h2>
           <div>
-      			<%= link_to 'Explore Brainstaq', ideas_path, class: "btn-get-started scrollto" %>
+      			<%= link_to 'Explore Brainstaq', ideas_path, class: "btn-get-started" %>
           </div>
         </div>
         <div class="col-lg-4 ml-auto form-box" data-aos="fade-up" data-aos-delay="500" style="margin-top: 120px; margin-bottom: 50px;">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <small><%= render "devise/shared/error_messages", resource: resource %></small>
           
-          <h5 class="text-center" style="font-size: 16px;">Discover Disruptive Ideas<br><span class="text-black" style="font-weight: bold; font-size: 22px;" > Join Now!</span></h5>
+          <h5 class="text-center" style="font-size: 16px;">Discover Disruptive Ideas<br>
+            <span class="text-black" style="font-weight: bold; font-size: 22px;" > Join Now!</span>
+          </h5>
           <div class="form-group">
             <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
           </div>
@@ -48,7 +50,7 @@
           ['Egypt'],
           ['Equatorial Guinea'],
           ['Eritrea'],
-          ['Eswatini (formerly Swaziland)'],
+          ['Eswatini'],
           ['Ethiopia'],
           ['Gabon'],
           ['Gambia'],
@@ -84,7 +86,7 @@
           ['Uganda'],
           ['Zambia'],
           ['Zimbabwe']
-          ]), {}, :class => 'form-control', :prompt => 'Select Country' %>
+          ]), {}, :class => 'form-control' %>
         </div>
 
         <div class="form-group">
@@ -121,11 +123,13 @@
       <div class="container-fluid">  
         <header class="section-header mt-5">
           <h3>Trending<span class="text-primary"> Ideas</span></h3>
-          <p style="font-size: 18px;">We celebrate innovative ideas and projects with the potential to disrupt ecosystems in Africa.</p>
+          <p style="font-size: 18px;">We celebrate innovative ideas and projects with the 
+            potential to disrupt ecosystems in Africa
+          </p>
         </header>
       </div>
       
-      <div class="site-section ideas-entry-wrap mb-0" style="margin-top: 0px;">
+      <div class="site-section ideas-entry-wrap mb-0">
         <div class="container">
           
           <%= render partial: "layouts/ideas", locals: { ideas: @ideas} %>
@@ -133,10 +137,10 @@
           <div class="row justify-content-center mt-5">
             <div class="col-7 text-center"> 
               <% if @page > 0 %>
-              <%= link_to 'Prev', root_path(page: @page - 1), class: "btn btn1 rounded-pill text-white mr-1" %>
+                <%= link_to 'Prev', root_path(page: @page - 1), class: "btn btn1 rounded-pill text-white mr-1" %>
               <% end %>
-              <% if @ideas.count >= 3 %>
-              <%= link_to 'Next', root_path(page: @page + 1), class: "btn btn1 rounded-pill text-white ml-1" %>
+                <% if @ideas.count >= 3 %>
+                <%= link_to 'Next', root_path(page: @page + 1), class: "btn btn1 rounded-pill text-white ml-1" %>
               <% end %>
             </div>
           </div>
@@ -188,7 +192,9 @@
       <div class="container-fluid">
         <header class="section-header mt-5">
           <h3>Brainstaq in<span class="text-primary"> Numbers</span></h3>
-          <p style="font-size: 18px;">With a daily increase in ideas shared, Brainstaq sets the pace in empowering innovation and creativity in Africa. </p>
+          <p style="font-size: 18px;">With a daily increase in ideas shared, Brainstaq sets 
+            the pace in empowering innovation and creativity in Africa 
+          </p>
         </header>
       </div>
       <div class="container mt-3">
@@ -196,22 +202,22 @@
 
           <div class="col-lg-3 col-6 text-center">
             <span data-toggle="counter-up"><%= Idea.count %></span>
-            <p style="font-size: 22px; font-weight: bold;">Ideas Shared</p>
+            <p style="font-size: 22px;">Ideas Shared</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
             <span data-toggle="counter-up"><%= User.count %></span>
-            <p style="font-size: 22px; font-weight: bold;">Brainers</p>
+            <p style="font-size: 22px;">Brainers</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
             <span data-toggle="counter-up"><%=Idea.active.count %></span>
-            <p style="font-size: 22px; font-weight: bold;">Campaigns</p>
+            <p style="font-size: 22px;">Campaigns</p>
           </div>
   
           <div class="col-lg-3 col-6 text-center">
             <span data-toggle="counter-up">0</span>
-            <p style="font-size: 22px; font-weight: bold;">Projects Funded</p>
+            <p style="font-size: 22px;">Projects Funded</p>
           </div>
         </div>
       </div>
@@ -249,21 +255,21 @@
           </div>
           <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
             <h4>Are you an entrepreneur?<br>
-            Here's how you can make the most out of Brainstaq...</h4>
+              Seize the opportunities Brainstaq present!</h4>
             <p>
-              Users can create an account as Brainers, and can share ideas, create teams, 
-              projects and crowdfunding campaigns. Investors could be Brainers whose primary 
-              objective is supporting innovative ideas and projects financially.
+              Without adequate finances and funding, most of the ideas that can 
+              change the African narrative are rarely able to break out from 
+              being just an idea, let alone grow into a tangible business.
             </p>
             <p>
-              Users can post ideas, creations or insights in text, image or video formats, 
-              and can even add a location to their posts. These ideas are validated by the 
-              community either by voting up/down, liking, adding comments or sharing with others.
+              Share your ideas, creations or insights with the public, get adequate exposure 
+              and positive validations, get collaborators and raise the required funds to 
+              make that idea a reality.
             </p>
             <p>
-              Positive validations increases an idea’s ‘Relevance Bar’. 
-              Ideas with more than 75% relevance will be featured as ‘Trending Ideas’ and be open for funding. 
-              Those with less than 10% relevance for 4 consecutive weeks will be deleted from our database.
+              Don’t watch that idea, project, or business disappear due to lack of funds. 
+              Brainstaq will help you develop that business idea and build the resilience 
+              needed to sustain your business over a period of time.
             </p>
           </div>
         </div>
@@ -274,20 +280,21 @@
           </div>
 
           <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
-            <h4>It goes beyond just sharing of ideas. Brainstaq breeds teamwork and collaboration. And helps you raise that funding you need.</h4>
+            <h4>It goes beyond sharing of ideas.<br>
+              Brainstaq empowers disruptive African ideas!
+            </h4>
             <p>
-              The User can build a team around an idea by inviting others to join in enhancing the idea, 
-              allowing for team work and collaboration. An idea automatically becomes a project when it 
-              has a team working on it.
+              We are on a mission to help empower creative and innovative 
+              ideas and encourage development among African startups and small businesses.
             </p>
             <p>
-              When the relevance bar of an idea-turned-project gets to 100%, 
-              there is an option for the Brainer (and his team) to create a crowdfunding campaign 
-              for the project, where the Brainer and his team can ask for, and receive donations 
-              from the crowd in a 30-day period.
+              We believe every African entrepreneur should have the tools to create the 
+              solutions of tomorrow. And Brainstaq is dedicated to make this happen! 
             </p>
             <p>
-              Terms and conditions apply – Brainstaq collects a small percentage of the total donation received by a project. The crowd here refers to the general public, family members, friends, and those within the Brainer’s circle of influence.
+              With our user-friendly, ideas-sharing and crowdfunding platform, 
+              African entrepreneurs can start, nurture and grow their desired businesses 
+              sustainably. 
             </p>
           </div>
           
@@ -303,7 +310,9 @@
       <div class="container">
         <header class="section-header">
           <h3>Frequently Asked<span class="text-primary"> Questions</span></h3>
-          <p style="font-size: 18px;">Still having uncertainties? Find simple answers to those questions that no one asks</p>
+          <p style="font-size: 18px;">Still having uncertainties? Find simple answers to those 
+            questions that no one asks
+          </p>
         </header>
         <br>
         <br>

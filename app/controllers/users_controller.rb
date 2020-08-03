@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_user, only: [:profile, :index]
+    before_action :set_user, only: [:profile, :index, :delete]
     impressionist actions: [:show], unique: [:impressionable_type, :impressionable_id, :session_hash]
 
 
@@ -9,22 +9,34 @@ class UsersController < ApplicationController
       @users = User.find_by_username params[:username]
       @user = User.all
 
-      following_ids = Follower.where(follower_id: current_user.id).map(&:following_id)
+      following_ids = Follow.where(follower_id: current_user.id).map(&:followee_id)
       following_ids << current_user.id
 
       @follower_suggestions = User.where.not(id: following_ids).take(10)
     end
     
 
-    def follow_user
-      follower_id = params[:follow_id]
-      if Follower.create!(follower_id: current_user.id, following_id: follower_id)
-        flash[:success] = "Now following user"
-      else
-        flash[:danger] = "Unable to add follower"
-      end
+    # def follow_user
+    #   follower_id = params[:follow_id]
+    #   if Follower.create!(follower_id: current_user.id, following_id: follower_id)
+    #     flash[:success] = "Now following user"
+    #   else
+    #     flash[:danger] = "Unable to add follower"
+    #   end
 
-      redirect_to dashboard_path
+    #   redirect_to dashboard_path
+    # end
+
+    def follow
+      @user = User.find_by_username params[:username]
+      current_user.followees << @user
+      redirect_back(fallback_location: profile_path(@user))
+    end
+    
+    def unfollow
+      @user = User.find_by_username params[:username]
+      current_user.followed_users.find_by(followee_id: @user.id).destroy
+      redirect_back(fallback_location: profile_path(@user))
     end
 
     def create
@@ -60,7 +72,6 @@ class UsersController < ApplicationController
     #   @ideas = Idea.all.order(created_at: :desc)
     #   @comment = Comment.new
     #   @user = User.find(params[:id])
-      
     # end
 
     def set_user
