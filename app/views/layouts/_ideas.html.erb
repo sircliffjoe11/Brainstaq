@@ -17,8 +17,10 @@
                           <% end %>
                         </span>
                         <div class="meta"><span class="fas fa-map-marker-alt mr-2 ml-0"></span><%= idea.user.country %></div>
-                          <h3 class="mb-2"><%= link_to idea.title, idea, class: 'text-dark', style: "font-weight: bold;" %></h1>
-                          
+                          <h3 class="mb-1"><%= link_to idea.title, idea, class: 'text-dark', style: "font-weight: bold;" %></h1>
+                            <h6 style="font-size: 12px;">
+                              Created by <%= link_to (idea.user.full_name), profile_path(idea.user.username, @user) %>
+                            </h6>
                             <div class="progress mt-0" style="height: 10px; width: 100%;">
                               <div class="progress-bar" role="progressbar" style="width: <%= "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}%" %>" aria-valuenow="<%= idea.impressions.size %>" 
                                 aria-valuemin="0" aria-valuemax="100">

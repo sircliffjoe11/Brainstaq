@@ -1,6 +1,7 @@
 class Idea < ApplicationRecord 
   validates :title, :description, :overview, :impact, :donation_goal, :category, :image, presence: true
-    
+  after_validation :set_slug, only: [:create, :update]
+  
   mount_uploader :image, ImageUploader
     
   belongs_to :user
@@ -19,6 +20,10 @@ class Idea < ApplicationRecord
 
   scope :active, ->{ where(status: "active") }
   scope :inactive, ->{ where(status: "inactive") }
+
+  def to_param
+    "#{id}-#{slug}"
+  end
 
   def impressionist_count
     impressions.size
@@ -42,4 +47,10 @@ class Idea < ApplicationRecord
 
   # extend FriendlyId
   # friendly_id :user_id, use: :slugged
+end
+
+private
+
+def set_slug
+  self.slug = title.to_s.parameterize
 end
