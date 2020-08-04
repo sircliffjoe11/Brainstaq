@@ -150,24 +150,26 @@
                               </div>
                             </div>
                             
-                            <div class="dropdown ml-1 float-right" style="font-size: 20px;">
-                              <a class="dropdown-toggle fas fa-ellipsis-v" href="#" role="button" id="dropdownMenuLink" 
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              </a>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="font-size: 12px;">
-                                <% if user_signed_in? && current_user.id == idea.user_id %>
+                            <% if user_signed_in? && current_user.id == idea.user_id %>
+                              <div class="dropdown ml-1 float-right" style="font-size: 20px;">
+                                <a class="dropdown-toggle fas fa-ellipsis-v" href="#" role="button" id="dropdownMenuLink" 
+                                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="font-size: 12px;">
+                                
                                   <%= link_to "Edit Idea", edit_idea_path(idea), class: "dropdown-item" %>
                                   <%= link_to "Delete", idea, :method => 'delete', data: { confirm: 'Are you sure?' }, class: "dropdown-item" %>
-                                <% end %>
                                 
-                                <% if user_signed_in? && current_user.id != idea.user_id %>
-                                  <% if "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i > 75 %>
-                                    <%= link_to "Support this Project", "#", class: "dropdown-item" %>
-                                  <% end %>
-                                <% end %>  
-                                <%= link_to "Share", "#", class: "dropdown-item" %>
+                                
+                                  <%# if user_signed_in? && current_user.id != idea.user_id %>
+                                    <%# if "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i > 75 %>
+                                      <%#= link_to "Support this Project", "#", class: "dropdown-item" %>
+                                    <%# end %>
+                                  <%# end %>  
+                                    <%#= link_to "Share", "#", class: "dropdown-item" %>
+                                </div>
                               </div>
-                            </div>
+                            <% end %>
                           </div>
                             <div class="epi-sec">
                               <ul class="descp" style="font-size: 12px;">

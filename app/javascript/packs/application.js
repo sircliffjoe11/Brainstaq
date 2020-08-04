@@ -29,7 +29,6 @@ require("bootstrap")
 
 import "controllers"
 
-
 // require("../includes/vote.js")
 
 //= require activestorage
@@ -39,6 +38,7 @@ import "controllers"
 //= require tinymce
 
 //= require social-share-button
+
 
 
 // jquery

@@ -14,11 +14,14 @@
       
       <% if user_signed_in? %>
         <% if current_user.id == @idea.user_id %>
-          <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2", style: "font-size: 28px;"), idea_path(@idea), method: :delete, data: { confirm: 'Are you sure?' } %>
-          <%= link_to fa_icon("edit", title: "Edit Idea", class: "text-primary mr-2", style: "font-size: 28px;"), edit_idea_path(@idea) %>
-          <%= link_to fa_icon("share-alt", title: "Share", class: "text-primary mr-2", style: "font-size: 28px;")%>
+          <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2 mb-2", style: "font-size: 20px;"), idea_path(@idea), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to fa_icon("edit", title: "Edit Idea", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), edit_idea_path(@idea) %>
+          
+          <%= social_share_button_tag('Share to Facebook', :url => idea_path(@idea), desc: @idea.title, :allow_sites => %w(facebook)) %>  
+          <%#= link_to fa_icon("share-alt", title: "Share", class: "text-primary mr-2", style: "font-size: 28px;")%>
         <% else %>
-          <%= link_to fa_icon("share-alt", title: "Share", class: "text-primary mr-2", style: "font-size: 28px;")%>  
+        <%= social_share_button_tag('Share to Facebook', :url => idea_path(@idea), desc: @idea.title, :allow_sites => %w(facebook)) %>
+          <%#= link_to fa_icon("share-alt", title: "Share", class: "text-primary mr-2", style: "font-size: 28px;")%>  
         <% end %>    
         <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 1 %>
           <div class="mt-3" style="margin-bottom: -30px;">
@@ -38,7 +41,8 @@
         </div>  
         <% end %>
       <% else %>
-        <%= link_to fa_icon("share-alt", title: "Share", class: "text-primary mr-2", style: "font-size: 28px;")%>
+      <%= social_share_button_tag('Share to Facebook', :url => idea_path(@idea), desc: @idea.title, :allow_sites => %w(facebook)) %>
+        <%#= link_to fa_icon("share-alt", title: "Share", class: "text-primary mr-2", style: "font-size: 28px;")%>
         <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 1 %>
           <div class="mt-3" style="margin-bottom: -30px;">
             <p class="text-success mb-5" style="font-weight: bold;">Active Campaign <br>
@@ -83,13 +87,13 @@
         Comments
       </a>
 
-      <% if user_signed_in? %>
+      <%# if user_signed_in? %>
         <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 1 %>
           <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseUpdates" role="button" aria-expanded="false" aria-controls="collapseUpdates" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
             Support this Idea
           </a>
         <% end %>
-      <% end %>
+      <%# end %>
     </p>
     
     <div class="collapse mb-3" id="collapseDetails">
@@ -137,15 +141,22 @@
                 <%= perk.description %>
               </div>
 
-              <% if user_signed_in? && perk.idea.user_id == current_user.id %>
-                <em class="block text-sm text-center" style="font-style: italic; font-weight: bold;" >Sorry, You can't support your own idea</em>
-              <%# else %>
-                <%# if purchased_perk(perk) %>
-                  <!-- <p class="text-sm">You're already subscribed to this perk. <%= link_to "Manage your subscriptions in your account settings", edit_user_registration_path, class: "text-blue-500 underline" %>.</p> -->
-                <% else %>
-                  <%= link_to "Support this idea with #{number_to_currency(perk.amount, :unit => "N")}",  new_subscription_path(amount: perk.amount, idea: @idea, 
-                      plan: "#{perk.title.parameterize}-perk_#{perk.id}"), class: "btn btn1 btn-block text-white" %>
-                <%# end %>
+              <% if !user_signed_in? %>
+              <h6 class="mt-1" style="font-size: 18px; font-style: italic;"> You must <strong>Login</strong> to support this idea. 
+                <%= link_to "Log In", new_user_session_path %> or 
+                <%= link_to "Create an Account", new_user_registration_path %> </h6>
+              <% else %>
+                <% if user_signed_in? && perk.idea.user_id == current_user.id %>
+                  <em class="block text-sm text-center" style="font-style: italic; font-weight: bold;" >Sorry, You can't support your own idea</em>
+                <%# else %>
+                  <%# if purchased_perk(perk) %>
+                    <!-- <p class="text-sm">You're already subscribed to this perk. <%= link_to "Manage your subscriptions in your account settings", edit_user_registration_path, class: "text-blue-500 underline" %>.</p> -->
+                  <% else %>
+                    <%= link_to "Support this idea with #{number_to_currency(perk.amount, :unit => "N")}",  new_subscription_path(amount: perk.amount, idea: @idea, 
+                        plan: "#{perk.title.parameterize}-perk_#{perk.id}"), class: "btn btn1 btn-block text-white" %>
+                  <%# end %>
+                <% end %>
+              
               <% end %>
             </div>
             <hr>
@@ -163,8 +174,17 @@
     <div class="collapse mb-3" id="collapseComments">
       <div class="card card-body">
         <h5 style="font-weight: bold;">RECENT COMMENTS<span class="label label-info"> (<%= @idea.comments.size %>)</span></h5>  
-        <%= render partial: 'ideas/comment', collection: @idea.comments.reverse %>
-        <%= render partial: 'comments/form', :locals => { :comment => @comment } %>
+        <% if !user_signed_in? %>
+          <h6 class="mt-1" style="font-size: 18px; font-style: italic;"> 
+            You must <strong>Login</strong> to post a comment. 
+            <%= link_to "Log In", new_user_session_path %> or 
+            <%= link_to "Create an Account", new_user_registration_path %> </h6>
+        <% else %>
+          <% if user_signed_in? %>
+            <%= render partial: 'ideas/comment', collection: @idea.comments.reverse %>
+            <%= render partial: 'comments/form', :locals => { :comment => @comment } %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
