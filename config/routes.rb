@@ -56,9 +56,6 @@ Rails.application.routes.draw do
 
   get '/dashboard' => 'users#index'
 
-  # get 'ideas/:id/campaigns' => 'ideas#campaigns', :as => :idea_campaigns
-  
-
 
   resources :users, only: [:profile] do
     get :ideas

@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :ideas, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  has_many :conversations, foreign_key: :sender_id
+  has_many :conversations, foreign_key: :sender_id, dependent: :destroy
 
   # has_many :campaigns, dependent: :destroy
 

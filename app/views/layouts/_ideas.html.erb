@@ -1,5 +1,5 @@
 <% @ideas.in_groups_of(3) do |group| %>
-          <div class="site-section ideas-entry-wrap" style="margin-top: 0px; ">
+          <!-- <div> -->
             <div class="container">
               <div class="row">
                 <% group.compact.each do |idea| %>
@@ -62,5 +62,11 @@
                 <% end %>
               </div>
             </div>
-          </div>
+          <!-- </div> -->
         <% end %>
+
+        <style>
+        .container > .row {
+          clear: both;
+        }
+        </style>

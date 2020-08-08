@@ -31,23 +31,8 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id if current_user #assigns logged in user's ID to comment
     @comment.save!
 
-    redirect_to idea_path(@comment.idea)
+    redirect_to idea_path(@comment.idea), notice: "Your comment was successfully posted."
 
-    # @comment = Comment.new(comment_params)
-    # @comment.idea_id = params[:idea_id]
-
-    # comment = idea.comments.create(comment_params.merge(user_id: current_user.id))
-    # respond_with idea, comment
-
-    # respond_to do |format|
-    #   if @comment.save
-    #     format.html { redirect_to idea_path(@comment.idea) }
-    #     format.json { render :show, status: :created, location: @comment }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @comment.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # PATCH/PUT /comments/1

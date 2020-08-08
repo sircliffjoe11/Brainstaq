@@ -5,7 +5,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-     <%= tinymce_assets %>
+    <style type="text/css">
+      BODY {overflow-x: hidden}
+    </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <%= tinymce_assets %>
     <!-- <link href="../css/froala_style.min.css" rel="stylesheet" type="text/css" /> -->
     <script type="text/javascript" src="/assets/tinymce.js"></script>
     <!-- <script type="text/javascript" src = "../../assets/froala_editor.pkgd.min.js"></script>
@@ -21,9 +28,20 @@
   </head>
 
   <body>
-  <% if notice %>
-    <%= notice %>
-  <% end %>
+
+    <!-- <% flash.each do |type, message| %>
+      <% if type == "alert" %>
+        <div class="bg-red">
+          <div class="container px-2 py-4 mx-auto font-sans font-medium text-center text-dark"><%= message %></div>
+        </div>
+      <% end %>
+      <% if type == "notice" %>
+        <div class="bg-green">
+          <div class="container px-2 py-4 mx-auto font-sans font-medium text-center text-dark"><%= message %></div>
+        </div>
+      <% end %>
+    <% end %> -->
+
     <% if user_signed_in? %>
       <%= render partial: "layouts/user_header" %>
     <% else %>

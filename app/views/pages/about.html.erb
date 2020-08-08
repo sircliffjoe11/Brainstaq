@@ -5,20 +5,21 @@
   <div class="container-fluid mb-5" style="width: 1000px" class="mx-auto">
     <div id="about">
       <div class="row about-container">
-
         <div class="col-lg-6 content order-lg-1 order-2">
           <p>
-              We see initiatives, projects, and businesses starting up here and there, especially in Africa, only to disappear quickly due to lack of funds. Those that are resilient enough soon become difficult to sustain over a period of time. Without adequate finances and funding, most of the ideas that can change the African narrative are rarely able to break out from being just an idea, let alone grow into a tangible business.
+            We see initiatives, projects, and businesses starting up here and there, 
+            especially in Africa, only to disappear quickly due to lack of funds. 
+            Those that are resilient enough soon become difficult to sustain over a period of time. 
+            Without adequate finances and funding, most of the ideas that can change the 
+            African narrative are rarely able to break out from being just an idea, 
+            let alone grow into a tangible business.
           </p>
-
-            <p style="font-weight: bold; color: gray; font-size: 18px;">This is the problem which Brainstaq solves!</p>
-
+          <p style="font-weight: bold; color: gray; font-size: 18px;">This is the problem which Brainstaq solves!</p>
             <div class="icon-box wow fadeInUp">
               <div class="icon"><i class="fas fa-globe-africa"></i></div>
               <h4 class="title">Our Mission</h4>
               <p class="description">Brainstaq is on a mission to help empower creative and innovative ideas and encourage development among African startups and small businesses.</p>
             </div>
-
             <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
               <div class="icon"><i class="far fa-handshake fa-lg"></i></div>
               <h4 class="title">What We Are</h4>
@@ -28,7 +29,6 @@
                 engaging the power of the crowd.
               </p>
             </div>
-
             <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
               <div class="icon"><i class="fas fa-project-diagram fa-lg"></i></div>
               <h4 class="title">What We Do</h4>
@@ -38,17 +38,14 @@
                 full transparency.
               </p>
             </div>
-
           </div>
-
           <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
-            <%= image_tag 'banner.jpg', class: "img-fluid"%>
+            <%= image_tag 'about-1.jpg', class: "img-fluid ml-5 mt-5"%>
           </div>
         </div>
-
         <div class="row about-extra">
           <div class="col-lg-6 wow fadeInUp">
-            <%= image_tag 'eye.jpg', class: "img-fluid"%>
+            <%= image_tag 'join-the-movement.jpg', class: "img-fluid"%>
           </div>
           <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
             <h4>Join the Movement</h4>
@@ -67,22 +64,28 @@
 
         <div class="row about-extra">
           <div class="col-lg-6 wow fadeInUp order-1 order-lg-2">
-            <%= image_tag 'glass.jpg', class: "img-fluid"%>
+            <%= image_tag 'goals.jpg', class: "img-fluid", style: "margin-top: -35px;"%>
           </div>
 
           <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
             <h4>Our goals for the next 5 years are:</h4>
             <ul>
-                <li>Empower 10,000 innovative ideas and projects.</li>
-                <li>Encourage development in Africa, by creating a pool of solutions 
-                  needed to effect lasting changes.
-                </li>
-                <li>Help 200 Brainers get cofounders in Africa</li>
-                <li>Fund 100 projects</li>
+              <li><span>&#8212;</span> Empower 10,000 innovative ideas and projects</li>
+              <li><span>&#8212;</span> Encourage innovation and development in Africa</li>
+              <li><span>&#8212;</span> Help 200 Brainers get cofounders in Africa</li>
+              <li><span>&#8212;</span> Fund 1000 projects</li>
             </ul>
           </div>
         </div>
     </div>
-    <strong>Contact us:</strong> <%= mail_to 'info@brainstaq.com' %><br>
-    <strong>Support:</strong> <%= mail_to 'support@brainstaq.com' %><br>
+    <div style="margin-top: -75px">
+      <strong>Contact us:</strong> <%= mail_to 'info@brainstaq.com' %><br>
+      <strong>Support:</strong> <%= mail_to 'support@brainstaq.com' %><br>
+    </div>
 </div>
+
+<style>
+  .row {
+    clear: both;
+  }
+</style>

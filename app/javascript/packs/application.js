@@ -6,6 +6,7 @@
 
 //= require("jquery")
 //= require("jquery-ui/core")
+//= require abraham
 
 require("@rails/ujs").start()
 require("turbolinks").start()
@@ -70,10 +71,10 @@ $(window).scroll(function() {
   });
 
   // jQuery counterUp (used in Whu Us section)
-  $('[data-toggle="counter-up"]').counterUp({
-    delay: 10,
-    time: 1000
-  });
+  // $('[data-toggle="counter-up"]').counterUp({
+  //   delay: 10,
+  //   time: 1000
+  // });
   
 
 $(function(){

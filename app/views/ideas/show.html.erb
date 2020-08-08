@@ -72,7 +72,6 @@
   </div>
   
   <div class="col-lg-9">
-  <!-- /.row -->
   <hr class="w-100 mt-5">
     <p>
       <a class="btn mt-0 mr-1" data-toggle="collapse" href="#collapseDetails" role="button" aria-expanded="false" aria-controls="collapseDetails" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
@@ -84,7 +83,7 @@
       </a> -->
 
       <a class="btn ml-1" data-toggle="collapse" href="#collapseComments" role="button" aria-expanded="false" aria-controls="collapseComments" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;" >
-        Comments
+        Comments (<%= @idea.comments.size %>)
       </a>
 
       <%# if user_signed_in? %>
@@ -98,32 +97,40 @@
     
     <div class="collapse mb-3" id="collapseDetails">
       <div class="card card-body">
-        <h1 class="mt-4"><%= @idea.title %></h1>
-          <p class="lead">
+        <h1 class="mt-2 mb-2"><%= @idea.title %></h1>
+          <p class="lead mb-2">
             Created by <%= link_to (@idea.user.full_name), profile_path(@idea.user.username, @user) %>
           </p>
-          <hr>
-    
-          <p>Posted on <%= local_time(@idea.created_at) %></p>
+          <h6 class="mb-2">Posted on <%= local_time(@idea.created_at) %></h6>
           <hr>
     
           <%= image_tag @idea.image_url, class: "img-fluid rounded mb-3 mb-md-0", width:'100%' if @idea.image.present? %>
     
           <hr>
           <h4 class="mb-0" style="font-weight: bold;">DESCRIPTION</h4>
-          <p class="mt-0 mb-0"><%= sanitize @idea.description %></p>
+          <p class="mt-0 mb-0">
+            <%= sanitize @idea.description %>
+          </p>
           
           <h4 class="mb-0" style="font-weight: bold;">OVERVIEW</h4>
-          <p class="mt-0 mb-0"><%= sanitize @idea.overview %></p>
+          <p class="mt-0 mb-0">
+            <%= sanitize @idea.overview %>
+          </p>
 
           <h4 class="mb-0" style="font-weight: bold;">CHALLENGES</h4>
-          <p class="mt-0 mb-0"><%= sanitize @idea.challenges %></p>
+          <p class="mt-0 mb-0">
+            <%= sanitize @idea.challenges %>
+          </p>
 
           <h4 class="mb-0" style="font-weight: bold;">IMPACT</h4>
-          <p class="mt-0 mb-0"><%= sanitize @idea.impact %></p>
+          <p class="mt-0 mb-0">
+            <%= sanitize @idea.impact %>
+          </p>
 
           <h4 class="mb-0" style="font-weight: bold;">DONATION AMOUNT</h4>
-          <p class="mt-0 mb-0"><%= number_to_currency(@idea.donation_goal, :unit => "N") %></p>
+          <p class="mt-0 mb-0">
+            <%= number_to_currency(@idea.donation_goal, :unit => "N") %>
+          </p>
     
       </div>
     </div>
@@ -173,7 +180,7 @@
 
     <div class="collapse mb-3" id="collapseComments">
       <div class="card card-body">
-        <h5 style="font-weight: bold;">RECENT COMMENTS<span class="label label-info"> (<%= @idea.comments.size %>)</span></h5>  
+        <h5 style="font-weight: bold;">Recent Comments</h5>  
         <% if !user_signed_in? %>
           <h6 class="mt-1" style="font-size: 18px; font-style: italic;"> 
             You must <strong>Login</strong> to post a comment. 

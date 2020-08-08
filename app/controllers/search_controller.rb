@@ -1,6 +1,8 @@
 class SearchController < ApplicationController
   def index
-    if params[:query].start_with?('#')
+    if params[:query].blank?
+      redirect_to root_path, alert: "Empty field!"
+    elsif params[:query].start_with?('#')
       query  = params[:query].gsub('#', '')
       @ideas = Idea.joins(:idea).where(ideas: {title:    query})
     else

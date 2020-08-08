@@ -1,4 +1,4 @@
-<div class="main-left-sidebar no-margin"  style="width: 280px;">			
+<div class="main-left-sidebar no-margin" style="width: 280px;">			
   <div class="suggestions full-width">
     
     <div class="sd-title">
@@ -10,14 +10,14 @@
       <div class="suggestion-usd" style="margin-bottom: -55px;">
         
         <% if user.image.url %>
-          <%=image_tag (user.image_url), style: "width: 35px; height: 35px;", class: " rounded-circle" %>
+          <%=image_tag (user.image_url), style: "width: 35px; height: 35px;", class: "rounded-circle" %>
         <% else %>
           <%= image_tag 'avatar.png', style: "width: 35px; height: 35px;", class: "rounded-circle ml-1" %>
         <% end %>
 
         <div class="sgt-text">
-          <h4><%= link_to user.full_name, profile_path(user.username), class: 'text-dark' %></h4>
-          <span style="font-size: 10px; font-weight: bold;" class= "text-dark"><%= user.country %></span>
+          <h4><%= link_to user.full_name, profile_path(user.username), class: "text-dark" %></h4>
+          <span style="font-size: 10px;" class= "text-dark"><%= user.country %></span>
           <% if user.created_at > 2.days.ago %>
             <p style="font-size: 10px;">New to Brainstaq</p>
           <% else %>

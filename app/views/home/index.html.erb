@@ -1,23 +1,24 @@
-
 <!--==========================
     Intro Section
-  ============================-->
-  <section id="intro" class="clearfix">
-    <div class="container d-flex h-100">
-      <div class="row justify-content-center align-self-center">
-        <div class="col-md-6 intro-info order-md-first order-last">
-          <h2 style="margin-top: 180px;">Share, validate<br>and market your ideas with <span> Brainstaq!</span></h2>
-          <div>
-      			<%= link_to 'Explore Brainstaq', ideas_path, class: "btn-get-started" %>
-          </div>
+============================-->
+<section id="intro" class="clearfix">
+  <div class="container d-flex h-100">
+    <div class="row justify-content-center align-self-center">
+      <div class="col-md-6 intro-info order-md-first order-last">
+        <h2 style="margin-top: 160px;">Share, validate<br>and market your ideas with <span> Brainstaq!</span></h2>
+        <div>
+      		<%= link_to 'Explore Brainstaq', ideas_path, class: "btn-get-started" %>
         </div>
-        <div class="col-lg-4 ml-auto form-box" data-aos="fade-up" data-aos-delay="500" style="margin-top: 120px; margin-bottom: 50px;">
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      </div>
+      
+      <div class="col-lg-4 ml-auto form-box" data-aos="fade-up" data-aos-delay="500" style="margin-top: 120px; margin-bottom: 50px;">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <small><%= render "devise/shared/error_messages", resource: resource %></small>
           
           <h5 class="text-center" style="font-size: 16px;">Discover Disruptive Ideas<br>
             <span class="text-black" style="font-weight: bold; font-size: 22px;" > Join Now!</span>
           </h5>
+          
           <div class="form-group">
             <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
           </div>
@@ -26,371 +27,182 @@
             <%= f.text_field :first_name, class: "form-control", placeholder: "First Name" %>
           </div>
 
-        <div class="form-group">
-          <%= f.text_field :username, class: "form-control", placeholder: "Username" %>
-        </div>
+          <div class="form-group">
+            <%= f.text_field :username, class: "form-control", placeholder: "Username" %>
+          </div>
 
-        <div class="form-group">
-        <%= f.select :country, options_for_select([
-          # ['Algeria'],
-          # ['Angola'],
-          # ['Benin'],
-          # ['Botswana'],
-          # ['Burkina Faso'],
-          # ['Burundi'],
-          # ['Cape Verde'],
-          # ['Cameroon'],
-          # ['Central African Republic (CAR)'],
-          # ['Chad'],
-          # ['Comoros'],
-          # ['Republic of the Congo'],
-          # ['Democratic Republic of Congo'],
-          # ["Cote d'Ivoire"],
-          # ['Djibouti'],
-          # ['Egypt'],
-          # ['Equatorial Guinea'],
-          # ['Eritrea'],
-          # ['Eswatini'],
-          # ['Ethiopia'],
-          # ['Gabon'],
-          # ['Gambia'],
-          # ['Ghana'],
-          # ['Guinea'],
-          # ['Guinea-Bissau'],
-          # ['Kenya'],
-          # ['Lesotho'],
-          # ['Liberia'],
-          # ['Libya'],
-          # ['Madagascar'],
-          # ['Malawi'],
-          # ['Mali'],
-          # ['Mauritania'],
-          # ['Mauritius'],
-          # ['Morocco'],
-          # ['Mozambique'],
-          # ['Namibia'],
-          # ['Niger'],
-          ['Nigeria']
-          # ['Rwanda'],
-          # ['Sao Tome and Principe'],
-          # ['Senegal'],
-          # ['Seychelles'],
-          # ['Sierra Leone'],
-          # ['Somalia'],
-          # ['South Africa'],
-          # ['South Sudan'],
-          # ['Sudan'],
-          # ['Tanzania'],
-          # ['Togo'],
-          # ['Tunisia'],
-          # ['Uganda'],
-          # ['Zambia'],
-          # ['Zimbabwe']
-          ]), {}, :class => 'form-control' %>
-        </div>
+          <div class="form-group">
+            <%= f.select :country, options_for_select([
+            # ['Algeria'],
+            # ['Angola'],
+            # ['Benin'],
+            # ['Botswana'],
+            # ['Burkina Faso'],
+            # ['Burundi'],
+            # ['Cape Verde'],
+            # ['Cameroon'],
+            # ['Central African Republic (CAR)'],
+            # ['Chad'],
+            # ['Comoros'],
+            # ['Republic of the Congo'],
+            # ['Democratic Republic of Congo'],
+            # ["Cote d'Ivoire"],
+            # ['Djibouti'],
+            # ['Egypt'],
+            # ['Equatorial Guinea'],
+            # ['Eritrea'],
+            # ['Eswatini'],
+            # ['Ethiopia'],
+            # ['Gabon'],
+            # ['Gambia'],
+            # ['Ghana'],
+            # ['Guinea'],
+            # ['Guinea-Bissau'],
+            # ['Kenya'],
+            # ['Lesotho'],
+            # ['Liberia'],
+            # ['Libya'],
+            # ['Madagascar'],
+            # ['Malawi'],
+            # ['Mali'],
+            # ['Mauritania'],
+            # ['Mauritius'],
+            # ['Morocco'],
+            # ['Mozambique'],
+            # ['Namibia'],
+            # ['Niger'],
+            ['Nigeria']
+            # ['Rwanda'],
+            # ['Sao Tome and Principe'],
+            # ['Senegal'],
+            # ['Seychelles'],
+            # ['Sierra Leone'],
+            # ['Somalia'],
+            # ['South Africa'],
+            # ['South Sudan'],
+            # ['Sudan'],
+            # ['Tanzania'],
+            # ['Togo'],
+            # ['Tunisia'],
+            # ['Uganda'],
+            # ['Zambia'],
+            # ['Zimbabwe']
+            ]), {}, :class => 'form-control' %>
+          </div>
 
-        <div class="form-group">
-          <%= f.email_field :email, class: "form-control", placeholder: "Email Address" %>
-        </div>
+          <div class="form-group">
+            <%= f.email_field :email, class: "form-control", placeholder: "Email Address" %>
+          </div>
 
-        <div class="form-group">
-          <%= f.password_field :password, class: "form-control", placeholder: "Enter Password" %>
-        </div>
+          <div class="form-group">
+            <%= f.password_field :password, class: "form-control", placeholder: "Enter Password" %>
+          </div>
 
-        <div class="form-group mb-2">
-          <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Repeat Password" %>
-        </div>
-        <small>By signing up, you agree to Brainstaq's 
-          <%= link_to 'Terms of Service', 'pages/terms', class: 'para-font' %> and
-          <%= link_to 'Privacy Policy', 'pages/privacy', class: 'para-font' %> 
-        </small>
-        <div class="form-group"  style="margin-top: 10px; margin-bottom: 0px">
-          <%= f.submit "GET STARTED", class: "btn btn1 btn-block text-white" %>
-        </div>
-
+          <div class="form-group mb-2">
+            <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Repeat Password" %>
+          </div>
+          
+          <small>By signing up, you agree to Brainstaq's 
+            <%= link_to 'Terms of Service', 'pages/terms', class: 'para-font' %> and
+            <%= link_to 'Privacy Policy', 'pages/privacy', class: 'para-font' %> 
+          </small>
+          
+          <div class="form-group"  style="margin-top: 10px; margin-bottom: 0px">
+            <%= f.submit "GET STARTED", class: "btn btn1 btn-block text-white" %>
+          </div>
         <% end %>
-        </div><!-- col end-->
-      </div><!-- row end-->
-    </div><!-- container end-->
-  </section><!-- #intro -->
+      </div><!-- col end-->
+    </div><!-- row end-->
+  </div><!-- container end-->
+</section><!-- #intro -->
 
-
-    <!--==========================
-    Trending Ideas Section
-  ============================-->
-  <main id="main">
-    <section id="why-us" class="mb-0">
-      <div class="container-fluid">  
-        <header class="section-header mt-3">
-          <h3>Trending<span class="text-primary"> Ideas</span></h3>
-          <p style="font-size: 18px;">We celebrate innovative ideas and projects with the 
-            potential to disrupt ecosystems in Africa
-          </p>
-        </header>
-      </div>
-      
-      <div class="site-section ideas-entry-wrap mb-0">
-        <div class="container">
-          
-          <%= render partial: "layouts/ideas", locals: { ideas: @ideas} %>
-
-          <div class="row justify-content-center mt-5">
-            <div class="col-7 text-center"> 
-              <% if @page > 0 %>
-                <%= link_to 'Prev', root_path(page: @page - 1), class: "btn btn1 rounded-pill text-white mr-1" %>
-              <% end %>
-                <% if @ideas.count >= 3 %>
-                <%= link_to 'Next', root_path(page: @page + 1), class: "btn btn1 rounded-pill text-white ml-1" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    <!-- </div>
+<!--==========================
+  Trending Ideas Section
+============================-->
+<main id="main">
+  <section id="why-us" class="mb-0">
+    <div class="container-fluid">  
+      <header class="section-header mt-3">
+        <h3>Trending<span class="text-primary"> Ideas</span></h3>
+        <p style="font-size: 18px;">We celebrate innovative ideas and projects with the 
+          potential to disrupt ecosystems in Africa
+        </p>
+      </header>
     </div>
-    </div> -->
-  </section>
-
-   <!--==========================
-    Popular Campaigns Section
-  ============================-->
-  
-    <%# <section id="why-us" class="mb-0">
-      <div class="container-fluid">  
-        <header class="section-header mt-5">
-          <h3>Popular<span class="text-primary"> Campaigns</span></h3>
-          <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus.</p>
-        </header>
-      </div>
-      
-      <div class="site-section ideas-entry-wrap mb-0" style="margin-top: 0px;">
-        <div class="container"> %>
-          
-          <%#= render partial: "layouts/campaigns", locals: { ideas: @ideas} %>
-
-          <%# <div class="row justify-content-center mt-5">
-            <div class="col-7 text-center">  %>
-              <%# if @page > 0 %>
-                <%#= link_to 'Prev', root_path(page: @page - 1), class: "btn btn1 rounded-pill text-white mr-1" %>
-              <%# end %>
-              <%# if @ideas.count >= 3 %>
-                <%#= link_to 'Next', root_path(page: @page + 1), class: "btn btn1 rounded-pill text-white ml-1" %>
-              <%# end %>
-            <%# </div>
-          </div>
-        </div>
-      </div> %>
-    <!-- </div>
-    </div>
-    </div> -->
-    </section>
-
-    <!--=========================
-         Counter Section
-    ============================-->
-    <section id="why-us" class="wow fadeIn bg-light">
-      <div class="container-fluid">
-        <header class="section-header mt-5">
-          <h3>Brainstaq in<span class="text-primary"> Numbers</span></h3>
-          <p style="font-size: 18px;">With a daily increase in ideas shared, Brainstaq sets 
-            the pace in empowering innovation and creativity in Africa 
-          </p>
-        </header>
-      </div>
-      <div class="container mt-3">
-        <div class="row counters">
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up"><%= Idea.count %></span>
-            <p style="font-size: 22px;">Ideas Shared</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up"><%= User.count %></span>
-            <p style="font-size: 22px;">Brainers</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up"><%=Idea.active.count %></span>
-            <p style="font-size: 22px;">Campaigns</p>
-          </div>
-  
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">0</span>
-            <p style="font-size: 22px;">Projects Funded</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!--==========================
-      Call To Action Section
-    ============================-->
-    <section id="call-to-action" class="wow fadeInUp">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-9 text-center text-lg-left">
-            <h3 class="cta-title">Join the Movement</h3>
-            <p class="cta-text" style="font-size: 18px;">
-              Share, validate and market your ideas 
-              and projects, and attract cofounders and investors
-            </p>
-          </div>
-          <div class="col-lg-3 cta-btn-container text-center">
-            <%= link_to 'Discover Innovative Ideas', ideas_path, class: 'btn rounded-pill', style: "color: #000; background-color: #fff !important;" %>
-          </div>
-        </div>
-      </div>
-    </section><!-- #call-to-action -->
-
-    <!--==========================
-      Features Section
-    ============================-->
-    <section id="features">
-      <div class="container">
-        <div class="row feature-item">
-          <div class="col-lg-6 wow fadeInUp">
-            <%= image_tag 'features-1.svg', class: "img-fluid" %>
-          </div>
-          <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
-            <h4>Are you an entrepreneur?<br>
-              Seize the opportunities Brainstaq present!</h4>
-            <p>
-              Without adequate finances and funding, most of the ideas that can 
-              change the African narrative are rarely able to break out from 
-              being just an idea, let alone grow into a tangible business.
-            </p>
-            <p>
-              Share your ideas, creations or insights with the public, get adequate exposure 
-              and positive validations, get collaborators and raise the required funds to 
-              make that idea a reality.
-            </p>
-            <p>
-              Don’t watch that idea, project, or business disappear due to lack of funds. 
-              Brainstaq will help you develop that business idea and build the resilience 
-              needed to sustain your business over a period of time.
-            </p>
-          </div>
-        </div>
-
-        <div class="row feature-item mt-5 pt-5">
-          <div class="col-lg-6 wow fadeInUp order-1 order-lg-2">
-            <%= image_tag 'features-2.svg', class: "img-fluid" %>
-          </div>
-
-          <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
-            <h4>It goes beyond sharing of ideas.<br>
-              Brainstaq empowers disruptive African ideas!
-            </h4>
-            <p>
-              We are on a mission to help empower creative and innovative 
-              ideas and encourage development among African startups and small businesses.
-            </p>
-            <p>
-              We believe every African entrepreneur should have the tools to create the 
-              solutions of tomorrow. And Brainstaq is dedicated to make this happen! 
-            </p>
-            <p>
-              With our user-friendly, ideas-sharing and crowdfunding platform, 
-              African entrepreneurs can start, nurture and grow their desired businesses 
-              sustainably. 
-            </p>
-          </div>
-          
-        </div>
-      </div>
-    </section><!-- #about -->
-
     
-    <!--==========================
-      Frequently Asked Questions Section
-    ============================-->
-    <section id="faq" style="margin-bottom: -100px;">
-      <div class="container">
-        <header class="section-header">
-          <h3>Frequently Asked<span class="text-primary"> Questions</span></h3>
-          <p style="font-size: 18px;">Still having uncertainties? Find simple answers to those 
-            questions that no one asks
-          </p>
-        </header>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-        <ul id="faq-list" class="wow fadeInUp">
-          <li>
-            <a data-toggle="collapse" href="#faq2" class="collapsed">What is Brainstaq? <i class="ion-android-remove"></i></a>
-            <div id="faq2" class="collapse" data-parent="#faq-list">
-              <p>
-                Brainstaq is an online community to share, validate, and market your ideas, projects, 
-                insights and inspiration and attract cofounders and investors by engaging the power of the 
-                crowd. Brainstaq is great for African entrepreneurs, startups, small businesses, 
-                organizations, and more - and for the sponsors and backers who want to support 
-                and collaborate with them. 
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <a data-toggle="collapse" href="#faq3" class="collapsed">Can I use Brainstaq for free? <i class="ion-android-remove"></i></a>
-            <div id="faq3" class="collapse" data-parent="#faq-list">
-              <p>
-                You can set up an account for absolutely free. However, there are fees to accept funding. 
-                If you want to do crowdfunding and generate receipts, you need to pay the Brainstaq 10% 
-                platform fee. Payment processing fees are determined by the providers we use, Paystack. 
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <a data-toggle="collapse" href="#faq4" class="collapsed">Does Brainstaq work for my country? <i class="ion-android-remove"></i></a>
-            <div id="faq4" class="collapse" data-parent="#faq-list">
-              <p>
-                It works for all African countries. People can contribute from anywhere by credit card, 
-                with donations denominated in the currency of the creator. Payouts work everywhere our 
-                payment provider, Paystack serves. 
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <a data-toggle="collapse" href="#faq5" class="collapsed">How is Brainstaq different from other platforms? <i class="ion-android-remove"></i></a>
-            <div id="faq5" class="collapse" data-parent="#faq-list">
-              <p>
-                Brainstaq is different. It's fully transparent (you can see where money comes from and 
-                where it goes), and designed for African creators. 
-              </p>
-            </div>
-          </li>
- 
-          <li>
-            <a data-toggle="collapse" href="#faq6" class="collapsed">How much does it cost? <i class="ion-android-remove"></i></a>
-            <div id="faq6" class="collapse" data-parent="#faq-list">
-              <p>
-                Pricing is based on a small percentage commission on the total amount of funds raised 
-                through the platform, which is 10%.
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <a data-toggle="collapse" href="#faq7" class="collapsed">How can I contribute to Brainstaq? <i class="ion-android-remove"></i></a>
-            <div id="faq7" class="collapse" data-parent="#faq-list">
-              <p>
-                We run as a Campaign ourselves. You can contribute money, suggestions and/or your 
-                expertise as a member of Team Brainstaq. And we'd really love it if you shared your 
-                own idea and contributed by growing the community!
-  
-                For more info about how you can contribute to Brainstaq, send an email 
-                to:<%= mail_to 'info@brainstaq.com' %>.
-              </p>
-            </div>
-          </li>
-        </ul>
+    <%= render partial: "layouts/ideas", locals: { ideas: @ideas} %>
+    
+    <div class="row justify-content-center mt-5">
+      <div class="col-7 text-center"> 
+        <% if @page > 0 %>
+          <%= link_to 'Prev', root_path(page: @page - 1), class: "btn btn1 rounded-pill text-white mr-1" %>
+        <% end %>
+        <% if @ideas.count >= 3 %>
+          <%= link_to 'Next', root_path(page: @page + 1), class: "btn btn1 rounded-pill text-white ml-1" %>
+        <% end %>
       </div>
-    </section><!-- #faq -->
-  </main>
+    </div>
+  </section>
+  <%= render partial: "layouts/counter" %>
+  <%= render partial: "layouts/cta" %>
+
+  <!--==========================
+    Features Section
+  ============================-->
+  <section id="features">
+    <div class="container">
+      <div class="row feature-item">
+        <div class="col-lg-6 wow fadeInUp">
+          <%= image_tag 'features-1.svg', class: "img-fluid" %>
+        </div>
+        <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
+          <h4>Are you an entrepreneur?<br>
+            Seize the opportunities Brainstaq present!</h4>
+          <p>
+            Without adequate finances and funding, most of the ideas that can 
+            change the African narrative are rarely able to break out from 
+            being just an idea, let alone grow into a tangible business.
+          </p>
+          <p>
+            Share your ideas, creations or insights with the public, get adequate exposure 
+            and positive validations, get collaborators and raise the required funds to 
+            make that idea a reality.
+          </p>
+          <p>
+            Don’t watch that idea, project, or business disappear due to lack of funds. 
+            Brainstaq will help you develop that business idea and build the resilience 
+            needed to sustain your business over a period of time.
+          </p>
+        </div>
+      </div>
+
+      <div class="row feature-item mt-5 pt-5">
+        <div class="col-lg-6 wow fadeInUp order-1 order-lg-2">
+          <%= image_tag 'features-2.svg', class: "img-fluid" %>
+        </div>
+
+        <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
+          <h4>It goes beyond sharing of ideas.<br>
+            Brainstaq empowers disruptive African ideas!
+          </h4>
+          <p>
+            We are on a mission to help empower creative and innovative 
+            ideas and encourage development among African startups and small businesses.
+          </p>
+          <p>
+            We believe every African entrepreneur should have the tools to create the 
+            solutions of tomorrow. And Brainstaq is dedicated to make this happen! 
+          </p>
+          <p>
+            With our user-friendly, ideas-sharing and crowdfunding platform, 
+            African entrepreneurs can start, nurture and grow their desired businesses 
+            sustainably. 
+          </p>
+        </div>  
+      </div>
+    </div>
+  </section>
+  
+  <%= render partial: "layouts/faq" %>
+  
+</main>
