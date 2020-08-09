@@ -1,5 +1,8 @@
-<p>Welcome <%= @email %>!</p>
-
-<p>You can confirm your account email through the link below:</p>
-
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<h1>Welcome, <%= @user.full_name %></h1>
+<p>
+  Congratulations! 
+  You're almost set to start using Brainstaq.
+  Just click the button below to confirm your registration.
+  <%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %>
+</p>
+<p>Thanks for joining, we are excited to have you onboard!</p>

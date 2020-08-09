@@ -3,7 +3,8 @@
     <p>
       Congratulations! 
       You're almost set to start using Brainstaq.
-      Just click the button below to validate your email address.
-      <%= @url %>.
+      Just click the button below to confirm your registration.
+      <%= @url %>
+      <%#=  link_to "confirm", confirm_email_url(@user.confirm_token, host: "http://lvh.me:3000")%>
     </p>
     <p>Thanks for joining, we are excited to have you onboard!</p>

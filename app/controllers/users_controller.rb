@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       @users = User.create(params.require(:user))
       session[:user_id] = @user.id
 
-      redirect_to dashboard_path(current_user.full_name)
+      redirect_to root_path
     end
     
     def new

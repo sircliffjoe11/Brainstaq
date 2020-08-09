@@ -29,24 +29,30 @@
 
   <body>
 
-    <!-- <% flash.each do |type, message| %>
+    <% flash.each do |type, message| %>
       <% if type == "alert" %>
-        <div class="bg-red">
-          <div class="container px-2 py-4 mx-auto font-sans font-medium text-center text-dark"><%= message %></div>
-        </div>
+        <!-- <div class="bg-danger alert alert-info"> -->
+          <div class="container-fluid px-2 py-4 bg-danger alert alert-info text-center text-dark">
+            <%= message %>
+          </div>
+        <!-- </div> -->
       <% end %>
       <% if type == "notice" %>
-        <div class="bg-green">
-          <div class="container px-2 py-4 mx-auto font-sans font-medium text-center text-dark"><%= message %></div>
-        </div>
+        <!-- <div class="bg-success notice"> -->
+          <div class="container-fluid px-2 py-4 bg-success notice text-center text-dark">
+            <%= message %>
+          </div>
+        <!-- </div> -->
       <% end %>
-    <% end %> -->
+    <% end %>
 
     <% if user_signed_in? %>
       <%= render partial: "layouts/user_header" %>
     <% else %>
       <%= render partial: "layouts/header" %>
     <% end %>
+    <%= notice %>
+    <%= alert %>
     <%= yield %>
      <%= render partial: "layouts/footer" %>
   </body>
