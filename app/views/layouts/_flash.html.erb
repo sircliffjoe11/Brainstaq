@@ -1,11 +1,16 @@
+
+
 <% if notice || alert %> 
-<div class="flash-message <%= notice ? "notice" : ""%><%= alert ? "error" : ""%>"> 
-  <div class="container container_12 clearfix">
-    <div class="grid_4">
+<div class="flash-message <%#= notice ? "notice" : ""%><%#= alert ? "error" : ""%>"> 
+  <div class="container clearfix">
+    <div class="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="close">
+        <span aria-hidden="true">&times;</span>
+      </button>
       <% if notice %> 
-        <p><%= notice %></p> 
+        <p class="alert alert-success bg-success mt-4 text-white mb-2"><%= notice %></p> 
       <% elsif alert %> 
-        <p><%= alert %></p>
+        <p class="alert alert-danger bg-danger mt-4 text-white mb-2"><%= alert %></p>
       <% end %>
     </div> 
   </div>

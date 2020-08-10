@@ -86,6 +86,10 @@ setTimeout(function() {
   $('.flash-message').fadeOut('fast');
 }, 5000);
 
+setTimeout(function() {
+  $('.alert').fadeOut('fast');
+}, 5000);
+
 
 
 
