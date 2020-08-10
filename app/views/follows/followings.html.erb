@@ -1,7 +1,12 @@
 <header class="section-header mb-5" style="padding-top: 150px;">
   <h3>People you <span class="text-primary">Follow</span></h3>
 </header>
-    
+
+<% if @user.followees.count < 1 %>
+  <p class="text-center text-primary" style="font-size: 18px; font-weight:bold; font-style:italic; ">
+    You have not followed any user yet!
+  </p>
+<% end %>
   <div class="container-fluid mb-5" style="width: 1000px" class="mx-auto">
     <div>
       <div>

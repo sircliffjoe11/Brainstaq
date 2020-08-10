@@ -35,7 +35,7 @@ class IdeasController < ApplicationController
   def edit
     @idea = Idea.find(params[:id])
   end
-
+ 
   # POST /ideas
   # POST /ideas.json
   def create

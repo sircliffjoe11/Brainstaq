@@ -82,6 +82,10 @@ $(function(){
     $('#fadeMe').fadeOut(5000);
 });
 
+setTimeout(function() {
+  $('.flash-message').fadeOut('fast');
+}, 5000);
+
 
 
 

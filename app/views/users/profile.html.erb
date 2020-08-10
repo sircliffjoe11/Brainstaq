@@ -17,19 +17,19 @@
                       <% else %>
                         <%= image_tag 'avatar.png', style: "width: 160px; height: 156px;", class: "rounded-circle" %>
                       <% end %>
-                    </div><!--user-pro-img end-->
+                    </div>
                     
                     <section>
                       <% if @user.id == current_user.id %>
                         <%#= button_to "Logout", '/logout', method: :post %>
-                    <% elsif current_user.followees.include?(@user) %>
-                          <h5><%= button_to "Unfollow", unfollow_user_path, method: "POST", 
+                      <% elsif current_user.followees.include?(@user) %>
+                        <h5><%= button_to "Unfollow", unfollow_user_path, method: "POST", 
                               class: "btn btn-sm rounded-pill text-white", style: "font-size: 12px;" %></h5>
                       <% else %>
                           <h5><%= button_to "Follow", follow_user_path, method: "POST", 
                               class: "btn btn-sm rounded-pill text-white", style: "font-size: 12px;"  %></h5>
                       <% end%>
-                  </section>
+                    </section>
 
                     <div class="user_pro_status">
                       <ul class="flw-status">
