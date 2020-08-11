@@ -14,18 +14,6 @@ class UsersController < ApplicationController
 
       @follower_suggestions = User.where.not(id: following_ids).take(10)
     end
-    
-
-    # def follow_user
-    #   follower_id = params[:follow_id]
-    #   if Follower.create!(follower_id: current_user.id, following_id: follower_id)
-    #     flash[:success] = "Now following user"
-    #   else
-    #     flash[:danger] = "Unable to add follower"
-    #   end
-
-    #   redirect_to dashboard_path
-    # end
 
     def follow
       @user = User.find_by_username params[:username]
@@ -56,23 +44,12 @@ class UsersController < ApplicationController
       @ideas = current_user.ideas.order(created_at: :desc)
     end
 
-    # def show
-    #   @user = User.find_by_username params[:username]
-    #   @ideas = Idea.all.order(created_at: :desc)
-      
-    # end
-
 
     def ideas
       @user = User.find_by_username params[:username]
       @ideas = @user.ideas
     end
-    
-    # def show
-    #   @ideas = Idea.all.order(created_at: :desc)
-    #   @comment = Comment.new
-    #   @user = User.find(params[:id])
-    # end
+
 
     def set_user
       @user = User.find_by_username(params[:username])

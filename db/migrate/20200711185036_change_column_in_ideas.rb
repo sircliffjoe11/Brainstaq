@@ -3,3 +3,4 @@ class ChangeColumnInIdeas < ActiveRecord::Migration[6.0]
     change_column :ideas, :expires_at, :datetime, default: 40.days.from_now
   end
 end
+ 
