@@ -14,7 +14,7 @@
         <% else %>
           <%= image_tag 'avatar.png', style: "width: 35px; height: 35px;", class: "rounded-circle ml-1" %>
         <% end %>
-
+ 
         <div class="sgt-text">
           <h4><%= link_to user.full_name, profile_path(user.username), class: "text-primary" %></h4>
           <span style="font-size: 12px; font-weight: bold;" class= "text-dark"><%= user.country %></span>

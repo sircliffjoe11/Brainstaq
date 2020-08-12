@@ -22,7 +22,7 @@ class User < ApplicationRecord
   has_many :following_users, foreign_key: :followee_id, class_name: 'Follow'
   has_many :followers, through: :following_users
   
-  has_one_attached :image, dependent: :destroy
+  # has_one_attached :image, dependent: :destroy
   
   def full_name
     "#{first_name} #{last_name}"

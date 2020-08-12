@@ -51,16 +51,8 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="font-size: 12px;">
                           <%= link_to "Edit Idea", edit_idea_path(idea), class: "dropdown-item" %>
                           <%= link_to "Delete", idea, :method => 'delete', data: { confirm: 'Are you sure?' }, class: "dropdown-item" %>
-            
-                        <%# if user_signed_in? && current_user.id != idea.user_id %>
-                          <%# if "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i > 1 %>
-                            <%#= link_to "Support this Project", "#", class: "dropdown-item" %>
-                          <%# end %>
-                        <%# end %>  
-                        <%#= social_share_button_tag(idea.title, class: "dropdown-item") %>
-                        <%#= link_to "Share", "#", class: "dropdown-item" %>
+                        </div>
                       </div>
-                    </div>
                     <% end %>
                 
                   </div>
@@ -133,13 +125,13 @@
 												  
 					          <div class="user-specs">
 					            <h3 class="mb-0"><%= current_user.full_name %></h3>
-                      <h6 class="mb-0 mt-0 p-2 text-muted" style="font-size: 12px;"><%= current_user.bio %></h6>
-                      <div class="social-links" style="margin-bottom: -20px;">
+                      <h6 class="p-4 text-muted" style="font-size: 12px; margin-top: -10px; margin-bottom: -30px;"><%= current_user.bio %></h6>
+                      <!-- <div class="social-links" style="margin-bottom: -20px;">
                         <a href="#"><i class="fab fa-twitter m-2"></i></a>
                         <a href="#"><i class="fab fa-facebook m-2"></i></a>
                         <a href="#"><i class="fab fa-instagram m-2"></i></a>
                         <a href="#"><i class="fab fa-linkedin m-2"></i></a>
-                      </div>
+                      </div> -->
 					          </div>
                   </div><!--user-profile end-->
 				 
