@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if @user == 'admin'
-      admin_root_path
+      rails_admin_path
     else
       dashboard_path(@user.full_name)
     end

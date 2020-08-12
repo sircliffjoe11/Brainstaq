@@ -61,7 +61,8 @@ gem "figaro"
 
 #gem 'kaminari'
 
-
+gem 'rails_admin', '~> 2.0', '>= 2.0.2'
+gem 'rails_admin_rollincode', '~> 1.0'
 # gem 'activeadmin'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
