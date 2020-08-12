@@ -36,6 +36,7 @@ gem "font-ionicons-rails"
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'intro', '~> 0.3.0'
 gem 'friendly_id', '~> 5.3'
 gem 'local_time', '~> 2.1'
 
