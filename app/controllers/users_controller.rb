@@ -31,7 +31,8 @@ class UsersController < ApplicationController
       @users = User.create(params.require(:user))
       session[:user_id] = @user.id
 
-      redirect_to root_path
+      # redirect_to root_path
+      format.html { redirect_to root_path, notice: 'Confirmation required. Check your email!' }
     end
     
     def new

@@ -1,5 +1,5 @@
 <header class="section-header mb-5" style="padding-top: 150px;">
-  <h3>People you <span class="text-primary">Follow</span></h3>
+  <h3>People <%= @user.first_name %> <span class="text-primary">Follows</span></h3>
 </header>
 
 <% if @user.followees.count < 1 %>

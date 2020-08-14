@@ -1,0 +1,1 @@
+ActionMailer::Base.default from: "brainstaq@gmail.com"
