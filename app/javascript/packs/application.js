@@ -29,7 +29,7 @@ require("bootstrap")
 
 import "controllers"
 
-//= require("../includes/vote.js")
+// require("../includes/vote.js")
 
 //= require activestorage
 
@@ -39,18 +39,6 @@ import "controllers"
 
 //= require social-share-button
 
-
-
-// jquery
-// import * as $ from 'jquery';
-
-// global.$ = $
-// global.jQuery = $
-
-
-// jquery-ui theme
-// require.context('file-loader?name=[path][name].[ext]&context=node_modules/jquery-ui-dist!jquery-ui-dist', true,    /jquery-ui\.css/ );
-// require.context('file-loader?name=[path][name].[ext]&context=node_modules/jquery-ui-dist!jquery-ui-dist', true,    /jquery-ui\.theme\.css/ );
 
 
 import "@fortawesome/fontawesome-free/js/all";
@@ -81,9 +69,9 @@ $(window).scroll(function() {
 //     $('#fadeMe').fadeOut(5000);
 // });
 
-setTimeout(function() {
-  $('.flash-message').fadeOut('fast');
-}, 5000);
+// setTimeout(function() {
+//   $('.flash-message').fadeOut('fast');
+// }, 5000);
 
 
 
