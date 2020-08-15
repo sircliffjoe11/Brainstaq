@@ -6,7 +6,6 @@
 
 //= require("jquery")
 //= require("jquery-ui/core")
-//= require abraham
 
 require("@rails/ujs").start()
 require("turbolinks").start()
@@ -85,13 +84,6 @@ $(function(){
 setTimeout(function() {
   $('.flash-message').fadeOut('fast');
 }, 5000);
-
-setTimeout(function() {
-  $('.alert').fadeOut('fast');
-}, 5000);
-
-
-
 
 
 
