@@ -76,10 +76,10 @@ $(window).scroll(function() {
   // });
   
 
-$(function(){
-    // Plain jquery
-    $('#fadeMe').fadeOut(5000);
-});
+// $(function(){
+//     // Plain jquery
+//     $('#fadeMe').fadeOut(5000);
+// });
 
 setTimeout(function() {
   $('.flash-message').fadeOut('fast');
