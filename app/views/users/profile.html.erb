@@ -59,7 +59,8 @@
                       
                       <div style="font-size: 12px;">
                         <i class="fas fa-globe"></i>  
-                          <%= link_to @user.website, url_for(@user.website) if @user.website.present? %>
+                          <%= link_to @user.website, url_for(@user.website), target: "_blank" if @user.website.present? %>
+                          <%#= link_to @user.website, URI::HTTP.build({:host => @user.website}).to_s, target: "_blank" if @user.website.present? %>
                       </div>
                       <!-- <div class="social-links mt-2">
                         <a href="#"><i class="fab fa-twitter m-2"></i></a>

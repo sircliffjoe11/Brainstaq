@@ -46,9 +46,9 @@ gem 'mail_form'
 
 gem 'tinymce-rails'
 
-gem 'faker'
+# gem 'faker'
 gem 'social-share-button'
-gem 'shareable', '~> 1.1', '>= 1.1.4'
+# gem 'shareable', '~> 1.1', '>= 1.1.4'
 
 
 gem 'impressionist'
