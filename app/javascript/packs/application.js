@@ -29,7 +29,7 @@ require("bootstrap")
 
 import "controllers"
 
-// require("../includes/vote.js")
+//= require("../includes/vote.js")
 
 //= require activestorage
 
