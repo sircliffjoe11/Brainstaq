@@ -10,18 +10,13 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require froala_editor.min.css
- *= require froala_style.min.css
  *= require_tree .
  *= require_self
  *= require jquery-ui
  *= require social-share-button
  
  */
- //= require actiontext
 
-
-//  @import "bootstrap/scss/bootstrap";
  @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
  @import "home.scss";
 
@@ -31,14 +26,7 @@
 
  @import "ionicons";
 
- @import 'trix/dist/trix.css';
-
- @import "./actiontext.scss";
-
  @import "social-share-button";
- 
-// @import "froala_editor.min";
-// @import "froala_style.min";
 
  $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
  @import '@fortawesome/fontawesome-free/scss/fontawesome';
@@ -46,36 +34,6 @@
  @import '@fortawesome/fontawesome-free/scss/regular';
  @import '@fortawesome/fontawesome-free/scss/brands';
  @import '@fortawesome/fontawesome-free/scss/v4-shims';
-
-
-// @import 'plugins/char_counter.min.css';
-// @import 'plugins/code_view.min.css';
-// @import 'plugins/colors.min.css';
-// @import 'plugins/emoticons.min.css';
-// @import 'plugins/file.min.css';
-// @import 'plugins/fullscreen.min.css';
-// @import 'plugins/help.min.css';
-// @import 'plugins/image_manager.min.css';
-// @import 'plugins/image.min.css';
-// @import 'plugins/line_breaker.min.css';
-// @import 'plugins/quick_insert.min.css';
-// @import 'plugins/special_characters.min.css';
-// @import 'plugins/table.min.css';
-// @import 'plugins/video.min.css';
-
-// @import 'third_party/embedly.min.css';
-// @import 'third_party/image_tui.min.css';
-// @import 'third_party/spell_checker.min.css';
-
-
-
-//  .social-share-button {
-//    .ssb-icon {
-//      background-size: 24px 24px;
-//      height: 24px;
-//      width: 24px;
-//    }
-//  }
 
 .flash-message {
   &.error {

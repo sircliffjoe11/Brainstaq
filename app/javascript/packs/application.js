@@ -6,14 +6,18 @@
 
 //= require("jquery")
 //= require("jquery-ui/core")
+//= require activestorage
+//= require local-time
+//= require tinymce
+//= require social-share-button
 
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-
-
-
+require("trix")
+require("@rails/actiontext")
+require("bootstrap")
 
 var jQuery = require("jquery");
 
@@ -21,28 +25,8 @@ var jQuery = require("jquery");
 global.$ = global.jQuery = jQuery;
 window.$ = window.jQuery = jQuery;
 
-require("trix")
-require("@rails/actiontext")
-require("bootstrap")
-
-
-
 import "controllers"
-
-// require("../includes/vote.js")
-
-//= require activestorage
-
-//= require local-time
-
-//= require tinymce
-
-//= require social-share-button
-
-
-
 import "@fortawesome/fontawesome-free/js/all";
-
 
 // Back to top button
 $(window).scroll(function() {
@@ -57,30 +41,9 @@ $(window).scroll(function() {
     return false;
   });
 
-  // jQuery counterUp (used in Whu Us section)
-  // $('[data-toggle="counter-up"]').counterUp({
-  //   delay: 10,
-  //   time: 1000
-  // });
-  
-
-// $(function(){
-//     // Plain jquery
-//     $('#fadeMe').fadeOut(5000);
-// });
-
 setTimeout(function() {
   $('.flash-message').fadeOut('fast');
 }, 5000);
-
-
-
-// Uncomment to copy all static images under ../images to the output folder and reference
-// them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
-// or the `imagePath` JavaScript helper below.
-//
-// const images = require.context('../images', true)
-// const imagePath = (name) => images(name, true)
 
 
 

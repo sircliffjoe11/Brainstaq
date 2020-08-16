@@ -22,49 +22,29 @@ gem 'redis', '~> 4.0'
 #gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise'
-
-gem 'wysiwyg-rails', '~> 3.1'
-
-
 gem 'jquery-rails'
-
 gem 'jquery-ui-rails'
 gem 'font_awesome5_rails'
-
 gem "font-ionicons-rails"
-
 gem 'carrierwave'
 gem 'mini_magick'
-
 gem 'intro', '~> 0.3.0'
 gem 'friendly_id', '~> 5.3'
 gem 'local_time', '~> 2.1'
-
 gem 'tel_to_helper'
-
 gem 'mail_form'
-
 gem 'tinymce-rails'
-
-# gem 'faker'
 gem 'social-share-button'
-# gem 'shareable', '~> 1.1', '>= 1.1.4'
-
-
 gem 'impressionist'
-
 gem 'acts_as_votable'
-
 gem 'uglifier', '~> 4.2', require: 'uglifier'
 
 # local ENV var
 gem "figaro"
 
-#gem 'kaminari'
-
 gem 'rails_admin', '~> 2.0', '>= 2.0.2'
 gem 'rails_admin_rollincode', '~> 1.0'
-# gem 'activeadmin'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -74,7 +54,6 @@ gem 'paystack'
 gem 'omniauth', '~> 1.9', '>= 1.9.1'
 
 gem 'rave_ruby'
-
 gem 'pg'
 
 gem "fog-aws"
