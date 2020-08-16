@@ -70,8 +70,16 @@
                   <div class="job_descp">
                     <h3><%= link_to idea.title, idea, class: 'text-dark' %></h3>
                     <% if "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i > 75 %>
-                      <span class=" float-right text-primary mb-2" style="font-weight: bold; font-size: 12px;">Active Campaign <br>
-                        <small>N235,000 raised</small>
+                      <span class="float-right text-success mb-2" style="font-weight: bold; font-size: 12px;">Active Campaign <br>
+                        <small>N<%= idea.donated_amount %> raised of 
+                          <%= number_to_currency(idea.donation_goal, :unit => "N") %>
+                        </small>
+                      </span>
+                    <% else %>
+                      <span class="float-right text-danger mb-2" style="font-weight: bold; font-size: 12px;">Inactive Campaign <br>
+                        <small>N<%= idea.donated_amount %> raised of 
+                          <%= number_to_currency(idea.donation_goal, :unit => "N") %>
+                        </small>
                       </span>
                     <% end %>
                     <%= image_tag idea.image_url, style: "height: 150px; object-fit: cover;", class: "card-img-top" %> 
@@ -99,8 +107,7 @@
                       <% end %>
 
                         <li style="font-size: 12px;"><i class="fa fa-comments"></i>  <%= pluralize(idea.comments.size, 'Comment') %></li> 
-                        <li style="font-size: 12px;" href="#"><i class="fas fa-share"></i>  <%= pluralize(0, 'Share') %></li>
-                      </ul>
+                        </ul>
                       <a style="font-size: 12px;"><i class="fa fa-filter"></i> Relevance: <strong><%= "#{idea.impressions.size + idea.get_likes.size + idea.comments.size }%" %></strong></a>                  
                   </div>
                 </div><!--post-bar end-->
