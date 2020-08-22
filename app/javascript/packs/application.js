@@ -11,7 +11,6 @@ require("bootstrap")
 
 //= require("jquery")
 //= require("jquery-ui/core")
-// require activestorage
 //= require local-time
 //= require tinymce
 //= require social-share-button
@@ -19,6 +18,8 @@ require("bootstrap")
 
 import "controllers"
 import "@fortawesome/fontawesome-free/js/all";
+//= link intro/application.js
+//=link intro/admin/application.js
 
 var jQuery = require("jquery");
 
@@ -28,17 +29,17 @@ window.$ = window.jQuery = jQuery;
 
 
 // Back to top button
-// $(window).scroll(function() {
-//     if ($(this).scrollTop() > 100) {
-//       $('.back-to-top').fadeIn('slow');
-//     } else {
-//       $('.back-to-top').fadeOut('slow');
-//     }
-//   });
-//   $('.back-to-top').click(function(){
-//     $('html, body').animate({scrollTop : 0},1500, 'easeInOutExpo');
-//     return false;
-//   });
+$(window).scroll(function() {
+    if ($(this).scrollTop() > 100) {
+      $('.back-to-top').fadeIn('slow');
+    } else {
+      $('.back-to-top').fadeOut('slow');
+    }
+  });
+  $('.back-to-top').click(function(){
+    $('html, body').animate({scrollTop : 0},1500, 'easeInOutExpo');
+    return false;
+  });
 
 setTimeout(function() {
   $('.flash-message').fadeOut('fast');
