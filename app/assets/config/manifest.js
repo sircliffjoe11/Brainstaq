@@ -6,3 +6,4 @@
 //= link intro/application.css
 //= link intro/admin/application.css
 //= link intro/admin/application.js
+//= link application.css
