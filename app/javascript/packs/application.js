@@ -3,23 +3,19 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+
+//= require("jquery")
+//= require("jquery-ui/core")
+//= require activestorage
+//= require local-time
+//= require tinymce
+//= require social-share-buttons
+
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("bootstrap")
-
-//= require("jquery")
-//= require("jquery-ui/core")
-//= require local-time
-//= require tinymce
-//= require social-share-button
-//= require_tree .
-
-import "controllers"
-import "@fortawesome/fontawesome-free/js/all";
-//= link intro/application.js
-//=link intro/admin/application.js
 
 var jQuery = require("jquery");
 
@@ -27,6 +23,8 @@ var jQuery = require("jquery");
 global.$ = global.jQuery = jQuery;
 window.$ = window.jQuery = jQuery;
 
+import "controllers"
+import "@fortawesome/fontawesome-free/js/all";
 
 // Back to top button
 $(window).scroll(function() {
