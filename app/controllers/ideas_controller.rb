@@ -7,7 +7,7 @@ class IdeasController < ApplicationController
   IDEAS_PER_PAGE = 6
 
    
-  # GET /ideas
+
   # GET /ideas.json
   def index
     @page = params.fetch(:page, 0).to_i 
