@@ -15,12 +15,13 @@
   <div class="container col-sm-6">
     <div class="row m-3">
       <div class="col-sm-12 form-group">
-        <%= form.label :title %>
-        <%= form.text_field :title, maxlength: "23", class: "form-control", placeholder: "Title"  %>
+        <%= form.label :idea_title %>
+        <%= form.text_field :title, maxlength: "23", class: "form-control", placeholder: "What would you call your idea?"  %>
       </div>
       <div class="col-sm-12 form-group">
-        <%= form.label :category %>
+        <%= form.label :idea_category %>
         <%= form.select :category, options_for_select([
+          ['What category does your idea fall into?'],
           ['Agriculture'], 
           ['Arts & Culture'], 
           ['Beauty & Fashion'], 
@@ -52,20 +53,20 @@
       </div>
 
       <div class="form-group col-sm-12">
-        <%= form.label :description %>
-        <%= form.text_area :description, class: "form-control tinymce", placeholder: "Enter a brief description of your idea"%>
+        <%= form.label :idea_description %>
+        <%= form.text_area :description, class: "form-control tinymce", placeholder: "How would you describe your idea in 5 sentences?"%>
         <%= tinymce %>
       </div>
 
       <div class="form-group col-sm-12">
-        <%= form.label :overview %>
-        <%= form.text_area :overview, class: "form-control tinymce", placeholder: "Enter an overview of your idea"%>
+        <%= form.label :problem %>
+        <%= form.text_area :challenges, class: "form-control tinymce", placeholder: "How would you describe the problem your idea is solving?"%>
         <%= tinymce %>
       </div>
-
+      
       <div class="form-group col-sm-12">
-        <%= form.label :challenges %>
-        <%= form.text_area :challenges, class: "form-control tinymce", placeholder: "Enter the challenges faced by your idea"%>
+        <%= form.label :solution %>
+        <%= form.text_area :overview, class: "form-control tinymce", placeholder: "How are you solving this problem?"%>
         <%= tinymce %>
       </div>
 
@@ -76,8 +77,8 @@
       </div>
 
       <div class="form-group col-sm-12">
-        <%= form.label :donation_goal %>
-        <%= form.text_field :donation_goal, class: "form-control tinymce", placeholder: "Enter your donation goal"%>
+        <%= form.label :funding_goal %>
+        <%= form.text_field :donation_goal, class: "form-control tinymce", placeholder: "How much would it cost to implement your idea?"%>
         <%= tinymce %>
       </div>
 
@@ -86,7 +87,7 @@
       </div>
     
       <div class="col-sm-12">
-        <%= form.label :image %>
+        <%= form.label :idea_image %>
         <%= form.file_field :image %>
       </div>
             
