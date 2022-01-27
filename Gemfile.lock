@@ -114,7 +114,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.6)
-    connection_pool (2.2.3)
+    connection_pool (2.2.5)
     crass (1.0.6)
     device_detector (1.0.5)
     devise (4.7.2)
@@ -339,7 +339,7 @@ GEM
       rubyzip (>= 1.2.2)
     semantic_range (2.3.0)
     shepherdjs_rails (4.6.0)
-    sidekiq (6.1.0)
+    sidekiq (6.4.0)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
@@ -438,7 +438,7 @@ DEPENDENCIES
   redis (~> 4.0)
   sass-rails (>= 6)
   selenium-webdriver
-  sidekiq (~> 6.1)
+  sidekiq (~> 6.4)
   social-share-button
   spring
   spring-watcher-listen (~> 2.0.0)
